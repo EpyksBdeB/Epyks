@@ -41,11 +41,11 @@
 				</Style>
 			</PasswordBox.Style>
 		</PasswordBox>
-    	<Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Left" Margin="260,337.5,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FF00AFF0" Foreground="White" Width="80" Height="35"/>
-    	<Ellipse x:Name="TitleBack" Fill="#FF00AFF0" HorizontalAlignment="Left" Height="53" Margin="150,45,0,0" VerticalAlignment="Top" Width="300"/>
+    	<Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Left" Margin="260,337.5,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Width="80" Height="35"/>
+    	<Ellipse x:Name="TitleBack" Fill="#FFAA40FF" HorizontalAlignment="Left" Height="53" Margin="150,45,0,0" VerticalAlignment="Top" Width="300"/>
     	<Label x:Name="LblTitle" Content="Epyks" HorizontalAlignment="Left" Margin="150,45,0,0" VerticalAlignment="Top" Width="300" Height="53" FontSize="37.333" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
     	<Label x:Name="LblRegisterQuestion" Content="No account? " HorizontalAlignment="Left" Margin="210,440,0,0" VerticalAlignment="Top" Width="105"/>
-    	<Label x:Name="LblRegister" Content="Register" HorizontalAlignment="Left" Margin="315,440,0,0" VerticalAlignment="Top" Foreground="#FF00AFF0" Width="75"/>
+    	<Label x:Name="LblRegister" Content="Register" HorizontalAlignment="Left" Margin="315,440,0,0" VerticalAlignment="Top" Foreground="#FFAA40FF" Width="75"/>
         
     </Grid>
 </Window>

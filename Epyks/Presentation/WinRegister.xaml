@@ -60,9 +60,9 @@
 				</Style>
 			</PasswordBox.Style>
 		</PasswordBox>
-		<Label x:Name="LblRegister" Content="Register" HorizontalAlignment="Left" Margin="150,70,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="29.333" Height="50" Width="125"/>
-		<Button x:Name="BtnRegister" Content="Register" HorizontalAlignment="Left" Margin="245,380,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FF00AFF0" Foreground="White" Height="35" Width="110"/>
-		<ed:BlockArrow Fill="#FF00AFF0" HorizontalAlignment="Left" Height="15" Margin="10,470,0,0" Orientation="Left" VerticalAlignment="Top" Width="20"/>
-		<Label Content="Sign in" HorizontalAlignment="Left" Margin="30,462.5,0,0" VerticalAlignment="Top" Height="30" Foreground="#FF00AFF0"/>
+		<Label x:Name="LblRegister" Content="Register" HorizontalAlignment="Left" Margin="147,70,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="29.333" Height="50" Width="125" Foreground="#FFAA40FF"/>
+		<Button x:Name="BtnRegister" Content="Register" HorizontalAlignment="Left" Margin="245,380,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Height="35" Width="110"/>
+		<ed:BlockArrow Fill="#FFAA40FF" HorizontalAlignment="Left" Height="15" Margin="10,470,0,0" Orientation="Left" VerticalAlignment="Top" Width="20"/>
+		<Label Content="Sign in" HorizontalAlignment="Left" Margin="30,462.5,0,0" VerticalAlignment="Top" Height="30" Foreground="#FFAA40FF" Background="{x:Null}"/>
 	</Grid>
 </Window>
