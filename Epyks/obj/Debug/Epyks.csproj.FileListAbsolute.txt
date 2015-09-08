@@ -1,1 +1,20 @@
 D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\Epyks.exe.config
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\Epyks.exe
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\Epyks.pdb
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\MainWindow.baml
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\MainWindow.g.cs
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\App.g.cs
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Epyks_MarkupCompile.cache
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Epyks.g.resources
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Epyks.Properties.Resources.resources
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Epyks.csproj.GenerateResource.Cache
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Epyks.exe
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Epyks.pdb
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\MahApps.Metro.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\System.Windows.Interactivity.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\MahApps.Metro.xml
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Epyks.csprojResolveAssemblyReference.cache
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Simple Styles.baml
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\App.baml
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Resources\Icons.baml
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Resources\Icons.g.cs
