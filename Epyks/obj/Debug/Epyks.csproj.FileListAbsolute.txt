@@ -76,3 +76,6 @@ C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.Properties.Resources.resour
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.csproj.GenerateResource.Cache
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.exe
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.pdb
+C:\Users\Melissa\Documents\Epyks\Epyks\bin\Debug\Epyks.exe.config
+C:\Users\Melissa\Documents\Epyks\Epyks\obj\Debug\Epyks.exe
+C:\Users\Melissa\Documents\Epyks\Epyks\obj\Debug\Epyks.pdb
