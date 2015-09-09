@@ -49,6 +49,8 @@
 		<Label Content="En ligne" HorizontalAlignment="Left" Margin="112.575,78.672,0,0" VerticalAlignment="Top" Background="White"/>
 		<Label Content="CONTACTS" HorizontalAlignment="Left" Margin="10,223.18,0,0" VerticalAlignment="Top"/>
 		<Border BorderBrush="#FFABADB3" BorderThickness="1" HorizontalAlignment="Left" Height="517.4" Margin="263.332,29.776,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="668.31"/>
+		
+		
 		<Border BorderBrush="#FFABADB3" BorderThickness="1,1,0,1" HorizontalAlignment="Left" Height="296.427" Margin="10,4.999,0,0" Grid.Row="1" VerticalAlignment="Top" Width="253.332"/>
 		<Image HorizontalAlignment="Left" Height="24.933" Margin="10,0,0,44.208" VerticalAlignment="Bottom" Width="25.575" Source="Loupe.png" RenderTransformOrigin="0.802,0.344"/>
 	</Grid>

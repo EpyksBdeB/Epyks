@@ -138,5 +138,7 @@
 		</TextBox>
 		<Image x:Name="ImgProfil" HorizontalAlignment="Left" Height="120" Margin="150,300,0,0" VerticalAlignment="Top" Width="120" Source="/Epyks;component/Resources/profileDefault.jpg" Stretch="Fill"/>
 		<Button x:Name="BtnLoadImage" Content="Load Image" HorizontalAlignment="Left" Margin="280,300,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Height="35" Width="130" Click="BtnLoadImage_Click"/>
+		<Label Content="Genre:" HorizontalAlignment="Left" Margin="150,265,0,0" VerticalAlignment="Top" Height="25"/>
+		<RadioButton Content="Male" HorizontalAlignment="Left" Margin="215.063,270,0,0" VerticalAlignment="Top"/>
 	</Grid>
 </Window>
