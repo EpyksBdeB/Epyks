@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Epyks.Coordonnateur
 {
-    private enum StatusLogin
+    public enum StatusLogin
     {
         INVALID_PASSWORD,
         INVALID_USERNAME
     }
 
-    private enum StatusRegister
+    public enum StatusRegister
     {
         EXISTING_USERNAME
     }
