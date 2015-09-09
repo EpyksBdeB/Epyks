@@ -76,3 +76,15 @@ C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.Properties.Resources.resour
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.csproj.GenerateResource.Cache
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.exe
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.pdb
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\Microsoft.Expression.Controls.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\de\Microsoft.Expression.Controls.resources.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\es\Microsoft.Expression.Controls.resources.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\fr\Microsoft.Expression.Controls.resources.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\it\Microsoft.Expression.Controls.resources.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\ja\Microsoft.Expression.Controls.resources.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\ko\Microsoft.Expression.Controls.resources.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\ru\Microsoft.Expression.Controls.resources.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\zh-Hans\Microsoft.Expression.Controls.resources.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\zh-Hant\Microsoft.Expression.Controls.resources.dll
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Presentation\WinProfil.baml
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Presentation\WinProfil.g.cs

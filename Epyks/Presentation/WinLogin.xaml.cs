@@ -25,5 +25,12 @@ namespace Epyks.Presentation
                 TxtPassword.Background.Opacity = 1;
             }
         }
+
+        private void BtnGoRegister_Click(object sender, RoutedEventArgs e)
+        {
+            WinRegister winRegister = new WinRegister(this);
+            Hide();
+            winRegister.Show();
+        }
     }
 }
