@@ -61,9 +61,8 @@
 			</PasswordBox.Style>
 		</PasswordBox>
 		<Label x:Name="LblRegister" Content="Register" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="29.333" Height="50" Width="125" Foreground="#FFAA40FF"/>
-		<Button x:Name="BtnRegister" Content="Register" HorizontalAlignment="Left" Margin="242,437.355,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Height="35" Width="110"/>
-		<ed:BlockArrow Fill="#FFAA40FF" HorizontalAlignment="Left" Height="15" Margin="10,470,0,0" Orientation="Left" VerticalAlignment="Top" Width="20"/>
-		<Label Content="Sign in" HorizontalAlignment="Left" Margin="30,462.5,0,0" VerticalAlignment="Top" Height="30" Foreground="#FFAA40FF" Background="{x:Null}"/>
+		<Button x:Name="BtnRegister" Content="Register" HorizontalAlignment="Left" Margin="245,440,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Height="35" Width="110"/>
+		<ed:BlockArrow x:Name="BackArrow" Fill="#FFAA40FF" HorizontalAlignment="Left" Height="15" Margin="10,470,0,0" Orientation="Left" VerticalAlignment="Top" Width="20"/>
 		<TextBox x:Name="TxtFirstName" HorizontalAlignment="Left" Margin="150,190,0,0" VerticalAlignment="Top" Width="145" FontSize="16" Height="30" VerticalContentAlignment="Center">
 			<TextBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -138,7 +137,9 @@
 		</TextBox>
 		<Image x:Name="ImgProfil" HorizontalAlignment="Left" Height="120" Margin="150,300,0,0" VerticalAlignment="Top" Width="120" Source="/Epyks;component/Resources/profileDefault.jpg" Stretch="Fill"/>
 		<Button x:Name="BtnLoadImage" Content="Load Image" HorizontalAlignment="Left" Margin="280,300,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Height="35" Width="130" Click="BtnLoadImage_Click"/>
-		<Label Content="Genre:" HorizontalAlignment="Left" Margin="150,265,0,0" VerticalAlignment="Top" Height="25"/>
-		<RadioButton Content="Male" HorizontalAlignment="Left" Margin="215.063,270,0,0" VerticalAlignment="Top"/>
+		<Label x:Name="LblGender" Content="Gender :" HorizontalAlignment="Left" Margin="150,265,0,0" VerticalAlignment="Top" Height="25" Width="65" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0"/>
+		<RadioButton x:Name="RadGenderMale" Content="Male" HorizontalAlignment="Left" Margin="225,265,0,0" VerticalAlignment="Top" Height="25" VerticalContentAlignment="Center" Padding="0" Width="50"/>
+		<RadioButton x:Name="RadGenderFemale" Content="Female" HorizontalAlignment="Left" Margin="285,265,0,0" VerticalAlignment="Top" Height="25" Padding="0" VerticalContentAlignment="Center" Width="70"/>
+        <Button x:Name="BtnBackToSignIn" Content="Sign In" HorizontalAlignment="Left" Margin="10,466.5,0,0" VerticalAlignment="Top" Width="80" Foreground="#FFAA40FF" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" HorizontalContentAlignment="Right" Height="22" Cursor="Hand" Click="BtnBackToSignIn_Click" Style="{StaticResource LabelButton}"/>
 	</Grid>
 </Window>

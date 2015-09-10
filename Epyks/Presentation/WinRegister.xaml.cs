@@ -51,5 +51,10 @@ namespace Epyks.Presentation
         {
             login.Show();
         }
+
+        private void BtnBackToSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 	}
 }
