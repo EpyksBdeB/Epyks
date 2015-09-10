@@ -62,6 +62,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Application\Membre.cs" />
+    <Compile Include="Application\MembreDAO.cs" />
+    <Compile Include="Application\MembreDTO.cs" />
+    <Compile Include="Coordonnateur\CoordonnateurLogin.cs" />
     <Compile Include="Presentation\WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
