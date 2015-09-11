@@ -11,6 +11,7 @@ namespace Epyks.Application
     {
         public List<Membre> getAllMembers();
         public Membre getMember();
-        // autres methodes necessaires
+        public Membre updateMember();
+        public Membre deleteMember();
     }
 }

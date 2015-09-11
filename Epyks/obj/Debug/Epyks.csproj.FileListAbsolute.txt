@@ -89,5 +89,3 @@ D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\bin\Debug\zh-Hant\Microsoft.Expre
 D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Presentation\WinProfil.baml
 D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Presentation\WinProfil.g.cs
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\bin\Debug\Epyks.exe.config
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.exe
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.pdb

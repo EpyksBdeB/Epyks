@@ -64,6 +64,7 @@
     </ApplicationDefinition>
     <Compile Include="Application\Membre.cs" />
     <Compile Include="Application\MembreDAO.cs" />
+    <Compile Include="Application\MembreDAOInterface.cs" />
     <Compile Include="Application\MembreDTO.cs" />
     <Compile Include="Coordonnateur\CoordonnateurLogin.cs" />
     <Compile Include="Presentation\WinLogin.xaml.cs">
