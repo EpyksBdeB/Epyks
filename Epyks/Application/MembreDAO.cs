@@ -32,13 +32,16 @@ namespace Epyks.Application
             throw new NotImplementedException();
         }
 
-        public Membre updateMember()
+        public void updateMember()
         {
             throw new NotImplementedException();
         }
 
-        public Membre deleteMember()
+        public void deleteMember()
         {
             throw new NotImplementedException();
         }
     }
+}
+    
+

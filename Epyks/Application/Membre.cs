@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Epyks.Application
 {
-    class Membre
+    public class Membre
     {
         private String name { get; set; }
         private String surname { get; set; }
