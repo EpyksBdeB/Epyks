@@ -12,5 +12,6 @@ namespace Epyks.Application
         Membre getMember();
         void updateMember();
         void deleteMember();
+        void insertMember();
     }
 }

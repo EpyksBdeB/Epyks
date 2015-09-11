@@ -6,13 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Windows;
+using MySql.Data.MySqlClient;
 
 namespace Epyks.Application
 {
     public class MembreDAO : MembreDAOInterface
     {
-        // Probleme avec l'implementation de la BD donc pour le moment je travaille avec une liste
-       // List<Membre> listofMembers;
         private MySql.Data.MySqlClient.MySqlConnection connection = null;
         private string myConnectionString = null;
      
@@ -20,11 +19,6 @@ namespace Epyks.Application
         public MembreDAO()
         {
             initializeDatabase();
-            /** listofMembers = new List<Membre>();
-            Membre member1 = new Membre("Robert", "Gallagher", "Gally", "root", "gally@hotmail.fr", 'M');
-            Membre member2 = new Membre("Robert", "Gallagher", "Gally", "root", "gally@hotmail.fr", 'M');
-            listofMembers.Add(member1);
-            listofMembers.Add(member2);	 **/
         }
 
         public void initializeDatabase()
@@ -38,8 +32,16 @@ namespace Epyks.Application
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                // message erreur
-                MessageBox.Show(ex.Message);
+                switch (ex.Number)
+                {
+                    case 0:
+                        MessageBox.Show("Impossible de se connecter au serveur");
+                        break;
+                    case 1:
+                        MessageBox.Show("Identifiant ou mot de passe invalide");
+                        break;
+
+                }
 
             }
         }
@@ -62,6 +64,16 @@ namespace Epyks.Application
         public void deleteMember()
         {
             throw new NotImplementedException();
+        }
+
+        public void insertMember()
+        {
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO utilisateurs (id_utilisateur, nom_utilisateur, mdp," +
+                                  "nom, prenom, email, sexe) VALUES ('melissa07', 'melissa','Sissoko'," +
+                                  " 'Christelle', 'blabla@gmail.com', 'F')";
+            connection.Open();
+            command.ExecuteNonQuery();
         }
     }
 }
