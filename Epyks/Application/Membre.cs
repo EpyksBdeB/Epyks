@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Epyks.Presentation.Application
+namespace Epyks.Application
 {
-    public class Membre
+    class Membre
     {
         private String name { get; set; }
         private String surname { get; set; }

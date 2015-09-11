@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Epyks.Application
 {
-    class MembreDAO
+    public class MembreDAO 
     {
+
     }
 }
