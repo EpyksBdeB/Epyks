@@ -24,13 +24,6 @@ namespace Epyks.Application
             this.password = password;
             this.email = email;
             this.gender = gender;
-
         }
-
-        
-
     }
-
-    
-
 }

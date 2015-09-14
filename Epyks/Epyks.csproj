@@ -90,6 +90,9 @@
     <Compile Include="Presentation\WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\WinMotDePasseOublier.xaml.cs">
+      <DependentUpon>WinMotDePasseOublier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\WinProfil.xaml.cs">
       <DependentUpon>WinProfil.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Presentation\WinMotDePasseOublier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Presentation\WinProfil.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

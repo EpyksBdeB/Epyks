@@ -13,18 +13,18 @@ using System.Windows.Shapes;
 namespace Epyks
 {
 	/// <summary>
-	/// Logique d'interaction pour WinProfil.xaml
+	/// Logique d'interaction pour WinMotDePasseOublier.xaml
 	/// </summary>
-	public partial class WinProfil : Window
+	public partial class WinMotDePasseOublier : Window
 	{
-		public WinProfil()
+		public WinMotDePasseOublier()
 		{
 			this.InitializeComponent();
 			
 			// Insérez le code requis pour la création d’objet sous ce point.
 		}
 
-        private void MenuStatusItem_Click(object sender, RoutedEventArgs e)
+        private void BtnEnvoyer_Click(object sender, RoutedEventArgs e)
         {
 
         }
