@@ -12,6 +12,13 @@ namespace Epyks.Presentation
 	public partial class WinRegister : Window
 	{
 	    private WinLogin login;
+	    private TextBox txtUsername;
+	    private PasswordBox txtPassword;
+	    private PasswordBox txtConfirmPassword;
+	    private TextBox txtFirstName;
+	    private TextBox txtLastName;
+	    private TextBox txtEmail;
+
 
 		public WinRegister(WinLogin login)
 		{
@@ -19,7 +26,7 @@ namespace Epyks.Presentation
 		    this.login = login;
 		}
 
-        private void PasswordGotFocus(object sender, RoutedEventArgs e)
+	    private void PasswordGotFocus(object sender, RoutedEventArgs e)
         {
             PasswordBox passwordBox = (PasswordBox) sender;
             passwordBox.Background.Opacity = 0;
@@ -55,6 +62,21 @@ namespace Epyks.Presentation
         private void BtnBackToSignIn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            if (TxtUsername.Text.Length == 0 || TxtEmail.Text.Length == 0
+                || TxtFirstName.Text.Length == 0 || TxtLastName.Text.Length == 0
+            || TxtPassword.Password.Length == 0 || TxtConfirmPassword.Password.Length == 0)
+            {
+                MessageBox.Show("All fieldS are required");
+            }
+            else if (!(TxtPassword.Password.Equals(TxtConfirmPassword.Password)))
+            {
+                MessageBox.Show("Password are not the same");
+            }
+           
         }
 	}
 }

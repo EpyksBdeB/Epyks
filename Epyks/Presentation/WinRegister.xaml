@@ -61,7 +61,7 @@
 			</PasswordBox.Style>
 		</PasswordBox>
 		<Label x:Name="LblRegister" Content="Register" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="29.333" Height="50" Width="125" Foreground="#FFAA40FF"/>
-		<Button x:Name="BtnRegister" Content="Register" HorizontalAlignment="Left" Margin="245,440,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Height="35" Width="110"/>
+		<Button x:Name="BtnRegister" Content="Register" HorizontalAlignment="Left" Margin="245,440,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Height="35" Width="110" Click="BtnRegister_Click"/>
 		<ed:BlockArrow x:Name="BackArrow" Fill="#FFAA40FF" HorizontalAlignment="Left" Height="15" Margin="10,470,0,0" Orientation="Left" VerticalAlignment="Top" Width="20"/>
 		<TextBox x:Name="TxtFirstName" HorizontalAlignment="Left" Margin="150,190,0,0" VerticalAlignment="Top" Width="145" FontSize="16" Height="30" VerticalContentAlignment="Center">
 			<TextBox.Style>
