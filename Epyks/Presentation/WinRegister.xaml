@@ -5,16 +5,22 @@
 	x:Class="Epyks.Presentation.WinRegister"
 	x:Name="Window"
 	Title="Epyks"
-	Width="606" Height="531" FontFamily="Lucida Bright" FontSize="16" ResizeMode="CanMinimize" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+	Width="606" Height="529" FontSize="16" ResizeMode="CanMinimize" Closing="Window_Closing" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/epyks_icon.png" SizeToContent="WidthAndHeight">
 
 	<Grid x:Name="LayoutRoot" Width="600" Height="500">
-		<TextBox x:Name="TxtUsername" HorizontalAlignment="Left" Margin="150,70,0,0" VerticalAlignment="Top" Width="300" FontSize="16" Height="30" VerticalContentAlignment="Center">
+		<Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="29,106,0,0" VerticalAlignment="Top" Width="293"/>
+        <Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="29,157,0,0" VerticalAlignment="Top" Width="293"/>
+        <Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="29,197,0,0" VerticalAlignment="Top" Width="293"/>
+        <Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="29,250,0,0" VerticalAlignment="Top" Width="293"/>
+        <Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="29,290,0,0" VerticalAlignment="Top" Width="293"/>
+        <Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="29,330,0,0" VerticalAlignment="Top" Width="293"/>
+		<TextBox x:Name="TxtUsername" HorizontalAlignment="Left" Margin="29,106,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0">
 			<TextBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
 					<Style.Resources>
 						<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
 							<VisualBrush.Visual>
-								<Label Content="Username" Foreground="LightGray" />
+								<Label Content="username" Foreground="#FF969696" FontSize="16" FontFamily="Segoe UI"  Padding="12,0,0,0"/>
 							</VisualBrush.Visual>
 						</VisualBrush>
 					</Style.Resources>
@@ -32,13 +38,13 @@
 				</Style>
 			</TextBox.Style>
 		</TextBox>
-		<PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Margin="150,110,0,0" VerticalAlignment="Top" Width="300" FontSize="16" Height="30" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="PasswordLostFocus">
+		<PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Margin="29,157,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="PasswordLostFocus" BorderBrush="{x:Null}" BorderThickness="0">
 			<PasswordBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type PasswordBox}">
 					<Style.Resources>
 						<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
 							<VisualBrush.Visual>
-								<Label Content="Password" Foreground="LightGray" />
+								<Label Content="password" Foreground="#FF969696" FontSize="16" FontFamily="Segoe UI"  Padding="12,0,0,0"/>
 							</VisualBrush.Visual>
 						</VisualBrush>
 					</Style.Resources>
@@ -46,13 +52,13 @@
 				</Style>
 			</PasswordBox.Style>
 		</PasswordBox>
-		<PasswordBox x:Name="TxtConfirmPassword" HorizontalAlignment="Left" Margin="150,150,0,0" VerticalAlignment="Top" Width="300" FontSize="16" Height="30" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="PasswordLostFocus">
+		<PasswordBox x:Name="TxtConfirmPassword" HorizontalAlignment="Left" Margin="29,197,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="PasswordLostFocus" BorderBrush="{x:Null}" BorderThickness="0">
 			<PasswordBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type PasswordBox}">
 					<Style.Resources>
 						<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
 							<VisualBrush.Visual>
-								<Label Content="Confirm Password" Foreground="LightGray" />
+								<Label Content="confirm password" Foreground="#FF969696" FontSize="16" FontFamily="Segoe UI"  Padding="12,0,0,0"/>
 							</VisualBrush.Visual>
 						</VisualBrush>
 					</Style.Resources>
@@ -60,16 +66,13 @@
 				</Style>
 			</PasswordBox.Style>
 		</PasswordBox>
-		<Label x:Name="LblRegister" Content="Register" HorizontalAlignment="Left" Margin="147,10,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="29.333" Height="50" Width="125" Foreground="#FFAA40FF"/>
-		<Button x:Name="BtnRegister" Content="Register" HorizontalAlignment="Left" Margin="245,440,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Height="35" Width="110"/>
-		<ed:BlockArrow x:Name="BackArrow" Fill="#FFAA40FF" HorizontalAlignment="Left" Height="15" Margin="10,470,0,0" Orientation="Left" VerticalAlignment="Top" Width="20"/>
-		<TextBox x:Name="TxtFirstName" HorizontalAlignment="Left" Margin="150,190,0,0" VerticalAlignment="Top" Width="145" FontSize="16" Height="30" VerticalContentAlignment="Center">
+		<TextBox x:Name="TxtFirstName" HorizontalAlignment="Left" Margin="29,250,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0">
 			<TextBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
 					<Style.Resources>
 						<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
 							<VisualBrush.Visual>
-								<Label Content="First Name" Foreground="LightGray" />
+								<Label Content="first name" Foreground="#FF969696" FontSize="16" FontFamily="Segoe UI"  Padding="12,0,0,0"/>
 							</VisualBrush.Visual>
 						</VisualBrush>
 					</Style.Resources>
@@ -87,13 +90,13 @@
 				</Style>
 			</TextBox.Style>
 		</TextBox>
-		<TextBox x:Name="TxtLastName" HorizontalAlignment="Left" Margin="305,190,0,0" VerticalAlignment="Top" Width="145" FontSize="16" Height="30" VerticalContentAlignment="Center">
+		<TextBox x:Name="TxtLastName" HorizontalAlignment="Left" Margin="29,290,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0">
 			<TextBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
 					<Style.Resources>
 						<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
 							<VisualBrush.Visual>
-								<Label Content="Last Name" Foreground="LightGray" />
+								<Label Content="last name" Foreground="#FF969696" FontSize="16" FontFamily="Segoe UI"  Padding="12,0,0,0"/>
 							</VisualBrush.Visual>
 						</VisualBrush>
 					</Style.Resources>
@@ -111,13 +114,13 @@
 				</Style>
 			</TextBox.Style>
 		</TextBox>
-		<TextBox x:Name="TxtEmail" HorizontalAlignment="Left" Margin="150,230,0,0" VerticalAlignment="Top" Width="300" FontSize="16" Height="30" VerticalContentAlignment="Center">
+		<TextBox x:Name="TxtEmail" HorizontalAlignment="Left" Margin="29,330,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0">
 			<TextBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
 					<Style.Resources>
 						<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
 							<VisualBrush.Visual>
-								<Label Content="Email" Foreground="LightGray" />
+								<Label Content="email" Foreground="#FF969696" FontSize="16" FontFamily="Segoe UI"  Padding="12,0,0,0"/>
 							</VisualBrush.Visual>
 						</VisualBrush>
 					</Style.Resources>
@@ -135,11 +138,18 @@
 				</Style>
 			</TextBox.Style>
 		</TextBox>
-		<Image x:Name="ImgProfil" HorizontalAlignment="Left" Height="120" Margin="150,300,0,0" VerticalAlignment="Top" Width="120" Source="/Epyks;component/Resources/profileDefault.jpg" Stretch="Fill"/>
-		<Button x:Name="BtnLoadImage" Content="Load Image" HorizontalAlignment="Left" Margin="280,300,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Height="35" Width="130" Click="BtnLoadImage_Click"/>
-		<Label x:Name="LblGender" Content="Gender :" HorizontalAlignment="Left" Margin="150,265,0,0" VerticalAlignment="Top" Height="25" Width="65" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0"/>
-		<RadioButton x:Name="RadGenderMale" Content="Male" HorizontalAlignment="Left" Margin="225,265,0,0" VerticalAlignment="Top" Height="25" VerticalContentAlignment="Center" Padding="0" Width="50"/>
-		<RadioButton x:Name="RadGenderFemale" Content="Female" HorizontalAlignment="Left" Margin="285,265,0,0" VerticalAlignment="Top" Height="25" Padding="0" VerticalContentAlignment="Center" Width="70"/>
-        <Button x:Name="BtnBackToSignIn" Content="Sign In" HorizontalAlignment="Left" Margin="10,466.5,0,0" VerticalAlignment="Top" Width="80" Foreground="#FFAA40FF" BorderBrush="{x:Null}" Background="{x:Null}" Padding="0" HorizontalContentAlignment="Right" Height="22" Cursor="Hand" Click="BtnBackToSignIn_Click" Style="{StaticResource LabelButton}"/>
+        <Label x:Name="LblGender" Content="gender" HorizontalAlignment="Left" Margin="39,378,0,0" VerticalAlignment="Top" FontSize="16" Padding="0,0,5,0" Foreground="#FF969696"/>
+        <RadioButton x:Name="RadMale" Style="{StaticResource EpyksToggleButton}" Content="m" HorizontalAlignment="Left" Margin="228,370,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" BorderThickness="0" Width="47" Height="38" Background="#FFC926FF" Foreground="White" IsChecked="True"/>
+        <RadioButton x:Name="RadFemale" Style="{StaticResource EpyksToggleButton}" Content="f" HorizontalAlignment="Left" Margin="275,370,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" BorderThickness="0" Width="47" Height="38" Background="#FFEEEEEE" Foreground="#FF949494"/>
+        <Image x:Name="ImgProfil" HorizontalAlignment="Left" Height="192" Margin="379,106,0,0" VerticalAlignment="Top" Width="192" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="Fill"/>
+        <Button x:Name="BtnLoadImage" Content="upload" HorizontalAlignment="Left" Margin="379,300,0,-1" VerticalAlignment="Top" Style="{StaticResource FadeOutButton}" FontSize="16" Background="#FFC926FF" Foreground="White" Height="38" Width="192" BorderThickness="0" Padding="0" Click="BtnLoadImage_Click" IsEnabled="False" Cursor="Hand"/>
+		<Button x:Name="BtnRegister" Content="Register" HorizontalAlignment="Left" Margin="188,440,0,0" VerticalAlignment="Top" Style="{StaticResource FadeOutButton}" FontSize="16" Background="#FFC926FF" Foreground="White" Height="61" Width="412" BorderThickness="0" Padding="0" IsEnabled="False" Cursor="Hand"/>
+        <Button x:Name="BtnBackToSignIn" HorizontalAlignment="Left" Margin="0,440,0,0" VerticalAlignment="Top" Width="188" Foreground="White" BorderBrush="{x:Null}" Background="#FFDB6FFF" Padding="0" HorizontalContentAlignment="Right" Height="60" Cursor="Hand" Click="BtnBackToSignIn_Click" Style="{StaticResource FadeOutButton}" BorderThickness="0">
+			<StackPanel Orientation="Horizontal" Background="#FFDB6FFF" Width="188" Height="61">
+				<Image Source="pack://siteoforigin:,,,/Resources/arrow.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="19,0,0,0" />
+				<Label Content="Back" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,0,0,0" FontSize="16" Padding="0,0,5,0"/>
+			</StackPanel>
+		</Button>
+        <Image x:Name="ImgLogo" HorizontalAlignment="Left" Height="59" Margin="28,28,0,0" VerticalAlignment="Top" Width="171" Source="pack://siteoforigin:,,,/Resources/epyks_logo.png"/>
 	</Grid>
 </Window>

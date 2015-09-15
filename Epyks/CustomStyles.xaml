@@ -24,4 +24,60 @@
             </Setter.Value>
         </Setter>
     </Style>
+	<Style x:Key="FadeOutButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Control.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard >
+                            <DoubleAnimation Duration="0:0:0.2" To="0.7" Storyboard.TargetProperty="Opacity"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Control.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard >
+                            <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetProperty="Opacity"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+		<Style x:Key="EpyksToggleButton" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Checked">
+                    <BeginStoryboard>
+                        <Storyboard >
+                            <ColorAnimation Duration="0:0:0.2" To="#FFC926FF" Storyboard.TargetProperty="Background.Color"/>
+							<ColorAnimation Duration="0:0:0.2" To="White" Storyboard.TargetProperty="Foreground.Color"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Unchecked">
+                    <BeginStoryboard>
+                        <Storyboard >
+                            <ColorAnimation Duration="0:0:0.2" To="#FFEEEEEE" Storyboard.TargetProperty="Background.Color"/>
+							<ColorAnimation Duration="0:0:0.2" To="#FF949494" Storyboard.TargetProperty="Foreground.Color"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
 </ResourceDictionary>

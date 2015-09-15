@@ -1,51 +1,52 @@
 ﻿<Window x:Name="Window" x:Class="Epyks.Presentation.WinLogin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Epyks" FontFamily="Lucida Bright" WindowStartupLocation="CenterScreen" Width="606" Height="531" ResizeMode="CanMinimize" FontSize="16">
+        Title="Epyks" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" FontSize="16" Icon="pack://siteoforigin:,,,/Resources/epyks_icon.png" SizeToContent="WidthAndHeight">
     <Grid Width="600" Height="500">
-    	<TextBox x:Name="TxtUsername" HorizontalAlignment="Left" Margin="150,160,0,0" VerticalAlignment="Top" Width="300" FontSize="16" Height="30" VerticalContentAlignment="Center">
+    	<Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="50" Margin="58,213,0,0" VerticalAlignment="Top" Width="319"/>
+    	<Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="50" Margin="58,269,0,0" VerticalAlignment="Top" Width="319"/>
+        
+    	<TextBox x:Name="TxtUsername" HorizontalAlignment="Left" Margin="58,213,0,0" VerticalAlignment="Top" Width="319" FontSize="16" Height="50" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" SelectionBrush="#FFDB6FFF" Foreground="#FF969696" Padding="12,0,0,0" CaretBrush="#FF969696">
     		<TextBox.Style>
-				<Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-					<Style.Resources>
-						<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-							<VisualBrush.Visual>
-								<Label Content="Username" Foreground="LightGray" />
-							</VisualBrush.Visual>
-						</VisualBrush>
-					</Style.Resources>
-					<Style.Triggers>
-						<Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-							<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
-						</Trigger>
-						<Trigger Property="Text" Value="{x:Null}">
-							<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
-						</Trigger>
-						<Trigger Property="IsKeyboardFocused" Value="True">
-							<Setter Property="Background" Value="White" />
-						</Trigger>
-					</Style.Triggers>
-				</Style>
-			</TextBox.Style>
-		</TextBox>
-    	<PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Margin="150,240,0,0" VerticalAlignment="Top" Width="300" FontSize="16" Height="30" VerticalContentAlignment="Center" GotFocus="TxtPassword_GotFocus" LostFocus="TxtPassword_LostFocus">
+    			<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+    				<Style.Resources>
+    					<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+    						<VisualBrush.Visual>
+    							<Label Content="username" Foreground="#FF969696" FontSize="16" FontFamily="Segoe UI"  Padding="12,0,0,0"/>
+    						</VisualBrush.Visual>
+    					</VisualBrush>
+    				</Style.Resources>
+    				<Style.Triggers>
+    					<Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+    						<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
+    					</Trigger>
+    					<Trigger Property="Text" Value="{x:Null}">
+    						<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
+    					</Trigger>
+    					<Trigger Property="IsKeyboardFocused" Value="True">
+    						<Setter Property="Background" Value="#00000000" />
+    					</Trigger>
+    				</Style.Triggers>
+    			</Style>
+    		</TextBox.Style>
+    	</TextBox>
+    	<PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Margin="58,269,0,0" VerticalAlignment="Top" Width="319" FontSize="16" Height="50" VerticalContentAlignment="Center" GotFocus="TxtPassword_GotFocus" LostFocus="TxtPassword_LostFocus" BorderThickness="0" BorderBrush="{x:Null}" Foreground="#FF969696" SelectionBrush="#FFDB6FFF" Padding="12,0,0,0" CaretBrush="#FF969696">
     		<PasswordBox.Style>
-				<Style TargetType="PasswordBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-					<Style.Resources>
-						<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-							<VisualBrush.Visual>
-								<Label Content="Password" Foreground="LightGray" />
-							</VisualBrush.Visual>
-						</VisualBrush>
-					</Style.Resources>
-					<Setter Property="Background" Value="{StaticResource placeHolderBrush}"/>
-				</Style>
-			</PasswordBox.Style>
-		</PasswordBox>
-    	<Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Left" Margin="260,337.5,0,0" VerticalAlignment="Top" Style="{StaticResource RoundButtonTemplate}" FontSize="21.333" Background="#FFAA40FF" Foreground="White" Width="80" Height="35" Cursor="Hand"/>
-    	<Ellipse x:Name="TitleBack" Fill="#FFAA40FF" HorizontalAlignment="Left" Height="53" Margin="150,45,0,0" VerticalAlignment="Top" Width="300"/>
-    	<Label x:Name="LblTitle" Content="Epyks" HorizontalAlignment="Left" Margin="150,45,0,0" VerticalAlignment="Top" Width="300" Height="53" FontSize="37.333" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-    	<Label x:Name="LblRegisterQuestion" Content="No account? " HorizontalAlignment="Left" Margin="210,440,0,0" VerticalAlignment="Top" Width="105" Height="25" VerticalContentAlignment="Center" Padding="0" HorizontalContentAlignment="Center"/>
-    	<Button x:Name="BtnGoRegister" Style="{StaticResource LabelButton}" Content="Register" HorizontalAlignment="Left" Margin="307,440,0,0" VerticalAlignment="Top" FontSize="21.333" Background="{x:Null}" Foreground="#FFAA40FF" BorderBrush="{x:Null}" Click="BtnGoRegister_Click" Cursor="Hand" Padding="0" Width="95" Height="25"/>
+    			<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type PasswordBox}">
+    				<Style.Resources>
+    					<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+    						<VisualBrush.Visual>
+    							<Label Content="password" Foreground="#FF969696" FontSize="16" FontFamily="Segoe UI" Padding="12,0,0,0"/>
+    						</VisualBrush.Visual>
+    					</VisualBrush>
+    				</Style.Resources>
+    				<Setter Property="Background" Value="{StaticResource placeHolderBrush}"/>
+    			</Style>
+    		</PasswordBox.Style>
+    	</PasswordBox>
+    	<Button x:Name="BtnLogin" Style="{StaticResource FadeOutButton}" Content="Log in" HorizontalAlignment="Left" Margin="382,213,0,0" VerticalAlignment="Top" FontSize="18.27" Background="#FFC926FF" Foreground="White" Width="160" Height="106" Cursor="Hand" BorderBrush="{x:Null}" BorderThickness="0" Opacity="1"/>
+    	<Button x:Name="BtnGoRegister" Style="{StaticResource FadeOutButton}" Content="Create account" HorizontalAlignment="Left" Margin="0,440,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Click="BtnGoRegister_Click" Cursor="Hand" Padding="0" Width="600" Height="61" Background="#FFDB6FFF" BorderThickness="0" Opacity="1"/>
+    	<Image x:Name="ImgLogo" HorizontalAlignment="Left" Height="85" Margin="62,107,0,0" VerticalAlignment="Top" Width="247" Source="pack://siteoforigin:,,,/Resources/epyks_logo.png"/>
         
     </Grid>
 </Window>
