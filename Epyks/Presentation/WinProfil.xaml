@@ -15,20 +15,20 @@
 		</Grid.RowDefinitions>
 		<Menu HorizontalAlignment="Left" Height="24.776" VerticalAlignment="Top" Width="941.642">
 			<MenuItem Header="Fichier" Height="24.776" Width="51.79" FontSize="13.333">
-				<MenuItem Header="Status">
+				<MenuItem Header="Status" Click="MenuStatusItem_Click">
 					<MenuItem Header="En ligne">
 						<MenuItem.Icon>
     <Image Source="EnLigne.png"/>
   </MenuItem.Icon>
 					</MenuItem>
 					
-					<MenuItem Header="Absent">
+					<MenuItem Header="Absent" Click="MenuStatusItem_Click">
 					<MenuItem.Icon>
     <Image Source="Absent.png"/>
   </MenuItem.Icon>
 					</MenuItem>
 
-					<MenuItem Header="Déconnecté">
+					<MenuItem Header="Déconnecté" Click="MenuStatusItem_Click">
 						<MenuItem.Icon>
     <Image Source="Deconnecte.png"/>
   </MenuItem.Icon>
@@ -51,7 +51,15 @@
 		<Border BorderBrush="#FFABADB3" BorderThickness="1" HorizontalAlignment="Left" Height="520.791" Margin="263.332,29.776,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="668.31"/>
 		
 		
-		<Border BorderBrush="#FFABADB3" BorderThickness="1,1,0,1" HorizontalAlignment="Left" Height="296.427" Margin="10,4.999,0,0" Grid.Row="1" VerticalAlignment="Top" Width="253.332"/>
+		<Border BorderBrush="#FFABADB3" BorderThickness="1,1,0,1" HorizontalAlignment="Left" Height="296.427" Margin="10,4.999,0,0" Grid.Row="1" VerticalAlignment="Top" Width="253.332">
+			<ListView>
+				<ListView.View>
+					<GridView>
+						<GridViewColumn/>
+					</GridView>
+				</ListView.View>
+			</ListView>
+		</Border>
 		<Image HorizontalAlignment="Left" Height="24.933" Margin="10,0,0,44.208" VerticalAlignment="Bottom" Width="25.575" Source="Loupe.png" RenderTransformOrigin="0.802,0.344"/>
 	</Grid>
 </Window>

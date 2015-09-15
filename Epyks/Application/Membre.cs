@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Epyks.Presentation.Application
+namespace Epyks.Application
 {
     public class Membre
     {
@@ -24,13 +24,6 @@ namespace Epyks.Presentation.Application
             this.password = password;
             this.email = email;
             this.gender = gender;
-
         }
-
-        
-
     }
-
-    
-
 }
