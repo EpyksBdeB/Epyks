@@ -137,3 +137,5 @@ C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.exe
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.pdb
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.baml
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.g.cs
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.baml
+D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.g.cs
