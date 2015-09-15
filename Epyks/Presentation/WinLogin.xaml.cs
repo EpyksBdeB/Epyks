@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Epyks.Presentation
 {
@@ -9,8 +10,7 @@ namespace Epyks.Presentation
     {
         public WinLogin()
         {
-            InitializeComponent();
-
+                InitializeComponent();
         }
 
         private void TxtPassword_GotFocus(object sender, RoutedEventArgs e)
