@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using Epyks.Application;
@@ -22,6 +23,13 @@ namespace Epyks.Coordonnateur
     public class CoordonnateurLogin
     {
         public MembreDAO nouveauMembreDAO;
+        private String messageErreur;
+        private String erreur_1 = "Tous les champs sont requis";
+        private String erreur_2 = "Les mots de passe ne sont pas identiques";
+        private String erreur_3 = "Le formal de l'email est invalide";
+        private String emailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                   + "@"
+                                   + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
 
         public CoordonnateurLogin()
         {
@@ -50,9 +58,45 @@ namespace Epyks.Coordonnateur
             return true;
         }
 
-        public void Register()
+        public void Register(String firstname, String lastname, String email,
+            String username, String password, String confirmPassword)
         {
             // Appelle methode register dans facade
+        }
+
+        public String verifierChamps(string firstname, string lastname, string email, string username,
+            string password, string confirmPassword)
+        {
+            if (!(password.Equals(confirmPassword)))
+            {
+                 messageErreur = erreur_2;
+            }
+            else if (!Regex.IsMatch(email, emailPattern))
+            {
+                messageErreur = erreur_3;
+            }
+            else if (username.Length == 0 || email.Length == 0
+                || firstname.Length == 0 || lastname.Length == 0
+            || password.Length == 0 || confirmPassword.Length == 0)
+            {
+                 messageErreur = erreur_1;
+            }
+            MessageBox.Show(messageErreur);
+
+           /* if (champsRemplis && champsValides)
+            {
+                creerMembre();
+                this.Hide();
+                WinProfil profil = new WinProfil();
+                profil.Show();
+            }*/
+            return messageErreur;
+
+        }
+
+        public void verifierNomUtilisateurBD(string username)
+        {
+            int nbOfRows = nouveauMembreDAO.trouverUsername(username);
         }
     }
 

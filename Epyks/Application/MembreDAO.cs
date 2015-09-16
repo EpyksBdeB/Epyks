@@ -13,6 +13,7 @@ namespace Epyks.Application
     public class MembreDAO : MembreDAOInterface
     {
         private MySql.Data.MySqlClient.MySqlConnection connection = null;
+        private MySqlCommand command;
         private string myConnectionString = null;
         private String adresseConnection = Properties.Settings.Default.Server_address;
      
@@ -56,6 +57,15 @@ namespace Epyks.Application
         public Membre getMember(int id_membre)
         {
             throw new NotImplementedException();
+        }
+
+        public int trouverUsername(string username)
+        {
+            String query = "SELECT COUNT(*) AS TotalRows, * FROM utilisateur where username="+username;
+            command = new MySqlCommand(query, this.connection);
+            int nbOfRows = Convert.ToInt32(command.ExecuteScalar());
+
+            return nbOfRows;
         }
 
         public void updateMember()

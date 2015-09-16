@@ -10,6 +10,7 @@ namespace Epyks.Application
     {
         List<Membre> getAllMembers();
         Membre getMember(int id);
+        int trouverUsername(String username);
         void updateMember();
         void deleteMember();
         void insertMember(Membre nouveauMembre);
