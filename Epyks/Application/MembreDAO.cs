@@ -23,15 +23,18 @@ namespace Epyks.Application
 
         public void initializeDatabase()
         {
-            myConnectionString = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
+            //myConnectionString = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
+            myConnectionString = "server=aegaur.ddns.net;uid=root;" + "pwd=gr007,,;database=epyksdb;port=3306;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
                 connection.ConnectionString = myConnectionString;
                 connection.Open();
+                MessageBox.Show("Connecté!");
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
                 switch (ex.Number)
                 {
                     case 0:
