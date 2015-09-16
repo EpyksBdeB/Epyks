@@ -44,9 +44,7 @@ namespace Epyks.Application
                     case 1:
                         MessageBox.Show("Identifiant ou mot de passe invalide");
                         break;
-
                 }
-
             }
         }
 
@@ -55,7 +53,7 @@ namespace Epyks.Application
             throw new NotImplementedException();
         }
 
-        public Membre getMember()
+        public Membre getMember(int id_membre)
         {
             throw new NotImplementedException();
         }
@@ -71,7 +69,7 @@ namespace Epyks.Application
         }
 
         // Ajouter parametre pour recevoir un membre
-        public void insertMember()
+        public void insertMember(Membre nouveauMembre)
         {
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = "INSERT INTO utilisateurs (id_utilisateur, nom_utilisateur, mdp," +

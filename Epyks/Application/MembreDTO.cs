@@ -9,12 +9,12 @@ namespace Epyks.Application
 {
     public class MembreDTO
     {
-        private String name { get; set; }
-        private String surname { get; set; }
-        private String username { get; set; }
-        private String password { get; set; }
-        private String email { get; set; }
-        private char gender { get; set; }
+        public String name { get; set; }
+        public String surname { get; set; }
+        public String username { get; set; }
+        public String password { get; set; }
+        public String email { get; set; }
+        public char gender { get; set; }
 
         public MembreDTO()
         {
