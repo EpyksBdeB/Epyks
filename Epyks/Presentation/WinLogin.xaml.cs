@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-
+using Epyks.Coordonnateur;
 namespace Epyks.Presentation
 {
     /// <summary>
@@ -8,9 +8,11 @@ namespace Epyks.Presentation
     /// </summary>
     public partial class WinLogin : Window
     {
+        private CoordonnateurLogin coordinator;
         public WinLogin()
         {
                 InitializeComponent();
+                coordinator = new CoordonnateurLogin();
         }
 
         private void TxtPassword_GotFocus(object sender, RoutedEventArgs e)
@@ -31,6 +33,11 @@ namespace Epyks.Presentation
             WinRegister winRegister = new WinRegister(this);
             Hide();
             winRegister.Show();
+        }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            coordinator.Login(TxtUsername.Text, TxtPassword.Password);
         }
     }
 }

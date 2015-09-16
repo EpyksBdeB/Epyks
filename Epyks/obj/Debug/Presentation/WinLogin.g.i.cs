@@ -140,6 +140,12 @@ namespace Epyks.Presentation {
             return;
             case 4:
             this.BtnLogin = ((System.Windows.Controls.Button)(target));
+            
+            #line 47 "..\..\..\Presentation\WinLogin.xaml"
+            this.BtnLogin.Click += new System.Windows.RoutedEventHandler(this.BtnLogin_Click);
+            
+            #line default
+            #line hidden
             return;
             case 5:
             this.BtnGoRegister = ((System.Windows.Controls.Button)(target));

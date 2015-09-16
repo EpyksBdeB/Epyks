@@ -24,12 +24,12 @@ namespace Epyks.Coordonnateur
         {
         }
 
-        private void Login()
+        public void Login(String username, String password)
         {
 
         }
 
-        private void Register()
+        public void Register()
         {
 
         }
