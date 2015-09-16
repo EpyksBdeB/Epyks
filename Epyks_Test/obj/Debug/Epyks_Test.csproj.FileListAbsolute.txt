@@ -1,0 +1,10 @@
+C:\Users\olivier\Desktop\Epyks\Epyks_Test\obj\Debug\Epyks_Test.csprojResolveAssemblyReference.cache
+C:\Users\olivier\Desktop\Epyks\Epyks_Test\bin\Debug\Epyks_Test.dll
+C:\Users\olivier\Desktop\Epyks\Epyks_Test\bin\Debug\Epyks_Test.pdb
+C:\Users\olivier\Desktop\Epyks\Epyks_Test\bin\Debug\Epyks.exe
+C:\Users\olivier\Desktop\Epyks\Epyks_Test\bin\Debug\nunit.framework.dll
+C:\Users\olivier\Desktop\Epyks\Epyks_Test\bin\Debug\MySql.Data.dll
+C:\Users\olivier\Desktop\Epyks\Epyks_Test\bin\Debug\Epyks.pdb
+C:\Users\olivier\Desktop\Epyks\Epyks_Test\bin\Debug\nunit.framework.xml
+C:\Users\olivier\Desktop\Epyks\Epyks_Test\obj\Debug\Epyks_Test.dll
+C:\Users\olivier\Desktop\Epyks\Epyks_Test\obj\Debug\Epyks_Test.pdb

@@ -17,16 +17,19 @@ namespace Epyks.Coordonnateur
         EXISTING_USERNAME
     }
 
-    class CoordonnateurLogin
+    public class CoordonnateurLogin
     {
 
         public CoordonnateurLogin()
         {
         }
 
-        public void Login(String username, String password)
+        public bool Login(String username, String password)
         {
-
+            //Access a la bd
+            //Retourne True si utilisateur existe
+            //Retourne False si utilisateur n'existe pas
+            return true;
         }
 
         public void Register()
