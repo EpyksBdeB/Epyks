@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Epyks.Application;
 
 namespace Epyks.Presentation
 {
@@ -10,7 +11,9 @@ namespace Epyks.Presentation
     {
         public WinLogin()
         {
+            MembreDAO mb = new MembreDAO();
                 InitializeComponent();
+
         }
 
         private void TxtPassword_GotFocus(object sender, RoutedEventArgs e)
