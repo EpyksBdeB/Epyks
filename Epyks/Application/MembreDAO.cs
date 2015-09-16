@@ -54,7 +54,7 @@ namespace Epyks.Application
             throw new NotImplementedException();
         }
 
-        public Membre getMember(int id_membre)
+        public Membre getMember(String username_membre)
         {
             throw new NotImplementedException();
         }

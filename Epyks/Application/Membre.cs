@@ -26,6 +26,10 @@ namespace Epyks.Application
             this.gender = gender;
         }
 
+        public Membre()
+        {
+        }
+
         public void setName(String name)
         {
             this.name = name;

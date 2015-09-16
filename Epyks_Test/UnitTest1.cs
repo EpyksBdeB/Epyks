@@ -30,5 +30,14 @@ namespace Epyks_Test
         {
             Membre m = mDao.getMember(1);
         }
+
+        [TestMethod]
+        public void testInsert()
+        {
+          //  mDao = new MembreDAO();
+          //  Membre m = mDao.insertMember();
+          //  m = new Membre();
+            
+        }
     }
 }
