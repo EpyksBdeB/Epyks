@@ -98,6 +98,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Application\Facade.cs" />
     <Compile Include="Application\Membre.cs" />
     <Compile Include="Application\MembreDAO.cs" />
     <Compile Include="Application\MembreDAOInterface.cs" />

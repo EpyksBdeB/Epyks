@@ -70,6 +70,7 @@ namespace Epyks.Application
             throw new NotImplementedException();
         }
 
+        // Ajouter parametre pour recevoir un membre
         public void insertMember()
         {
             MySqlCommand command = connection.CreateCommand();

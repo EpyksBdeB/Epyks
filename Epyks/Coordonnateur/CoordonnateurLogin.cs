@@ -34,7 +34,7 @@ namespace Epyks.Coordonnateur
 
         public void Register()
         {
-
+            // Appelle methode register dans facade
         }
     }
 
