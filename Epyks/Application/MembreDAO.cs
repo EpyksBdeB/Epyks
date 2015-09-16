@@ -24,7 +24,7 @@ namespace Epyks.Application
         public void initializeDatabase()
         {
             //myConnectionString = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
-            myConnectionString = "server=aegaur.ddns.net;uid=root;" + "pwd=gr007,,;database=epyksdb;port=3306;";
+            myConnectionString = "server=melissa07.ddns.net;uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();

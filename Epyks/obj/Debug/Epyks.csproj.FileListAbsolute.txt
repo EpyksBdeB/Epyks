@@ -140,3 +140,5 @@ C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Presentation\WinMotDePasseOublier
 D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.baml
 D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.g.cs
 C:\Users\olivier\Desktop\Epyks\Epyks\bin\Debug\MySql.Data.dll
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.baml
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.g.cs

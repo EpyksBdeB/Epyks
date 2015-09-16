@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Epyks.Application;
 using Epyks.Coordonnateur;
 namespace Epyks.Presentation
 {
@@ -13,6 +14,8 @@ namespace Epyks.Presentation
         {
                 InitializeComponent();
                 coordinator = new CoordonnateurLogin();
+
+            MembreDAO mb = new MembreDAO();
         }
 
         private void TxtPassword_GotFocus(object sender, RoutedEventArgs e)
