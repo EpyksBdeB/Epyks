@@ -61,11 +61,13 @@ namespace Epyks.Application
 
         public int trouverUsername(string username)
         {
-            String query = "SELECT COUNT(*) AS TotalRows, * FROM utilisateur where username="+username;
+            String query = "SELECT COUNT(*) FROM utilisateur where username='"+username+"'";
             command = new MySqlCommand(query, this.connection);
-            int nbOfRows = Convert.ToInt32(command.ExecuteScalar());
 
-            return nbOfRows;
+                 object rows = command.ExecuteScalar();
+                 if ((rows == null) || (rows == DBNull.Value)) return -1;
+
+         return Convert.ToInt32(rows);
         }
 
         public void updateMember()

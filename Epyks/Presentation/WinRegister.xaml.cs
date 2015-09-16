@@ -71,13 +71,8 @@ namespace Epyks.Presentation
         private void BtnRegister_Click_1(object sender, RoutedEventArgs e)
         {
             coordinator = new CoordonnateurLogin();
-            String message_erreur = coordinator.verifierChamps(TxtFirstName.Text, TxtLastName.Text, TxtEmail.Text,
+            coordinator.validerEntrees(TxtFirstName.Text, TxtLastName.Text, TxtEmail.Text,
                 TxtUsername.Text, TxtPassword.ToString(), TxtConfirmPassword.ToString());
-
-            if (message_erreur.Equals(null))
-            {
-                coordinator.verifierNomUtilisateurBD(TxtUsername.Text);
-            }
 
            // coordinator.Register(TxtFirstName.Text,TxtLastName.Text, TxtEmail.Text,
            //     TxtUsername.Text, TxtPassword.ToString(), TxtConfirmPassword.ToString());

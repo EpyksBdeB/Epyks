@@ -23,7 +23,7 @@ namespace Epyks.Coordonnateur
     public class CoordonnateurLogin
     {
         public MembreDAO nouveauMembreDAO;
-        private String messageErreur;
+        private String messageErreur="";
         private String erreur_1 = "Tous les champs sont requis";
         private String erreur_2 = "Les mots de passe ne sont pas identiques";
         private String erreur_3 = "Le formal de l'email est invalide";
@@ -64,12 +64,34 @@ namespace Epyks.Coordonnateur
             // Appelle methode register dans facade
         }
 
-        public String verifierChamps(string firstname, string lastname, string email, string username,
+        public void validerEntrees(string firstname, string lastname, string email, string username,
             string password, string confirmPassword)
+        {
+            String message_erreur = validerChamps(firstname,lastname, email, username, password, confirmPassword);
+            if (!message_erreur.Equals(""))
+            {
+                MessageBox.Show(message_erreur);
+            }
+            else
+            {
+                int nbOfRows = verifierNomUtilisateurBD(username);
+                if (nbOfRows == 1)
+                {
+                    MessageBox.Show("Nom d'utilisateur non disponible");
+                }
+                else
+                {
+                    MessageBox.Show("Nom d'utilisateur valide");
+                }
+            }
+
+        }
+
+        private String validerChamps(string firstname, string lastname, string email, string username, string password, string confirmPassword)
         {
             if (!(password.Equals(confirmPassword)))
             {
-                 messageErreur = erreur_2;
+                messageErreur = erreur_2;
             }
             else if (!Regex.IsMatch(email, emailPattern))
             {
@@ -79,24 +101,17 @@ namespace Epyks.Coordonnateur
                 || firstname.Length == 0 || lastname.Length == 0
             || password.Length == 0 || confirmPassword.Length == 0)
             {
-                 messageErreur = erreur_1;
+                messageErreur = erreur_1;
             }
-            MessageBox.Show(messageErreur);
-
-           /* if (champsRemplis && champsValides)
-            {
-                creerMembre();
-                this.Hide();
-                WinProfil profil = new WinProfil();
-                profil.Show();
-            }*/
+            
             return messageErreur;
-
         }
 
-        public void verifierNomUtilisateurBD(string username)
+        public int verifierNomUtilisateurBD(string username)
         {
-            int nbOfRows = nouveauMembreDAO.trouverUsername(username);
+            nouveauMembreDAO = new MembreDAO();
+             int nbOfRows = nouveauMembreDAO.trouverUsername(username);
+            return nbOfRows;
         }
     }
 
