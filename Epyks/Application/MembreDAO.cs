@@ -83,11 +83,17 @@ namespace Epyks.Application
         // Ajouter parametre pour recevoir un membre
         public void insertMember(Membre nouveauMembre)
         {
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO utilisateurs (id_utilisateur, nom_utilisateur, mdp," +
-                                  "nom, prenom, email, sexe) VALUES ('melissa07', 'melissa','Sissoko'," +
-                                  " 'Christelle', 'blabla@gmail.com', 'F')";
-            connection.Open();
+            command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO utilisateur (username, password," +
+                                  "Nom, Prenom, email) VALUES (@nom_utilisateur, @mdp, @nom," +
+                                  "@prenom, @email)";
+            command.Parameters.AddWithValue("@nom_utilisateur", nouveauMembre.getUsername());
+            command.Parameters.AddWithValue("@mdp", nouveauMembre.getPassword());
+            command.Parameters.AddWithValue("@nom", nouveauMembre.getSurname());
+            command.Parameters.AddWithValue("@prenom", nouveauMembre.getName());
+            command.Parameters.AddWithValue("@email", nouveauMembre.getEmail());
+            //command.Parameters.AddWithValue("@sexe", 'F');
+           // connection.Open();
             command.ExecuteNonQuery();
         }
     }

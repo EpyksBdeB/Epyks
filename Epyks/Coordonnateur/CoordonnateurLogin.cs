@@ -67,7 +67,15 @@ namespace Epyks.Coordonnateur
         public void Register(String firstname, String lastname, String email,
             String username, String password, String confirmPassword)
         {
-            // Appelle methode register dans facade
+            Membre mbMembre = new Membre();
+            mbMembre.setName(firstname);
+            mbMembre.setSurname(lastname);
+            mbMembre.setUsername(username);
+            mbMembre.setEmail(email);
+            mbMembre.setPassword(password);
+
+            MembreDAO mDao = new MembreDAO();
+            mDao.insertMember(mbMembre);
         }
 
         public void validerEntrees(string firstname, string lastname, string email, string username,
@@ -87,6 +95,7 @@ namespace Epyks.Coordonnateur
                 }
                 else
                 {
+                    this.Register(firstname,lastname,email,username,password,confirmPassword);
                     MessageBox.Show("Nom d'utilisateur valide");
                 }
             }

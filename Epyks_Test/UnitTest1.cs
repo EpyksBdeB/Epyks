@@ -2,6 +2,7 @@
 using Epyks.Application;
 using NUnit.Framework;
 using Epyks.Coordonnateur;
+using Epyks.Presentation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Assert = NUnit.Framework.Assert;
 
@@ -28,16 +29,18 @@ namespace Epyks_Test
         [TestMethod]
         public void testFindById()
         {
-            Membre m = mDao.getMember(1);
+            //Membre m = mDao.getMember(1);
         }
 
-        [TestMethod]
-        public void testInsert()
+        [Test]
+        public void testInsertUsernameAlreadyTaken()
         {
-          //  mDao = new MembreDAO();
-          //  Membre m = mDao.insertMember();
-          //  m = new Membre();
-            
+            mDao = new MembreDAO();
+            CoordonnateurLogin log = new CoordonnateurLogin();
+            log.Register("s","s","s","s","s","s");
+            int nbRow = log.verifierNomUtilisateurBD("s");
+            Assert.AreEqual(nbRow, 1);
+
         }
     }
 }

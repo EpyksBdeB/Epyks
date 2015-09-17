@@ -141,4 +141,3 @@ C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.Properties.Resources
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.csproj.GenerateResource.Cache
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.exe
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.pdb
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.csprojResolveAssemblyReference.cache
