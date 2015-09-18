@@ -75,9 +75,11 @@ namespace Epyks.Application
             throw new NotImplementedException();
         }
 
-        public void deleteMember()
+        public void deleteMember(String username)
         {
-            throw new NotImplementedException();
+            String query = "DELETE FROM utilisateur where username='"+username+"'";
+            command = new MySqlCommand(query, this.connection);
+            command.ExecuteNonQuery();
         }
 
         // Ajouter parametre pour recevoir un membre

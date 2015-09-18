@@ -12,7 +12,7 @@ namespace Epyks.Application
         Membre getMember(String username);
         int trouverUsername(String username);
         void updateMember();
-        void deleteMember();
+        void deleteMember(String username);
         void insertMember(Membre nouveauMembre);
     }
 }

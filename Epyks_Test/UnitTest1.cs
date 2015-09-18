@@ -59,5 +59,15 @@ namespace Epyks_Test
             int nbRow = mDao.trouverUsername("Epyks");
             Assert.AreEqual(nbRow, 1);
         }
+
+        [Test]
+        public void testDeleteUser()
+        {
+            CoordonnateurLogin log = new CoordonnateurLogin();
+            mDao.deleteMember("Epyks");
+            int nbRow = mDao.trouverUsername("Epyks");
+
+            Assert.AreEqual(nbRow, 0);
+        }
     }
 }
