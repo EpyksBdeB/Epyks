@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Windows;
+using System.Windows.Media;
 using MySql.Data.MySqlClient;
 
 namespace Epyks.Application
@@ -56,7 +57,25 @@ namespace Epyks.Application
 
         public Membre getMember(String username_membre)
         {
-            throw new NotImplementedException();
+            Membre unMembre = new Membre();
+            String query = "SELECT * FROM utilisateur where username='"+username_membre+"'";
+            command = new MySqlCommand(query, this.connection);
+
+            MySqlDataReader reader = command.ExecuteReader();
+             if (!reader.HasRows) return null;
+             while (reader.Read())
+             {
+                Console.WriteLine(GetDBString("column1", reader));
+                Console.WriteLine(GetDBString("column2", reader));
+             }
+            reader.Close();
+
+            return unMembre;
+        }
+
+        private string GetDBString(string SqlFieldName, MySqlDataReader Reader)
+        {
+            return Reader[SqlFieldName].Equals(DBNull.Value) ? String.Empty : Reader.GetString(SqlFieldName);
         }
 
         public int trouverUsername(string username)

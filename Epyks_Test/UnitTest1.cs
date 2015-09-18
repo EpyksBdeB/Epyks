@@ -69,5 +69,16 @@ namespace Epyks_Test
 
             Assert.AreEqual(nbRow, 0);
         }
+
+        [Test]
+        public void testGetUserPassword()
+        {
+            CoordonnateurLogin log = new CoordonnateurLogin();
+            //log.Login("m", "m");
+            Assert.AreEqual("m", mDao.getMember("m").getPassword());
+
+           
+
+        }
     }
 }

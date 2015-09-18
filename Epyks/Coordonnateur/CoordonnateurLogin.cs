@@ -38,12 +38,7 @@ namespace Epyks.Coordonnateur
         public bool Login(String username, String password)
         {
             nouveauMembreDAO = new MembreDAO();
-            bool usernameUnique = verifierUserBD(username);
-            bool mdpValide = verifierMdp();
-            //nouveauMembreDao.insertMember();
-            //Access a la bd
-            //Retourne True si utilisateur existe
-            //Retourne False si utilisateur n'existe pas
+            bool usernameUnique = verifierUserBD(username, password);
             return true;
         }
 
@@ -52,7 +47,7 @@ namespace Epyks.Coordonnateur
             throw new NotImplementedException();
         }
 
-        private bool verifierUserBD(String username)
+        private bool verifierUserBD(String username, String password)
         {
             //bool existe = nouveauMembreDAO.trouverMember(1);
             Membre nouveauMembre = nouveauMembreDAO.getMember(username);
@@ -60,6 +55,14 @@ namespace Epyks.Coordonnateur
             {
                 MessageBox.Show("Utilisateur non présent dans la BD");
                 // Utilisateur non présent dans la BD
+            }
+            else
+            {
+                if (nouveauMembre.getPassword() == password)
+                {
+                    // afficher le profil
+                }
+
             }
             return true;
         }

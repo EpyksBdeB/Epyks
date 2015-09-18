@@ -93,6 +93,24 @@ C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Presentation\WinMotDePasseOublier
 D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.baml
 D:\Documents\ecole\Session5\Genie2\Epyks\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.g.cs
 C:\Users\olivier\Desktop\Epyks\Epyks\bin\Debug\MySql.Data.dll
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\CustomStyles.baml
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinLogin.baml
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.baml
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinProfil.baml
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinRegister.baml
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Resources\Icons.baml
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Simple Styles.baml
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\App.baml
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinLogin.g.cs
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.g.cs
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinProfil.g.cs
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinRegister.g.cs
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Resources\Icons.g.cs
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\App.g.cs
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks_MarkupCompile.cache
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.g.resources
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.Properties.Resources.resources
+C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.csproj.GenerateResource.Cache
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\bin\Debug\Epyks.exe.config
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\bin\Debug\Epyks.exe
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\bin\Debug\Epyks.pdb
@@ -121,23 +139,5 @@ C:\Users\Melissa\Documents\Epyks v1.1\Epyks\bin\Debug\ko\Microsoft.Expression.Dr
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\bin\Debug\ru\Microsoft.Expression.Drawing.resources.dll
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\bin\Debug\zh-Hans\Microsoft.Expression.Drawing.resources.dll
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\bin\Debug\zh-Hant\Microsoft.Expression.Drawing.resources.dll
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\CustomStyles.baml
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinLogin.baml
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.baml
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinProfil.baml
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinRegister.baml
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Resources\Icons.baml
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Simple Styles.baml
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\App.baml
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinLogin.g.cs
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinMotDePasseOublier.g.cs
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinProfil.g.cs
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Presentation\WinRegister.g.cs
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Resources\Icons.g.cs
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\App.g.cs
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks_MarkupCompile.cache
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.g.resources
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.Properties.Resources.resources
-C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.csproj.GenerateResource.Cache
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.exe
 C:\Users\Melissa\Documents\Epyks v1.1\Epyks\obj\Debug\Epyks.pdb
