@@ -92,11 +92,16 @@ namespace Epyks.Coordonnateur
                 if (nbOfRows == 1)
                 {
                     MessageBox.Show("Nom d'utilisateur non disponible");
+                    
                 }
-                else
+                else if(nbOfRows == 0)
                 {
                     this.Register(firstname,lastname,email,username,password,confirmPassword);
                     MessageBox.Show("Nom d'utilisateur valide");
+                }
+                else
+                {
+                    MessageBox.Show("Nombre de lignes avec meme username incorrect");
                 }
             }
 

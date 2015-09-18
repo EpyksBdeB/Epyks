@@ -12,6 +12,17 @@ namespace Epyks_Test
     public class UnitTest1
     {
         private MembreDAO mDao;
+        [TestFixtureSetUp]
+        public void Init()
+        {
+             mDao = new MembreDAO();
+        }
+
+        [TestFixtureTearDown]
+        public void Cleanup()
+        {
+             /* ... */
+        }
         
         [Test]
         public void TestLogin()
@@ -35,11 +46,15 @@ namespace Epyks_Test
         [Test]
         public void testInsertUsernameAlreadyTaken()
         {
-            mDao = new MembreDAO();
             CoordonnateurLogin log = new CoordonnateurLogin();
-            log.Register("s","s","s","s","s","s");
+            log.validerEntrees("s", "s", "s", "s", "s", "s");
             int nbRow = log.verifierNomUtilisateurBD("s");
             Assert.AreEqual(nbRow, 1);
+
+        }
+
+        public void TestInsertFonctionnel()
+        {
 
         }
     }
