@@ -24,7 +24,6 @@ namespace Epyks_Test
              /* ... */
         }
         
-        [Test]
         public void TestLogin()
         {
             CoordonnateurLogin coord = new CoordonnateurLogin();
@@ -52,10 +51,13 @@ namespace Epyks_Test
             Assert.AreEqual(nbRow, 1);
 
         }
-
+        [Test]
         public void TestInsertFonctionnel()
         {
-
+            CoordonnateurLogin log = new CoordonnateurLogin();
+            log.validerEntrees("Christelle", "s", "epyks@gmail.com", "Epyks", "s", "s");
+            int nbRow = mDao.trouverUsername("Epyks");
+            Assert.AreEqual(nbRow, 1);
         }
     }
 }
