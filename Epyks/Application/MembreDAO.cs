@@ -14,18 +14,18 @@ namespace Epyks.Application
     {
         private MySql.Data.MySqlClient.MySqlConnection connection = null;
         private string myConnectionString = null;
-        private String adresseConnection = Properties.Settings.Default.Server_address;
+       // private String adresseConnection = Properties.Settings.Default.Server_address;
      
 
         public MembreDAO()
         {
-            initializeDatabase();
+            //initializeDatabase();
         }
 
         public void initializeDatabase()
         {
             //myConnectionString = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
-            myConnectionString = "server="+adresseConnection+";uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
+            //myConnectionString = "server="+adresseConnection+";uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();

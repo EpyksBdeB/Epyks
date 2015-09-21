@@ -93,6 +93,16 @@ namespace Epyks.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Loupe {
+            get {
+                object obj = ResourceManager.GetObject("Loupe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap profil_default {
             get {
                 object obj = ResourceManager.GetObject("profil_default", resourceCulture);
