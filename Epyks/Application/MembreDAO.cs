@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Windows;
+using System.Windows.Media;
 using MySql.Data.MySqlClient;
 
 namespace Epyks.Application
@@ -13,6 +14,7 @@ namespace Epyks.Application
     public class MembreDAO : MembreDAOInterface
     {
         private MySql.Data.MySqlClient.MySqlConnection connection = null;
+        private MySqlCommand command;
         private string myConnectionString = null;
        // private String adresseConnection = Properties.Settings.Default.Server_address;
      
@@ -44,9 +46,7 @@ namespace Epyks.Application
                     case 1:
                         MessageBox.Show("Identifiant ou mot de passe invalide");
                         break;
-
                 }
-
             }
         }
 
@@ -55,9 +55,38 @@ namespace Epyks.Application
             throw new NotImplementedException();
         }
 
-        public Membre getMember()
+        public Membre getMember(String username_membre)
         {
-            throw new NotImplementedException();
+            Membre unMembre = new Membre();
+            String query = "SELECT * FROM utilisateur where username='"+username_membre+"'";
+            command = new MySqlCommand(query, this.connection);
+
+            MySqlDataReader reader = command.ExecuteReader();
+             if (!reader.HasRows) return null;
+             while (reader.Read())
+             {
+                Console.WriteLine(GetDBString("column1", reader));
+                Console.WriteLine(GetDBString("column2", reader));
+             }
+            reader.Close();
+
+            return unMembre;
+        }
+
+        private string GetDBString(string SqlFieldName, MySqlDataReader Reader)
+        {
+            return Reader[SqlFieldName].Equals(DBNull.Value) ? String.Empty : Reader.GetString(SqlFieldName);
+        }
+
+        public int trouverUsername(string username)
+        {
+            String query = "SELECT COUNT(*) FROM utilisateur where username='"+username+"'";
+            command = new MySqlCommand(query, this.connection);
+
+                 object rows = command.ExecuteScalar();
+                 if ((rows == null) || (rows == DBNull.Value)) return -1;
+
+         return Convert.ToInt32(rows);
         }
 
         public void updateMember()
@@ -65,18 +94,27 @@ namespace Epyks.Application
             throw new NotImplementedException();
         }
 
-        public void deleteMember()
+        public void deleteMember(String username)
         {
-            throw new NotImplementedException();
+            String query = "DELETE FROM utilisateur where username='"+username+"'";
+            command = new MySqlCommand(query, this.connection);
+            command.ExecuteNonQuery();
         }
 
-        public void insertMember()
+        // Ajouter parametre pour recevoir un membre
+        public void insertMember(Membre nouveauMembre)
         {
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO utilisateurs (id_utilisateur, nom_utilisateur, mdp," +
-                                  "nom, prenom, email, sexe) VALUES ('melissa07', 'melissa','Sissoko'," +
-                                  " 'Christelle', 'blabla@gmail.com', 'F')";
-            connection.Open();
+            command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO utilisateur (username, password," +
+                                  "Nom, Prenom, email) VALUES (@nom_utilisateur, @mdp, @nom," +
+                                  "@prenom, @email)";
+            command.Parameters.AddWithValue("@nom_utilisateur", nouveauMembre.getUsername());
+            command.Parameters.AddWithValue("@mdp", nouveauMembre.getPassword());
+            command.Parameters.AddWithValue("@nom", nouveauMembre.getSurname());
+            command.Parameters.AddWithValue("@prenom", nouveauMembre.getName());
+            command.Parameters.AddWithValue("@email", nouveauMembre.getEmail());
+            //command.Parameters.AddWithValue("@sexe", 'F');
+           // connection.Open();
             command.ExecuteNonQuery();
         }
     }

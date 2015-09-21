@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using Epyks.Application;
+using Epyks.Coordonnateur;
 using Microsoft.Win32;
 
 namespace Epyks.Presentation
@@ -11,6 +14,7 @@ namespace Epyks.Presentation
 	/// </summary>
 	public partial class WinRegister : Window
 	{
+        private CoordonnateurLogin coordinator;
 	    private WinLogin login;
 	    private TextBox txtUsername;
 	    private PasswordBox txtPassword;
@@ -64,19 +68,20 @@ namespace Epyks.Presentation
             this.Close();
         }
 
-        private void BtnRegister_Click(object sender, RoutedEventArgs e)
+        private void BtnRegister_Click_1(object sender, RoutedEventArgs e)
         {
-            if (TxtUsername.Text.Length == 0 || TxtEmail.Text.Length == 0
-                || TxtFirstName.Text.Length == 0 || TxtLastName.Text.Length == 0
-            || TxtPassword.Password.Length == 0 || TxtConfirmPassword.Password.Length == 0)
-            {
-                MessageBox.Show("All fieldS are required");
-            }
-            else if (!(TxtPassword.Password.Equals(TxtConfirmPassword.Password)))
-            {
-                MessageBox.Show("Password are not the same");
-            }
+            coordinator = new CoordonnateurLogin();
+            coordinator.validerEntrees(TxtFirstName.Text, TxtLastName.Text, TxtEmail.Text,
+                TxtUsername.Text, TxtPassword.ToString(), TxtConfirmPassword.ToString());
+
+           // coordinator.Register(TxtFirstName.Text,TxtLastName.Text, TxtEmail.Text,
+           //     TxtUsername.Text, TxtPassword.ToString(), TxtConfirmPassword.ToString());
+
            
         }
+
+	    private void creerMembre()
+	    {
+	    }
 	}
 }
