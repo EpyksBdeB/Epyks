@@ -24,10 +24,19 @@ namespace Epyks_Test
              /* ... */
         }
         
-        public void TestLogin()
+        public void testLogin()
         {
-            CoordonnateurLogin coord = new CoordonnateurLogin();
-            Assert.IsTrue(coord.Login("Olivier Castro", "gr007,,"));          
+            CoordonnateurLogin log = new CoordonnateurLogin();
+            Assert.IsTrue(log.Login("Olivier Castro", "gr007,,"));          
+        }
+
+        [Test]
+        public void testRegister()
+        {
+            CoordonnateurLogin log = new CoordonnateurLogin();
+            log.Register("Olivier", "Castro", "casof@gmail.com", "castropeo", "lolol", "lolol");
+            Membre membre = mDao.getMember("castropeo");
+            Assert.AreEqual("castropeo", membre.getUsername());
         }
 
         [TestMethod]
@@ -49,8 +58,16 @@ namespace Epyks_Test
             log.validerEntrees("s", "s", "s", "s", "s", "s");
             int nbRow = log.verifierNomUtilisateurBD("s");
             Assert.AreEqual(nbRow, 1);
-
         }
+
+        [Test]
+        public void testUsernameValide()
+        {
+            CoordonnateurLogin log = new CoordonnateurLogin();
+            int nbRow = log.verifierNomUtilisateurBD("Castropeo");
+            Assert.AreEqual(nbRow, 0);
+        }
+
         [Test]
         public void TestInsertFonctionnel()
         {
@@ -76,9 +93,11 @@ namespace Epyks_Test
             CoordonnateurLogin log = new CoordonnateurLogin();
             //log.Login("m", "m");
             Assert.AreEqual("m", mDao.getMember("m").getPassword());
+        }
 
-           
-
+        [Test]
+        public void testGetAllMember(){
+            //mDao.getMember();
         }
     }
 }

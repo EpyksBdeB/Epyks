@@ -38,8 +38,7 @@ namespace Epyks.Coordonnateur
         public bool Login(String username, String password)
         {
             nouveauMembreDAO = new MembreDAO();
-            bool usernameUnique = verifierUserBD(username, password);
-            return true;
+           return verifierUserBD(username, password);
         }
 
         private bool verifierMdp()
@@ -76,7 +75,6 @@ namespace Epyks.Coordonnateur
             mbMembre.setUsername(username);
             mbMembre.setEmail(email);
             mbMembre.setPassword(password);
-
             MembreDAO mDao = new MembreDAO();
             mDao.insertMember(mbMembre);
         }
@@ -137,5 +135,4 @@ namespace Epyks.Coordonnateur
             return nbOfRows;
         }
     }
-
 }
