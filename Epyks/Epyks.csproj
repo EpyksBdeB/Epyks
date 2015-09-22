@@ -116,6 +116,11 @@
     <Compile Include="Presentation\WinRegister.xaml.cs">
       <DependentUpon>WinRegister.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Page Include="CustomStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -167,7 +172,6 @@
     <Resource Include="Presentation\Absent.png" />
     <Resource Include="Presentation\Deconnecte.png" />
     <Resource Include="Presentation\EnLigne.png" />
-    <Resource Include="Presentation\Loupe.png" />
     <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +184,10 @@
     <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\epyks_logo.png" />
   </ItemGroup>
   <ItemGroup>
