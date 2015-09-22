@@ -94,3 +94,5 @@ C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks_MarkupCompile.cache
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.g.resources
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.Properties.Resources.resources
 C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Epyks.csproj.GenerateResource.Cache
+C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Presentation\WinChat.baml
+C:\Users\olivier\Desktop\Epyks\Epyks\obj\Debug\Presentation\WinChat.g.cs

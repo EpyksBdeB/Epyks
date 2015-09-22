@@ -99,5 +99,11 @@ namespace Epyks_Test
         public void testGetAllMember(){
             //mDao.getMember();
         }
+
+        [Test]
+        public void testUpdateInfoMembre()
+        {
+            //mDao.updateMember();
+        }
     }
 }
