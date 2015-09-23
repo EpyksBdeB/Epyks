@@ -69,8 +69,9 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600">
 					</Grid>
 					<Grid Margin="0,13,0,0" Grid.Row="1">
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="8*"/>
-							<ColumnDefinition Width="2*"/>
+							<ColumnDefinition Width="197*"/>
+							<ColumnDefinition Width="49*"/>
+							<ColumnDefinition Width="0*"/>
 						</Grid.ColumnDefinitions>
 
 						<TextBox Margin="0" TextWrapping="Wrap" FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" Padding="12,0,0,0" Background="#FFEEEEEE" BorderBrush="{x:Null}" CaretBrush="#FF969696" Foreground="#FF969696" Grid.Column="0"/>
@@ -89,7 +90,33 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600">
 					</ListView>
 				</Grid>
 			</Border>
-			<Grid Grid.Column="1" Margin="0,24.776,0,0"/>
+			<Grid Grid.Column="1" Margin="0,24.776,0,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="2*"/>
+					<RowDefinition Height="6*"/>
+					<RowDefinition Height="2*"/>
+				</Grid.RowDefinitions>
+				<Grid Grid.Row="0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="1.65*"/>
+							<ColumnDefinition Width="10*"/>
+						</Grid.ColumnDefinitions>
+				    <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="9.995,5.692,1.663,1.489"/>
+					<TextBlock Grid.Column="1" Foreground="#FFC926FF" Padding="0" Margin="7.623,4.028,113.002,80.375"><Run Text="E"/><Run Text="n discussion avec "/><Run Text="Prénom Nom"/></TextBlock>
+						</Grid>
+						<Grid Grid.Row="1">
+				<TextBlock Background="#FFFFD8FF" Margin="9.993,10,10.007,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="308.518"/>
+				</Grid>
+				<Grid Grid.Row="2">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="10*"/>
+							<ColumnDefinition Width="2*"/>
+						</Grid.ColumnDefinitions>
+				<TextBlock Grid.Column="0" Background="#FFFBBCFB" Padding="6" Margin="9.993,3.749,1.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="96.573" Grid.Row="1"/>	
+				<Button Grid.Column="1" x:Name="BtnSendMsg" Style="{StaticResource FadeOutButton}" Content="Send" HorizontalAlignment="Left" Margin="4.032,3.749,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="109.718" Height="95.819" Background="#FFC926FF" BorderThickness="0" Opacity="1" />
+
+				</Grid>
+			</Grid>
 		</Grid>
 	</Grid>
 </Window>
