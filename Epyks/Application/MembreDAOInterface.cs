@@ -9,10 +9,10 @@ namespace Epyks.Application
     interface MembreDAOInterface
     {
         List<Membre> getAllMembers();
-        Membre getMember(String username);
-        int trouverUsername(String username);
+        Membre getMember(string username, string password);
+        bool UsernameExist(string username);
         void updateMember();
-        void deleteMember(String username);
-        void insertMember(Membre nouveauMembre);
+        void deleteMember(int userId);
+        int insertMember(Membre nouveauMembre);
     }
 }

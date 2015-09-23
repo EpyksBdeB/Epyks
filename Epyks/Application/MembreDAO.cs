@@ -11,27 +11,32 @@ using MySql.Data.MySqlClient;
 
 namespace Epyks.Application
 {
-    public class MembreDAO : MembreDAOInterface
+    internal class MembreDAO : MembreDAOInterface
     {
         private MySql.Data.MySqlClient.MySqlConnection connection = null;
         private MySqlCommand command;
-        private string myConnectionString = null;
-        private String adresseConnection = Properties.Settings.Default.Server_address;
-     
+        private string myConnectionstring = null;
+        private string adresseConnection = Properties.Settings.Default.Server_address;
+        private static MembreDAO instance = new MembreDAO();
 
-        public MembreDAO()
+        internal static MembreDAO GetInstance()
+        {
+            return instance;
+        }
+
+        private MembreDAO()
         {
             initializeDatabase();
         }
 
-        public void initializeDatabase()
+        private void initializeDatabase()
         {
-            //myConnectionString = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
-            myConnectionString = "server="+adresseConnection+";uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
+            //myConnectionstring = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
+            myConnectionstring = "server="+adresseConnection+";uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
-                connection.ConnectionString = myConnectionString;
+                connection.ConnectionString = myConnectionstring;
                 connection.Open();
                 MessageBox.Show("Connecté!");
             }
@@ -55,38 +60,42 @@ namespace Epyks.Application
             throw new NotImplementedException();
         }
 
-        public Membre getMember(String username_membre)
+        public Membre getMember(string username_membre, string password_membre)
         {
-            Membre unMembre = new Membre();
-            String query = "SELECT * FROM utilisateur where username='"+username_membre+"'";
+            Membre membre = null;
+            string query = "SELECT * FROM utilisateur where username='"+username_membre+"' and password='" + password_membre + "'";
             command = new MySqlCommand(query, this.connection);
 
             MySqlDataReader reader = command.ExecuteReader();
-             if (!reader.HasRows) return null;
-             while (reader.Read())
-             {
-                Console.WriteLine(GetDBString("column1", reader));
-                Console.WriteLine(GetDBString("column2", reader));
-             }
-            reader.Close();
 
-            return unMembre;
+            if (reader.HasRows)
+            {
+
+                reader.Read();
+                membre = new Membre();
+                membre.id = reader.GetInt32("id_utilisateur");
+                membre.username = reader.GetString("username");
+                membre.password = reader.GetString("password");
+                membre.firstName = reader.GetString("Prenom");
+                membre.lastName = reader.GetString("Nom");
+                membre.email = reader.GetString("email");
+                membre.gender = (Genre) Enum.Parse(typeof(Genre),reader.GetString("sexe"));
+            }
+
+            return membre;
         }
 
-        private string GetDBString(string SqlFieldName, MySqlDataReader Reader)
+        private string GetDBstring(string SqlFieldName, MySqlDataReader Reader)
         {
-            return Reader[SqlFieldName].Equals(DBNull.Value) ? String.Empty : Reader.GetString(SqlFieldName);
+            return Reader[SqlFieldName].Equals(DBNull.Value) ? string.Empty : Reader.GetString(SqlFieldName);
         }
 
-        public int trouverUsername(string username)
+        public bool UsernameExist(string username)
         {
-            String query = "SELECT COUNT(*) FROM utilisateur where username='"+username+"'";
+            string query = "SELECT * FROM utilisateur where username='"+username+"'";
             command = new MySqlCommand(query, this.connection);
-
-                 object rows = command.ExecuteScalar();
-                 if ((rows == null) || (rows == DBNull.Value)) return -1;
-
-         return Convert.ToInt32(rows);
+            MySqlDataReader reader = command.ExecuteReader();
+         return reader.HasRows;
         }
 
         public void updateMember()
@@ -94,28 +103,29 @@ namespace Epyks.Application
             throw new NotImplementedException();
         }
 
-        public void deleteMember(String username)
+        public void deleteMember(int userId)
         {
-            String query = "DELETE FROM utilisateur where username='"+username+"'";
+            string query = "DELETE FROM utilisateur where id_utilisateur='" + userId + "'";
             command = new MySqlCommand(query, this.connection);
             command.ExecuteNonQuery();
         }
 
         // Ajouter parametre pour recevoir un membre
-        public void insertMember(Membre nouveauMembre)
+        public int insertMember(Membre nouveauMembre)
         {
             command = connection.CreateCommand();
             command.CommandText = "INSERT INTO utilisateur (username, password," +
                                   "Nom, Prenom, email) VALUES (@nom_utilisateur, @mdp, @nom," +
                                   "@prenom, @email)";
-            command.Parameters.AddWithValue("@nom_utilisateur", nouveauMembre.getUsername());
-            command.Parameters.AddWithValue("@mdp", nouveauMembre.getPassword());
-            command.Parameters.AddWithValue("@nom", nouveauMembre.getSurname());
-            command.Parameters.AddWithValue("@prenom", nouveauMembre.getName());
-            command.Parameters.AddWithValue("@email", nouveauMembre.getEmail());
-            //command.Parameters.AddWithValue("@sexe", 'F');
+            command.Parameters.AddWithValue("@nom_utilisateur", nouveauMembre.username);
+            command.Parameters.AddWithValue("@mdp", nouveauMembre.password);
+            command.Parameters.AddWithValue("@nom", nouveauMembre.lastName);
+            command.Parameters.AddWithValue("@prenom", nouveauMembre.firstName);
+            command.Parameters.AddWithValue("@email", nouveauMembre.email);
+            command.Parameters.AddWithValue("@sexe", Enum.GetName(typeof(Genre), nouveauMembre.gender));
            // connection.Open();
             command.ExecuteNonQuery();
+            return Convert.ToInt32(command.LastInsertedId);
         }
     }
 }
