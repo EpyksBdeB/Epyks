@@ -81,6 +81,7 @@ namespace Epyks.Application
                 membre.email = reader.GetString("email");
                 membre.gender = (Genre) Enum.Parse(typeof(Genre),reader.GetString("sexe"));
             }
+            reader.Close();
 
             return membre;
         }
@@ -92,10 +93,14 @@ namespace Epyks.Application
 
         public bool UsernameExist(string username)
         {
+            bool hasRows = false;
             string query = "SELECT * FROM utilisateur where username='"+username+"'";
             command = new MySqlCommand(query, this.connection);
             MySqlDataReader reader = command.ExecuteReader();
-         return reader.HasRows;
+            hasRows = reader.HasRows;
+            reader.Close();
+
+         return hasRows;
         }
 
         public void updateMember()
