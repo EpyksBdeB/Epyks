@@ -14,7 +14,7 @@
         <Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="29,250,0,0" VerticalAlignment="Top" Width="293"/>
         <Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="29,290,0,0" VerticalAlignment="Top" Width="293"/>
         <Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="29,330,0,0" VerticalAlignment="Top" Width="293"/>
-		<TextBox x:Name="TxtUsername" HorizontalAlignment="Left" Margin="29,106,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" CaretBrush="#FF969696" Foreground="#FF969696">
+        <TextBox x:Name="TxtUsername" HorizontalAlignment="Left" Margin="29,106,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" SelectionBrush="#FFDB6FFF" CaretBrush="#FF969696" Foreground="#FF969696">
 			<TextBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
 					<Style.Resources>
@@ -38,7 +38,7 @@
 				</Style>
 			</TextBox.Style>
 		</TextBox>
-		<PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Margin="29,157,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="PasswordLostFocus" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" CaretBrush="#FF969696" Foreground="#FF969696">
+        <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Margin="29,157,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="PasswordLostFocus" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" SelectionBrush="#FFDB6FFF" CaretBrush="#FF969696" Foreground="#FF969696">
 			<PasswordBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type PasswordBox}">
 					<Style.Resources>
@@ -52,7 +52,7 @@
 				</Style>
 			</PasswordBox.Style>
 		</PasswordBox>
-		<PasswordBox x:Name="TxtConfirmPassword" HorizontalAlignment="Left" Margin="29,197,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="PasswordLostFocus" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" CaretBrush="#FF969696" Foreground="#FF969696">
+        <PasswordBox x:Name="TxtConfirmPassword" HorizontalAlignment="Left" Margin="29,197,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="PasswordLostFocus" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" SelectionBrush="#FFDB6FFF" CaretBrush="#FF969696" Foreground="#FF969696">
 			<PasswordBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type PasswordBox}">
 					<Style.Resources>
@@ -66,7 +66,7 @@
 				</Style>
 			</PasswordBox.Style>
 		</PasswordBox>
-		<TextBox x:Name="TxtFirstName" HorizontalAlignment="Left" Margin="29,250,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" CaretBrush="#FF969696" Foreground="#FF969696">
+        <TextBox x:Name="TxtFirstName" HorizontalAlignment="Left" Margin="29,250,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" SelectionBrush="#FFDB6FFF" CaretBrush="#FF969696" Foreground="#FF969696">
 			<TextBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
 					<Style.Resources>
@@ -90,7 +90,7 @@
 				</Style>
 			</TextBox.Style>
 		</TextBox>
-		<TextBox x:Name="TxtLastName" HorizontalAlignment="Left" Margin="29,290,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" CaretBrush="#FF969696" Foreground="#FF969696">
+        <TextBox x:Name="TxtLastName" HorizontalAlignment="Left" Margin="29,290,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" SelectionBrush="#FFDB6FFF" CaretBrush="#FF969696" Foreground="#FF969696">
 			<TextBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
 					<Style.Resources>
@@ -114,7 +114,7 @@
 				</Style>
 			</TextBox.Style>
 		</TextBox>
-		<TextBox x:Name="TxtEmail" HorizontalAlignment="Left" Margin="29,330,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" CaretBrush="#FF969696" Foreground="#FF969696">
+        <TextBox x:Name="TxtEmail" HorizontalAlignment="Left" Margin="29,330,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" SelectionBrush="#FFDB6FFF" CaretBrush="#FF969696" Foreground="#FF969696">
 			<TextBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
 					<Style.Resources>

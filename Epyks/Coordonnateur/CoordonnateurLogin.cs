@@ -22,23 +22,34 @@ namespace Epyks.Coordonnateur
 
     public class CoordonnateurLogin
     {
-        public MembreDAO nouveauMembreDAO;
-        private String messageErreur="";
-        private String erreur_1 = "Tous les champs sont requis";
-        private String erreur_2 = "Les mots de passe ne sont pas identiques";
-        private String erreur_3 = "Le formal de l'email est invalide";
-        private String emailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
-                                   + "@"
-                                   + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
+        //private string messageErreur="";
+        //private string erreur_1 = "Tous les champs sont requis";
+        //private string erreur_2 = "Les mots de passe ne sont pas identiques";
+        //private string erreur_3 = "Le formal de l'email est invalide";
+        //private string emailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+        //                           + "@"
+        //                           + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
 
-        public CoordonnateurLogin()
+        private Facade api;
+        private static CoordonnateurLogin instance;
+
+        public static CoordonnateurLogin GetInstance()
         {
+            if (instance == null)
+            {
+                instance = new CoordonnateurLogin();
+            }
+            return instance;
         }
 
-        public bool Login(String username, String password)
+        private CoordonnateurLogin()
         {
-            nouveauMembreDAO = new MembreDAO();
-           return verifierUserBD(username, password);
+            api = Facade.GetInstance();
+        }
+
+        public bool Login(string username, string password)
+        {
+           return api.Login(username, password);
         }
 
         private bool verifierMdp()
@@ -46,93 +57,65 @@ namespace Epyks.Coordonnateur
             throw new NotImplementedException();
         }
 
-        private bool verifierUserBD(String username, String password)
+        public void Register(string firstname, string lastname, string email,
+            string username, string password, Genre gender)
         {
-            //bool existe = nouveauMembreDAO.trouverMember(1);
-            Membre nouveauMembre = nouveauMembreDAO.getMember(username);
-            if (nouveauMembre == null)
-            {
-                MessageBox.Show("Utilisateur non présent dans la BD");
-                // Utilisateur non présent dans la BD
-            }
-            else
-            {
-                if (nouveauMembre.getPassword() == password)
-                {
-                    // afficher le profil
-                }
-
-            }
-            return true;
+            MembreDTO membre = new MembreDTO(firstname, lastname, username, password, email, gender);
+            api.Register(membre);
         }
 
-        public void Register(String firstname, String lastname, String email,
-            String username, String password, String confirmPassword)
-        {
-            Membre mbMembre = new Membre();
-            mbMembre.setName(firstname);
-            mbMembre.setSurname(lastname);
-            mbMembre.setUsername(username);
-            mbMembre.setEmail(email);
-            mbMembre.setPassword(password);
-            MembreDAO mDao = new MembreDAO();
-            mDao.insertMember(mbMembre);
-        }
-
-        public void validerEntrees(string firstname, string lastname, string email, string username,
-            string password, string confirmPassword)
-        {
-            String message_erreur = validerChamps(firstname,lastname, email, username, password, confirmPassword);
-            if (!message_erreur.Equals(""))
-            {
-                MessageBox.Show(message_erreur);
-            }
-            else
-            {
-                int nbOfRows = verifierNomUtilisateurBD(username);
-                if (nbOfRows == 1)
-                {
-                    MessageBox.Show("Nom d'utilisateur non disponible");
+        //public void validerEntrees(string firstname, string lastname, string email, string username,
+        //    string password, string confirmPassword)
+        //{
+        //    string message_erreur = validerChamps(firstname,lastname, email, username, password, confirmPassword);
+        //    if (!message_erreur.Equals(""))
+        //    {
+        //        MessageBox.Show(message_erreur);
+        //    }
+        //    else
+        //    {
+        //        int nbOfRows = verifierNomUtilisateurBD(username);
+        //        if (nbOfRows == 1)
+        //        {
+        //            MessageBox.Show("Nom d'utilisateur non disponible");
                     
-                }
-                else if(nbOfRows == 0)
-                {
-                    this.Register(firstname,lastname,email,username,password,confirmPassword);
-                    MessageBox.Show("Nom d'utilisateur valide");
-                }
-                else
-                {
-                    MessageBox.Show("Nombre de lignes avec meme username incorrect");
-                }
-            }
+        //        }
+        //        else if(nbOfRows == 0)
+        //        {
+        //            this.Register(firstname,lastname,email,username,password,confirmPassword);
+        //            MessageBox.Show("Nom d'utilisateur valide");
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Nombre de lignes avec meme username incorrect");
+        //        }
+        //    }
 
-        }
+        //}
 
-        private String validerChamps(string firstname, string lastname, string email, string username, string password, string confirmPassword)
-        {
-            if (!(password.Equals(confirmPassword)))
-            {
-                messageErreur = erreur_2;
-            }
-            else if (!Regex.IsMatch(email, emailPattern))
-            {
-                messageErreur = erreur_3;
-            }
-            else if (username.Length == 0 || email.Length == 0
-                || firstname.Length == 0 || lastname.Length == 0
-            || password.Length == 0 || confirmPassword.Length == 0)
-            {
-                messageErreur = erreur_1;
-            }
+        //private string validerChamps(string firstname, string lastname, string email, string username, string password, string confirmPassword)
+        //{
+        //    if (!(password.Equals(confirmPassword)))
+        //    {
+        //        messageErreur = erreur_2;
+        //    }
+        //    else if (!Regex.IsMatch(email, emailPattern))
+        //    {
+        //        messageErreur = erreur_3;
+        //    }
+        //    else if (username.Length == 0 || email.Length == 0
+        //        || firstname.Length == 0 || lastname.Length == 0
+        //    || password.Length == 0 || confirmPassword.Length == 0)
+        //    {
+        //        messageErreur = erreur_1;
+        //    }
             
-            return messageErreur;
-        }
+        //    return messageErreur;
+        //}
 
-        public int verifierNomUtilisateurBD(string username)
+        public bool verifierNomUtilisateurBD(string username)
         {
-            nouveauMembreDAO = new MembreDAO();
-             int nbOfRows = nouveauMembreDAO.trouverUsername(username);
-            return nbOfRows;
+            return api.UsernameExist(username);
         }
     }
 }

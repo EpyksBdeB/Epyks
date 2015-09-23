@@ -16,12 +16,6 @@ namespace Epyks.Presentation
 	{
         private CoordonnateurLogin coordinator;
 	    private WinLogin login;
-	    private TextBox txtUsername;
-	    private PasswordBox txtPassword;
-	    private PasswordBox txtConfirmPassword;
-	    private TextBox txtFirstName;
-	    private TextBox txtLastName;
-	    private TextBox txtEmail;
 
 
 		public WinRegister(WinLogin login)
@@ -60,6 +54,7 @@ namespace Epyks.Presentation
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            ResetFields();
             login.Show();
         }
 
@@ -70,9 +65,13 @@ namespace Epyks.Presentation
 
         private void BtnRegister_Click_1(object sender, RoutedEventArgs e)
         {
-            coordinator = new CoordonnateurLogin();
-            coordinator.validerEntrees(TxtFirstName.Text, TxtLastName.Text, TxtEmail.Text,
-                TxtUsername.Text, TxtPassword.ToString(), TxtConfirmPassword.ToString());
+            coordinator = CoordonnateurLogin.GetInstance();
+
+            coordinator.Register(TxtFirstName.Text, TxtLastName.Text, TxtEmail.Text,
+                TxtUsername.Text, TxtPassword.Password.ToString(), RadMale.IsChecked == true ? Genre.MALE : Genre.FEMALE);
+            this.Close();
+            //coordinator.validerEntrees(TxtFirstName.Text, TxtLastName.Text, TxtEmail.Text,
+            //    TxtUsername.Text, TxtPassword.ToString(), TxtConfirmPassword.ToString());
 
            // coordinator.Register(TxtFirstName.Text,TxtLastName.Text, TxtEmail.Text,
            //     TxtUsername.Text, TxtPassword.ToString(), TxtConfirmPassword.ToString());
@@ -80,8 +79,17 @@ namespace Epyks.Presentation
            
         }
 
-	    private void creerMembre()
-	    {
-	    }
+        private void ResetFields()
+        {
+            TxtUsername.Text = null;
+            TxtPassword.Password = null;
+            TxtConfirmPassword.Password = null;
+            TxtFirstName.Text = null;
+            TxtLastName.Text = null;
+            TxtEmail.Text = null;
+            RadMale.IsChecked = true;
+            RadFemale.IsChecked = false;
+            ImgProfil.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/profil_default.png"));
+        }
 	}
 }

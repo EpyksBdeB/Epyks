@@ -10,23 +10,31 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Epyks
+namespace Epyks.Presentation
 {
 	/// <summary>
 	/// Logique d'interaction pour WinProfil.xaml
 	/// </summary>
 	public partial class WinProfil : Window
 	{
-		public WinProfil()
+
+	    private WinLogin winLogin;
+
+        public WinProfil(WinLogin winLogin)
 		{
 			this.InitializeComponent();
-			
-			// Insérez le code requis pour la création d’objet sous ce point.
+
+            this.winLogin = winLogin;
 		}
 
         private void MenuStatusItem_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            winLogin.Show();
         }
 	}
 }

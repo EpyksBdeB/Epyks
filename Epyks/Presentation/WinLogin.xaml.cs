@@ -13,9 +13,7 @@ namespace Epyks.Presentation
         public WinLogin()
         {
                 InitializeComponent();
-                coordinator = new CoordonnateurLogin();
-
-            MembreDAO mb = new MembreDAO();
+                coordinator = CoordonnateurLogin.GetInstance();
         }
 
         private void TxtPassword_GotFocus(object sender, RoutedEventArgs e)
@@ -40,7 +38,19 @@ namespace Epyks.Presentation
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            coordinator.Login(TxtUsername.Text, TxtPassword.Password);
+            WinProfil winProfil = new WinProfil(this);
+            if (coordinator.Login(TxtUsername.Text, TxtPassword.Password))
+            {
+                Hide();
+                ResetFields();
+                winProfil.Show();
+            }
+        }
+
+        private void ResetFields()
+        {
+            TxtUsername.Text = null;
+            TxtPassword.Password = null;
         }
     }
 }

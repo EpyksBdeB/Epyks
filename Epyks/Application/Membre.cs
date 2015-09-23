@@ -6,82 +6,47 @@ using System.Threading.Tasks;
 
 namespace Epyks.Application
 {
-    public class Membre
+    public enum Genre : int
     {
-        private String name;
-        private String surname;
-        private String username;
-        private String password;
-        private String email;
-        private char gender;
+        MALE,
+        FEMALE
+    }
 
-        public Membre(String name, String surname, String username, String password,
-            String email, char gender)
+    internal class Membre
+    {
+
+        internal int id { get; set; }
+        internal string firstName { get; set; }
+        internal string lastName { get; set; }
+        internal string username { get; set; }
+        internal string password { get; set; }
+        internal string email { get; set; }
+        internal Genre gender { get; set; }
+
+        internal Membre(int id,string firstName, string lastName, string username, string password,
+            string email, Genre gender)
         {
-            this.name = name;
-            this.surname = surname;
+            this.id = id;
+            this.firstName = firstName;
+            this.lastName = lastName;
             this.username = username;
             this.password = password;
             this.email = email;
             this.gender = gender;
         }
 
-        public Membre()
+        internal Membre(MembreDTO membre)
         {
+            this.firstName = membre.firstName;
+            this.lastName = membre.lastName;
+            this.username = membre.username;
+            this.password = membre.password;
+            this.email = membre.email;
+            this.gender = membre.gender;
         }
 
-        public void setName(String name)
+        internal Membre()
         {
-            this.name = name;
-        }
-        public String getName()
-        {
-            return name;
-        }
-
-        public void setSurname(String surname)
-        {
-            this.surname = surname;
-        }
-        public String getSurname()
-        {
-            return surname;
-        }
-
-        public void setUsername(String username)
-        {
-            this.username = username;
-        }
-        public String getUsername()
-        {
-            return username;
-        }
-
-        public void setPassword(String password)
-        {
-            this.password = password;
-        }
-        public String getPassword()
-        {
-            return password;
-        }
-
-        public void setEmail(String email)
-        {
-            this.name = name;
-        }
-        public String getEmail()
-        {
-            return name;
-        }
-
-        public void setGender(char gender)
-        {
-            this.gender = gender;
-        }
-        public char getGender()
-        {
-            return gender;
         }
     }
 }
