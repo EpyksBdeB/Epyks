@@ -7,7 +7,7 @@
 	Width="526" Height="215">
 
 	<Grid x:Name="LayoutRoot" Margin="0,0,-8,0">
-		<Label x:Name="LblRegister" Content="Enter your email to get a new password" HorizontalAlignment="Left" Margin="64,22,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="21.333" Height="50" Width="386" Foreground="#FFC926FF"/>
+		<Label x:Name="LblRegister" Content="Enter your email to recover your password" HorizontalAlignment="Left" Margin="54,22,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="21.333" Height="50" Width="410" Foreground="#FFC926FF"/>
 		<Button x:Name="BtnGoRegister_Copy" Style="{StaticResource FadeOutButton}" Content="Send" HorizontalAlignment="Left" Margin="0,142,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="518" Height="42" Background="#FFC926FF" BorderThickness="0" Opacity="1"/>
 		<Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="112,75,0,0" VerticalAlignment="Top" Width="293"/>
 		<TextBox x:Name="TxtUsername" HorizontalAlignment="Left" Margin="112,75,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" CaretBrush="#FF969696" Foreground="#FF969696">
