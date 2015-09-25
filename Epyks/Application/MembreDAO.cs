@@ -103,10 +103,10 @@ namespace Epyks.Application
          return hasRows;
         }
 
-        public bool EmailAdressExist(string username)
+        public bool EmailAdressExist(string email)
         {
             bool hasRows = false;
-            string query = "SELECT * FROM utilisateur where email='" + username + "'";
+            string query = "SELECT * FROM utilisateur where email='" + email + "'";
             command = new MySqlCommand(query, this.connection);
             MySqlDataReader reader = command.ExecuteReader();
             hasRows = reader.HasRows;

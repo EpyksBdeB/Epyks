@@ -37,11 +37,10 @@ namespace Epyks
                 {
                     string password = coordinator.recoverPassword(TxtEmail.Text.ToString());
                     coordinator.envoyerPassword(password, TxtEmail.Text.ToString());
-                    //Hide();
-                    //winLogin.ResetFields();
-                    //winLogin.Show();
-
-                    //message qui confirme l'envoi
+                    Hide();
+                    winLogin.ResetFields();
+                    winLogin.Show();
+                    //message qui confirme l'envoi??
                 }
                 else
                 {
