@@ -47,10 +47,17 @@ namespace Epyks.Presentation
             }
         }
 
-        private void ResetFields()
+        public void ResetFields()
         {
             TxtUsername.Text = null;
             TxtPassword.Password = null;
+        }
+
+        private void BtnForgotPassWord_Click(object sender, RoutedEventArgs e)
+        {
+           WinMotDePasseOublier winForgotPassword = new WinMotDePasseOublier(this);
+            Hide();
+            winForgotPassword.Show();
         }
     }
 }

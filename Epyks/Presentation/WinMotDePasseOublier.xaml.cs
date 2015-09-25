@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Epyks.Coordonnateur;
+using Epyks.Presentation;
 
 namespace Epyks
 {
@@ -19,26 +20,45 @@ namespace Epyks
 	public partial class WinMotDePasseOublier : Window
 	{
         private CoordonnateurLogin coordinator;
-		public WinMotDePasseOublier()
+        private WinLogin winLogin;
+		public WinMotDePasseOublier(WinLogin winLogin)
 		{
 			this.InitializeComponent();
-			
+            this.winLogin = winLogin;
 			// Insérez le code requis pour la création d’objet sous ce point.
 		}
 
         private void BtnSendPassWord_Click(object sender, RoutedEventArgs e)
         {
             coordinator = CoordonnateurLogin.GetInstance();
-            if (coordinator.VerifierEmail(TxtEmail.Text.ToString()))
+            if (TxtEmail.Text.ToString() != "")
             {
-                string password = coordinator.recoverPassword(TxtEmail.Text.ToString());
-                coordinator.envoyerPassword(password, TxtEmail.Text.ToString());
-               // coordinator.envoyerPassword();
+                if (coordinator.VerifierEmail(TxtEmail.Text.ToString()))
+                {
+                    string password = coordinator.recoverPassword(TxtEmail.Text.ToString());
+                    coordinator.envoyerPassword(password, TxtEmail.Text.ToString());
+                    //Hide();
+                    //winLogin.ResetFields();
+                    //winLogin.Show();
+
+                    //message qui confirme l'envoi
+                }
+                else
+                {
+                    //error provider 
+                }
             }
             else
             {
-                //error provider a mettre
+                //message error
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Hide();
+            winLogin.ResetFields();
+            winLogin.Show();
         }
 	}
 }

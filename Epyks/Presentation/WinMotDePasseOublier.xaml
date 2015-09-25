@@ -4,7 +4,7 @@
 	x:Class="Epyks.WinMotDePasseOublier"
 	x:Name="Window"
 	Title="WinMotDePasseOublier"
-	Width="526" Height="215">
+	Width="526" Height="215" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
 
 	<Grid x:Name="LayoutRoot" Margin="0,0,-8,0">
 		<Label x:Name="LblRecoverPassWord" Content="Enter your email to recover your password" HorizontalAlignment="Left" Margin="54,22,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="21.333" Height="50" Width="410" Foreground="#FFC926FF"/>
