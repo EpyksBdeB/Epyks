@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Epyks.Coordonnateur;
 
 namespace Epyks
 {
@@ -17,6 +18,7 @@ namespace Epyks
 	/// </summary>
 	public partial class WinMotDePasseOublier : Window
 	{
+        private CoordonnateurLogin coordinator;
 		public WinMotDePasseOublier()
 		{
 			this.InitializeComponent();
@@ -24,9 +26,19 @@ namespace Epyks
 			// Insérez le code requis pour la création d’objet sous ce point.
 		}
 
-        private void BtnEnvoyer_Click(object sender, RoutedEventArgs e)
+        private void BtnSendPassWord_Click(object sender, RoutedEventArgs e)
         {
-
+            coordinator = CoordonnateurLogin.GetInstance();
+            if (coordinator.VerifierEmail(TxtEmail.Text.ToString()))
+            {
+                string password = coordinator.recoverPassword(TxtEmail.Text.ToString());
+                coordinator.envoyerPassword(password, TxtEmail.Text.ToString());
+               // coordinator.envoyerPassword();
+            }
+            else
+            {
+                //error provider a mettre
+            }
         }
 	}
 }

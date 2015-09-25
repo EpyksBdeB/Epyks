@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Epyks.Application;
 
-namespace Epyks.Coordonnateur
+using System.Net.Mail;namespace Epyks.Coordonnateur
 {
     public enum StatusLogin
     {
@@ -55,6 +55,34 @@ namespace Epyks.Coordonnateur
         private bool verifierMdp()
         {
             throw new NotImplementedException();
+        }
+
+        public bool VerifierEmail(string email)
+        {
+            return api.EmailExist(email);
+        }
+
+        public string recoverPassword(string email)
+        {
+            return api.recupererPassword(email);
+        }
+
+        public void envoyerPassword(string password, string emailDest)
+        {
+            SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
+            var mail = new MailMessage();
+            mail.From = new MailAddress("epyks_ogc@hotmail.com");
+            mail.To.Add(emailDest);
+            mail.Subject = "Epyks Account Recover Password";
+            mail.IsBodyHtml = true;
+            string htmlBody;
+            htmlBody = "You password for you Epyks account is : " + password;
+            mail.Body = htmlBody;
+            SmtpServer.Port = 587;
+            SmtpServer.UseDefaultCredentials = false;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("epyks_ogc@hotmail.com", "EpyksEpyks");
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
         }
 
         public void Register(string firstname, string lastname, string email,

@@ -43,5 +43,15 @@ namespace Epyks.Application
         {
             return dao.UsernameExist(username);
         }
+
+        public bool EmailExist(string email)
+        {
+            return dao.EmailAdressExist(email);
+        }
+
+        public string recupererPassword(string password)
+        {
+           return dao.getPassword(password);
+        }
     }
 }

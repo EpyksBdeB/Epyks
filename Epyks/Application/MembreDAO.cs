@@ -103,6 +103,31 @@ namespace Epyks.Application
          return hasRows;
         }
 
+        public bool EmailAdressExist(string username)
+        {
+            bool hasRows = false;
+            string query = "SELECT * FROM utilisateur where email='" + username + "'";
+            command = new MySqlCommand(query, this.connection);
+            MySqlDataReader reader = command.ExecuteReader();
+            hasRows = reader.HasRows;
+            reader.Close();
+
+            return hasRows;
+        }
+
+        public string getPassword(string password)
+        {
+            string motDePasse = null;
+            string query = "SELECT password FROM utilisateur where password='" + password + "'";
+            command = new MySqlCommand(query, this.connection);
+
+            MySqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            motDePasse = reader.GetString("password");
+            reader.Close();
+            return motDePasse;
+        }
+
         public void updateMember()
         {
             throw new NotImplementedException();
