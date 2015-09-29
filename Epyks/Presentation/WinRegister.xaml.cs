@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -50,6 +51,25 @@ namespace Epyks.Presentation
             {
                 ImgProfil.Source = new BitmapImage(new Uri(fileDialog.FileName));
             }
+
+            enregistrerImage();
+        }
+
+        private void enregistrerImage()
+        {
+            String filename = new Uri(ImgProfil.Source.ToString()).LocalPath;
+            byte[] ImageData;
+            FileStream fs;
+            BinaryReader br;
+
+            fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+            br = new BinaryReader(fs);
+            ImageData = br.ReadBytes((int)fs.Length);
+            br.Close();
+            fs.Close();
+
+            MessageBox.Show(ImageData.Length.ToString());
+
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

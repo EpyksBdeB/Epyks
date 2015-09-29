@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using MySql.Data.MySqlClient;
@@ -143,6 +144,9 @@ namespace Epyks.Application
         // Ajouter parametre pour recevoir un membre
         public int insertMember(Membre nouveauMembre)
         {
+            FileStream fs;
+            BinaryReader br;
+
             command = connection.CreateCommand();
             command.CommandText = "INSERT INTO utilisateur (username, password," +
                                   "Nom, Prenom, email) VALUES (@nom_utilisateur, @mdp, @nom," +

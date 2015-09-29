@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Epyks.Coordonnateur;
 
 namespace Epyks.Presentation
 {
@@ -17,6 +18,7 @@ namespace Epyks.Presentation
 	/// </summary>
 	public partial class WinProfil : Window
 	{
+	    private CoordonnateurLogin coordinateur;
 
 	    private WinLogin winLogin;
 
