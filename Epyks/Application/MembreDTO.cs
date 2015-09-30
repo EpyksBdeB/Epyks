@@ -37,6 +37,7 @@ namespace Epyks.Application
         public string confirmPassword { get; set; }
         public string email { get; set; }
         public Genre gender { get; set; }
+        
 
         public MembreDTO(string firstName, string lastName, string username, string password,
             string email, Genre gender)
