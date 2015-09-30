@@ -82,12 +82,12 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
 						</Button>
 					</Grid>
 					<ListView Margin="0,10,0,0" Grid.Row="2">
-						<ListView.View>
-							<GridView>
-								<GridViewColumn/>
-							</GridView>
-						</ListView.View>
-					</ListView>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
 				</Grid>
 			</Border>
 			<Grid Grid.Column="1" Margin="0,24.776,0,0">
