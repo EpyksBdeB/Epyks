@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using MySql.Data.MySqlClient;
@@ -32,7 +33,7 @@ namespace Epyks.Application
         private void initializeDatabase()
         {
             //myConnectionstring = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
-            myConnectionstring = "server="+adresseConnection+";uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
+            myConnectionstring = "server=localhost;uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
@@ -143,6 +144,9 @@ namespace Epyks.Application
         // Ajouter parametre pour recevoir un membre
         public int insertMember(Membre nouveauMembre)
         {
+            FileStream fs;
+            BinaryReader br;
+
             command = connection.CreateCommand();
             command.CommandText = "INSERT INTO utilisateur (username, password," +
                                   "Nom, Prenom, email) VALUES (@nom_utilisateur, @mdp, @nom," +
