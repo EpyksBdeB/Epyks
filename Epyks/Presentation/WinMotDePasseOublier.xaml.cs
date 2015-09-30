@@ -31,26 +31,26 @@ namespace Epyks
         private void BtnSendPassWord_Click(object sender, RoutedEventArgs e)
         {
             coordinator = CoordonnateurLogin.GetInstance();
-            if (TxtEmail.Text.ToString() != "")
-            {
-                if (coordinator.VerifierEmail(TxtEmail.Text.ToString()))
-                {
-                    string password = coordinator.recoverPassword(TxtEmail.Text.ToString());
-                    coordinator.envoyerPassword(password, TxtEmail.Text.ToString());
+            //if (TxtEmail.Text.ToString() != "")
+            //{
+            //    if (coordinator.VerifierEmail(TxtEmail.Text.ToString()))
+            //    {
+            //        string password = coordinator.recoverPassword(TxtEmail.Text.ToString());
+                    coordinator.envoyerPassword("lolol", TxtEmail.Text.ToString());
                     Hide();
                     winLogin.ResetFields();
                     winLogin.Show();
                     //message qui confirme l'envoi??
-                }
-                else
-                {
-                    //error provider 
-                }
-            }
-            else
-            {
-                //message error
-            }
+            //    }
+            //    else
+            //    {
+            //        //error provider 
+            //    }
+            //}
+            //else
+            //{
+            //    //message error
+            //}
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

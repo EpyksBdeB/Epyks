@@ -49,9 +49,9 @@ namespace Epyks.Application
             return dao.EmailAdressExist(email);
         }
 
-        public string recupererPassword(string password)
+        public string recupererPassword(string email)
         {
-           return dao.getPassword(password);
+           return dao.getPassword(email);
         }
     }
 }
