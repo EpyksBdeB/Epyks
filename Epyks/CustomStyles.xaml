@@ -80,4 +80,13 @@
                 </EventTrigger>
             </Style.Triggers>
         </Style>
+        <ControlTemplate x:Key="TextBoxErrorTemplate">
+            <DockPanel LastChildFill="True">
+                <TextBlock DockPanel.Dock="Right" Foreground="#FFC926FF" FontSize="12pt" Margin="10,10,0,0">X</TextBlock>
+
+            <Border BorderBrush="#FFC926FF" BorderThickness="1">
+                    <AdornedElementPlaceholder />
+                </Border>
+            </DockPanel>
+        </ControlTemplate>
 </ResourceDictionary>

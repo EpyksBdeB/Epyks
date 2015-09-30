@@ -26,9 +26,9 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
         //private string erreur_1 = "Tous les champs sont requis";
         //private string erreur_2 = "Les mots de passe ne sont pas identiques";
         //private string erreur_3 = "Le formal de l'email est invalide";
-        //private string emailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
-        //                           + "@"
-        //                           + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
+        private string emailPattern = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                   + "@"
+                                  + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
 
         private Facade api;
         private static CoordonnateurLogin instance;
