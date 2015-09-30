@@ -116,10 +116,10 @@ namespace Epyks.Application
             return hasRows;
         }
 
-        public string getPassword(string password)
+        public string getPassword(string email)
         {
             string motDePasse = null;
-            string query = "SELECT password FROM utilisateur where password='" + password + "'";
+            string query = "SELECT password FROM utilisateur where email='" + email + "'";
             command = new MySqlCommand(query, this.connection);
 
             MySqlDataReader reader = command.ExecuteReader();
