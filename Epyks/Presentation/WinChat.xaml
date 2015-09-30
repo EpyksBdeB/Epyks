@@ -7,7 +7,7 @@
 	Width="640" Height="458.889">
 
 	<Grid x:Name="LayoutRoot" Margin="0,0,2,0">
-		<TextBlock Background="#FFFBBCFB" Padding="6" Margin="10,331.473,104.444,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="515.556" Height="83.444"/>	
+        <TextBox Background="#FFFBBCFB" IsReadOnly="False" FontSize="18" Padding="6" Margin="10,331.473,104.444,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="515.556" Height="83.444"/>	
 		<Button x:Name="BtnGoRegister_Copy" Style="{StaticResource FadeOutButton}" Content="Send" HorizontalAlignment="Left" Margin="530.556,331.473,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="89.444" Height="83.444" Background="#FFC926FF" BorderThickness="0" Opacity="1"/>
 		<TextBlock Background="#FFFFD8FF" Margin="10,87.18,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="239.293"/>
 		<Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,540.043,349.042" Height="81.069" Width="79.957"/>
