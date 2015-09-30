@@ -39,10 +39,17 @@ namespace Epyks.Presentation
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             WinProfil winProfil = new WinProfil(this);
+            Membre m = MembreDAO.GetInstance().getMember(TxtUsername.Text, TxtPassword.Password.ToString());
+
+            MembreDTO mdto = new MembreDTO();
+            mdto.firstName = m.firstName;
+            mdto.lastName = m.lastName;
+
             if (coordinator.Login(TxtUsername.Text, TxtPassword.Password))
             {
                 Hide();
                 ResetFields();
+                winProfil.recevoirMembre(mdto);
                 winProfil.Show();
             }
         }
