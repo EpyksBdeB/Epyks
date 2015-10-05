@@ -44,5 +44,10 @@ namespace Epyks.Presentation
 	    {
 	        this.TxtNomUtilisateur.Text = membre.firstName + " " + membre.lastName;
 	    }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Serveur serveur = new Serveur();
+        }
 	}
 }

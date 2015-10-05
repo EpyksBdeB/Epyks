@@ -87,6 +87,7 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                                 <GridViewColumn/>
                             </GridView>
                         </ListView.View>
+                        <Button Content="Chat!" Width="75" Click="Button_Click"/>
                     </ListView>
 				</Grid>
 			</Border>
