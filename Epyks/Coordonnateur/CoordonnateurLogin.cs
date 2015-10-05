@@ -86,9 +86,9 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
         }
 
         public void Register(string firstname, string lastname, string email,
-            string username, string password, Genre gender)
+            string username, string password, Genre gender, String imgFilename, byte[] imageData, int fileSize)
         {
-            MembreDTO membre = new MembreDTO(firstname, lastname, username, password, email, gender);
+            MembreDTO membre = new MembreDTO(firstname, lastname, username, password, email, gender, imgFilename, imageData, fileSize);
             api.Register(membre);
         }
 

@@ -37,10 +37,13 @@ namespace Epyks.Application
         public string confirmPassword { get; set; }
         public string email { get; set; }
         public Genre gender { get; set; }
-        
+        public String imgfilename { get; set; }
+        public byte[] imageData { get; set; }
+        public int fileSize { get; set; }
+
 
         public MembreDTO(string firstName, string lastName, string username, string password,
-            string email, Genre gender)
+            string email, Genre gender, String imgfilename, byte[] imageData, int fileSize)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -48,6 +51,9 @@ namespace Epyks.Application
             this.password = password;
             this.email = email;
             this.gender = gender;
+            this.imgfilename = imgfilename;
+            this.imageData = imageData;
+            this.fileSize = fileSize;
         }
 
         public MembreDTO()

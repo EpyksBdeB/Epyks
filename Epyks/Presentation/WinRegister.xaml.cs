@@ -18,7 +18,10 @@ namespace Epyks.Presentation
 	{
         private CoordonnateurLogin coordinator;
 	    private WinLogin login;
-	    private bool errorShowned = false; 
+	    private bool errorShowned = false;
+	    private String filename;
+	    private byte[] imageData;
+	    private int fileSize;
 
 
 		public WinRegister(WinLogin login)
@@ -61,18 +64,19 @@ namespace Epyks.Presentation
 
         private void enregistrerImage()
         {
-            String filename = new Uri(ImgProfil.Source.ToString()).LocalPath;
-            byte[] ImageData;
+            filename = new Uri(ImgProfil.Source.ToString()).LocalPath;
             FileStream fs;
             BinaryReader br;
 
             fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             br = new BinaryReader(fs);
-            ImageData = br.ReadBytes((int)fs.Length);
+            fileSize = Convert.ToInt32(filename.Length);
+            imageData = br.ReadBytes((int)fs.Length);
             br.Close();
             fs.Close();
 
-            MessageBox.Show(ImageData.Length.ToString());
+            MessageBox.Show(imageData.Length.ToString());
+            MessageBox.Show(filename);
 
         }
 
@@ -94,7 +98,7 @@ namespace Epyks.Presentation
             {
                 coordinator.Register(TxtFirstName.Text, TxtLastName.Text, TxtEmail.Text,
                     TxtUsername.Text, TxtPassword.Password.ToString(),
-                    RadMale.IsChecked == true ? Genre.MALE : Genre.FEMALE);
+                    RadMale.IsChecked == true ? Genre.MALE : Genre.FEMALE, filename, imageData, fileSize);
                 this.Close();
             }
             else if (!errorShowned)
