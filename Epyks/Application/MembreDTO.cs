@@ -87,7 +87,7 @@ namespace Epyks.Application
                         }
                         break;
                     case "confirmPassword":
-                        if (this.confirmPassword != this.username)
+                        if (this.confirmPassword != null && !this.confirmPassword.Equals(this.password))
                         {
                             result = ERR_CONFIRM_PASSWORD_NOT_MATCH;
                         }
