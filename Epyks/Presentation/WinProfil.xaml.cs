@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Epyks.Application;
 using Epyks.Coordonnateur;
 
 namespace Epyks.Presentation
@@ -37,6 +38,16 @@ namespace Epyks.Presentation
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             winLogin.Show();
+        }
+
+	    public void recevoirMembre(MembreDTO membre)
+	    {
+	        this.TxtNomUtilisateur.Text = membre.firstName + " " + membre.lastName;
+	    }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Serveur serveur = new Serveur();
         }
 	}
 }

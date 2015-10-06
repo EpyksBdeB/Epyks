@@ -31,7 +31,7 @@ namespace Epyks
         private void BtnSendPassWord_Click(object sender, RoutedEventArgs e)
         {
             coordinator = CoordonnateurLogin.GetInstance();
-            if (TxtEmail.Text.ToString() != "")
+           if (TxtEmail.Text.ToString() != "")
             {
                 if (coordinator.VerifierEmail(TxtEmail.Text.ToString()))
                 {

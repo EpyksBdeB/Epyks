@@ -33,7 +33,7 @@ namespace Epyks.Application
         private void initializeDatabase()
         {
             //myConnectionstring = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
-            myConnectionstring = "server=melissa07.ddns.net;uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
+            myConnectionstring = "server=localhost;uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
@@ -116,10 +116,10 @@ namespace Epyks.Application
             return hasRows;
         }
 
-        public string getPassword(string password)
+        public string getPassword(string email)
         {
             string motDePasse = null;
-            string query = "SELECT password FROM utilisateur where password='" + password + "'";
+            string query = "SELECT password FROM utilisateur where email='" + email + "'";
             command = new MySqlCommand(query, this.connection);
 
             MySqlDataReader reader = command.ExecuteReader();
@@ -149,14 +149,19 @@ namespace Epyks.Application
 
             command = connection.CreateCommand();
             command.CommandText = "INSERT INTO utilisateur (username, password," +
-                                  "Nom, Prenom, email) VALUES (@nom_utilisateur, @mdp, @nom," +
-                                  "@prenom, @email)";
+                                  "Nom, Prenom, email, sexe, image, imgFile_name, imgFile_size) " +
+                                  "VALUES (@nom_utilisateur, @mdp, @nom," +
+                                  "@prenom, @email, @sexe, @image, @imgFile_name, @imgFile_size)";
             command.Parameters.AddWithValue("@nom_utilisateur", nouveauMembre.username);
             command.Parameters.AddWithValue("@mdp", nouveauMembre.password);
             command.Parameters.AddWithValue("@nom", nouveauMembre.lastName);
             command.Parameters.AddWithValue("@prenom", nouveauMembre.firstName);
             command.Parameters.AddWithValue("@email", nouveauMembre.email);
             command.Parameters.AddWithValue("@sexe", Enum.GetName(typeof(Genre), nouveauMembre.gender));
+            command.Parameters.AddWithValue("@image", nouveauMembre.imageData);
+            command.Parameters.AddWithValue("@imgFile_name", nouveauMembre.imgFileName);
+            command.Parameters.AddWithValue("@imgFile_size", nouveauMembre.fileSize);
+
            // connection.Open();
             command.ExecuteNonQuery();
             return Convert.ToInt32(command.LastInsertedId);
