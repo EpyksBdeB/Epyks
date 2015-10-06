@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -78,7 +79,7 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
             string htmlBody;
             htmlBody = "You password for you Epyks account is : " + password;
             mail.Body = htmlBody;
-            SmtpServer.Port = 587;
+            //SmtpServer.Port = 8080;
             SmtpServer.UseDefaultCredentials = false;
             SmtpServer.Credentials = new System.Net.NetworkCredential("epyks_ogc@hotmail.com", "EpyksEpyks");
             SmtpServer.EnableSsl = true;

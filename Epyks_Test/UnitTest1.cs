@@ -4,6 +4,7 @@ using NUnit.Framework;
 using Epyks.Coordonnateur;
 using Epyks.Presentation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Core;
 using Assert = NUnit.Framework.Assert;
 
 namespace Epyks_Test
@@ -44,11 +45,17 @@ namespace Epyks_Test
         //    MembreDAO connection = new MembreDAO();
         //}
 
-        //[TestMethod]
-        //public void testFindById()
-        //{
-        //    //Membre m = mDao.getMember(1);
-        //}
+        [Test]
+        public void testFindById()
+        {
+            byte[] test = new byte[1];
+            Facade f = Facade.GetInstance();
+            
+           //Membre m = mDao.getMember(1);
+            MembreDTO mdto = new MembreDTO("Christelle", "Sissoko", "mel08", "pass", "mel@gmail.com", Genre.FEMALE, "",test,0);
+            f.Register(mdto);
+            
+        }
 
         //[Test]
         //public void testInsertUsernameAlreadyTaken()
@@ -59,40 +66,42 @@ namespace Epyks_Test
         //    Assert.AreEqual(nbRow, 1);
         //}
 
-        //[Test]
-        //public void testUsernameValide()
-        //{
-        //    CoordonnateurLogin log = new CoordonnateurLogin();
-        //    int nbRow = log.verifierNomUtilisateurBD("Castropeo");
-        //    Assert.AreEqual(nbRow, 0);
-        //}
+        [Test]
+        public void testUsernameValide()
+        {
+            CoordonnateurLogin log = CoordonnateurLogin.GetInstance();
+            bool exist = log.verifierNomUtilisateurBD("mel07");
 
-        //[Test]
-        //public void TestInsertFonctionnel()
-        //{
-        //    CoordonnateurLogin log = new CoordonnateurLogin();
-        //    log.validerEntrees("Christelle", "s", "epyks@gmail.com", "Epyks", "s", "s");
-        //    int nbRow = mDao.trouverUsername("Epyks");
-        //    Assert.AreEqual(nbRow, 1);
-        //}
+             Assert.IsTrue(exist);
+        }
 
-        //[Test]
-        //public void testDeleteUser()
-        //{
-        //    CoordonnateurLogin log = new CoordonnateurLogin();
-        //    mDao.deleteMember("Epyks");
-        //    int nbRow = mDao.trouverUsername("Epyks");
+        /*[Test]
+        public void TestInsertFonctionnel()
+        {
+            CoordonnateurLogin log = CoordonnateurLogin.GetInstance();
+            
+            log.validerEntrees("Christelle", "s", "epyks@gmail.com", "Epyks", "s", "s");
+            int nbRow = mDao.trouverUsername("Epyks");
+            Assert.AreEqual(nbRow, 1);
+        }*/
 
-        //    Assert.AreEqual(nbRow, 0);
-        //}
+       /* [Test]
+        public void testDeleteUser()
+        {
+            CoordonnateurLogin log = CoordonnateurLogin.GetInstance();
+            log
+            mDao.deleteMember("Epyks");
+            int nbRow = mDao.trouverUsername("Epyks");
 
-        //[Test]
-        //public void testGetUserPassword()
-        //{
-        //    CoordonnateurLogin log = new CoordonnateurLogin();
-        //    //log.Login("m", "m");
-        //    Assert.AreEqual("m", mDao.getMember("m").getPassword());
-        //}
+            Assert.AreEqual(nbRow, 0);
+        }*/
+
+       /* [Test]
+        public void testGetUserPassword()
+        {
+            CoordonnateurLogin log = CoordonnateurLogin.GetInstance();
+            Assert.AreEqual("m", mDao.getMember("m").getPassword());
+        }*/
 
         //[Test]
         //public void testGetAllMember(){

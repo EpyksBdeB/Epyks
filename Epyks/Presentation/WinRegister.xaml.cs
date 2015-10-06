@@ -65,18 +65,33 @@ namespace Epyks.Presentation
         private void enregistrerImage()
         {
             filename = new Uri(ImgProfil.Source.ToString()).LocalPath;
-            FileStream fs;
-            BinaryReader br;
+            FileStream fs = null;
+            BinaryReader br = null;
 
-            fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            br = new BinaryReader(fs);
-            fileSize = Convert.ToInt32(filename.Length);
-            imageData = br.ReadBytes((int)fs.Length);
-            br.Close();
-            fs.Close();
+            //if (!(String.IsNullOrEmpty(filename)) || !(filename.Equals("C:/Resources/profil_default.png")))
+            //{
+                try
+                {
+                    fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+                    br = new BinaryReader(fs);
+                    fileSize = Convert.ToInt32(filename.Length);
+                    imageData = br.ReadBytes((int)fs.Length);
 
-            MessageBox.Show(imageData.Length.ToString());
-            MessageBox.Show(filename);
+                    br.Close();
+                    fs.Close();
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    //
+                }
+
+                
+                
+            //}
+                
+
+            //MessageBox.Show(imageData.Length.ToString());
+            //MessageBox.Show(filename);
 
         }
 
