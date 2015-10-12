@@ -48,6 +48,9 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
             api = Facade.GetInstance();
         }
 
+        /*
+         * Testé
+         */
         public bool Login(string username, string password)
         {
            return api.Login(username, password);
@@ -58,18 +61,28 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
             throw new NotImplementedException();
         }
 
+        /*
+         * Testé
+         */
         public bool VerifierEmail(string email)
         {
             return api.EmailExist(email);
         }
 
+        /*
+         * Testé
+         */
         public string recoverPassword(string email)
         {
             return api.recupererPassword(email);
         }
 
-        public void envoyerPassword(string password, string emailDest)
+        /*
+         * Testé
+         */
+        public bool envoyerPassword(string password, string emailDest)
         {
+            SmtpFailedRecipientException exception = null;
             SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
             var mail = new MailMessage();
             mail.From = new MailAddress("epyks_ogc@hotmail.com");
@@ -83,9 +96,20 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
             SmtpServer.UseDefaultCredentials = false;
             SmtpServer.Credentials = new System.Net.NetworkCredential("epyks_ogc@hotmail.com", "EpyksEpyks");
             SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mail);
+            try
+            {
+                SmtpServer.Send(mail);
+            }
+            catch (SmtpFailedRecipientException ex)
+            {
+                exception = ex;
+            }
+            return exception == null;
         }
 
+        /*
+         * Testé
+         */
         public void Register(string firstname, string lastname, string email,
             string username, string password, Genre gender, String imgFilename, byte[] imageData, int fileSize)
         {
@@ -142,6 +166,9 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
         //    return messageErreur;
         //}
 
+        /*
+         * Testé
+         */
         public bool verifierNomUtilisateurBD(string username)
         {
             return api.UsernameExist(username);

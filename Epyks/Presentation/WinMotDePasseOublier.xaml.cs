@@ -40,7 +40,6 @@ namespace Epyks
                     Hide();
                     winLogin.ResetFields();
                     winLogin.Show();
-                    //message qui confirme l'envoi??
                 }
                 else
                 {
