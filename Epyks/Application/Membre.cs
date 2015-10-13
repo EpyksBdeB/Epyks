@@ -26,6 +26,7 @@ namespace Epyks.Application
         internal String imgFileName { get; set; }
         internal byte[] imageData { get; set; }
         internal int fileSize { get; set; }
+        internal MessageStack MessageStack { get; private set; }
 
         internal Membre(int id,string firstName, string lastName, string username, string password,
             string email, Genre gender, String imgFileName, byte[] imageData, int fileSize)
@@ -40,6 +41,7 @@ namespace Epyks.Application
             this.imgFileName = imgFileName;
             this.imageData = imageData;
             this.fileSize = fileSize;
+            this.MessageStack = new MessageStack();
         }
 
         internal Membre(MembreDTO membre)
@@ -57,6 +59,11 @@ namespace Epyks.Application
 
         internal Membre()
         {
+        }
+
+        internal void SubscribeToStack(IObserver<Message> observer)
+        {
+            MessageStack.Subscribe(observer);
         }
     }
 }

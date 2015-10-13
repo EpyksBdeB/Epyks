@@ -32,6 +32,7 @@ namespace EpyksServer
             try
             {
                 string line = "";
+                string temp = "";
                 TcpClient destinationClient = null;
                 StreamWriter writer =null;
                 int destinationId =-1;
@@ -39,12 +40,27 @@ namespace EpyksServer
                 while (serveur.ServerUp && client.Connected)
                 {
                     line = reader.ReadLine();
-                    destinationId = Convert.ToInt32(Regex.Replace(line, @"^<userid>(\d+?)</userid>.*$", "$1"));
-                    destinationClient = serveur.ClientList[destinationId];
-                    if (destinationClient != null)
+                    if (String.IsNullOrEmpty(line))
                     {
-                        writer = new StreamWriter(destinationClient.GetStream());
-                        writer.WriteLine(line); 
+                        temp = Regex.Replace(line, @".*?<userid>(\d+?)</userid>.*$", "$1");
+                        if (temp.Equals("TOUS"))
+                        {
+                            foreach (TcpClient destClient in serveur.ClientList.Values)
+                            {
+                                writer = new StreamWriter(destClient.GetStream());
+                                writer.WriteLine(line);
+                            }
+                        }
+                        else
+                        {
+                            destinationId = Convert.ToInt32(temp);
+                            destinationClient = serveur.ClientList[destinationId];
+                            if (destinationClient != null)
+                            {
+                                writer = new StreamWriter(destinationClient.GetStream());
+                                writer.WriteLine(line);
+                            }
+                        }
                     }
                 }
             }
