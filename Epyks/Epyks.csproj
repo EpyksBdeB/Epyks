@@ -106,20 +106,20 @@
     <Compile Include="Application\MembreDTO.cs" />
     <Compile Include="Application\Serveur.cs" />
     <Compile Include="Coordonnateur\CoordonnateurLogin.cs" />
-    <Compile Include="obj\Presentation\PasswordHelper.cs" />
-    <Compile Include="obj\Presentation\WinChat.xaml.cs">
+    <Compile Include="Presentation\PasswordHelper.cs" />
+    <Compile Include="Presentation\WinChat.xaml.cs">
       <DependentUpon>WinChat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="obj\Presentation\WinLogin.xaml.cs">
+    <Compile Include="Presentation\WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="obj\Presentation\WinMotDePasseOublier.xaml.cs">
+    <Compile Include="Presentation\WinMotDePasseOublier.xaml.cs">
       <DependentUpon>WinMotDePasseOublier.xaml</DependentUpon>
     </Compile>
-    <Compile Include="obj\Presentation\WinProfil.xaml.cs">
+    <Compile Include="Presentation\WinProfil.xaml.cs">
       <DependentUpon>WinProfil.xaml</DependentUpon>
     </Compile>
-    <Compile Include="obj\Presentation\WinRegister.xaml.cs">
+    <Compile Include="Presentation\WinRegister.xaml.cs">
       <DependentUpon>WinRegister.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -140,23 +140,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="obj\Presentation\WinChat.xaml">
+    <Page Include="Presentation\WinChat.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="obj\Presentation\WinLogin.xaml">
+    <Page Include="Presentation\WinLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="obj\Presentation\WinMotDePasseOublier.xaml">
+    <Page Include="Presentation\WinMotDePasseOublier.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="obj\Presentation\WinProfil.xaml">
+    <Page Include="Presentation\WinProfil.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="obj\Presentation\WinRegister.xaml">
+    <Page Include="Presentation\WinRegister.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -179,9 +179,9 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <AppDesigner Include="Properties\" />
-    <Resource Include="obj\Presentation\Absent.png" />
-    <Resource Include="obj\Presentation\Deconnecte.png" />
-    <Resource Include="obj\Presentation\EnLigne.png" />
+    <Resource Include="Presentation\Absent.png" />
+    <Resource Include="Presentation\Deconnecte.png" />
+    <Resource Include="Presentation\EnLigne.png" />
     <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Loupe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
