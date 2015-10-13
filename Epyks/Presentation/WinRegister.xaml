@@ -30,6 +30,7 @@
 							</VisualBrush.Visual>
 						</VisualBrush>
 					</Style.Resources>
+					<Setter Property="Background" Value="#00000000" />
 					<Style.Triggers>
 						<Trigger Property="Text" Value="{x:Static sys:String.Empty}">
 							<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
@@ -122,6 +123,7 @@
 							</VisualBrush.Visual>
 						</VisualBrush>
 					</Style.Resources>
+					<Setter Property="Background" Value="#00000000" />
 					<Style.Triggers>
 						<Trigger Property="Text" Value="{x:Static sys:String.Empty}">
 							<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
@@ -158,6 +160,7 @@
 							</VisualBrush.Visual>
 						</VisualBrush>
 					</Style.Resources>
+					<Setter Property="Background" Value="#00000000" />
 					<Style.Triggers>
 						<Trigger Property="Text" Value="{x:Static sys:String.Empty}">
 							<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
@@ -194,6 +197,7 @@
 							</VisualBrush.Visual>
 						</VisualBrush>
 					</Style.Resources>
+					<Setter Property="Background" Value="#00000000" />
 					<Style.Triggers>
 						<Trigger Property="Text" Value="{x:Static sys:String.Empty}">
 							<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />

@@ -44,6 +44,7 @@ namespace Epyks.Presentation
             if (coordinator.Login(TxtUsername.Text, TxtPassword.Password))
             {
                 MembreDTO mdto = new MembreDTO();
+                LblInvalidError.Visibility = Visibility.Hidden;
                 mdto.firstName = m.firstName;
                 mdto.lastName = m.lastName;
                 mdto.username = m.username;
@@ -52,6 +53,10 @@ namespace Epyks.Presentation
                 ResetFields();
                 winProfil.recevoirMembre(mdto);
                 winProfil.Show();
+            }
+            else
+            {
+                LblInvalidError.Visibility = Visibility.Visible;
             }
         }
 

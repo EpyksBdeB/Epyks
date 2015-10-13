@@ -37,24 +37,22 @@ namespace Epyks
                 {
                     string password = coordinator.recoverPassword(TxtEmail.Text.ToString());
                     coordinator.envoyerPassword(password, TxtEmail.Text.ToString());
-                    Hide();
-                    winLogin.ResetFields();
-                    winLogin.Show();
+                    LblEmailError.Visibility = Visibility.Hidden;
+                    this.Close();
                 }
                 else
                 {
-                    //error provider 
+                    LblEmailError.Visibility = Visibility.Visible; 
                 }
             }
             else
             {
-                //message error
+                LblEmailError.Visibility = Visibility.Visible;
             }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Hide();
             winLogin.ResetFields();
             winLogin.Show();
         }

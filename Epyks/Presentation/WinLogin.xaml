@@ -16,6 +16,7 @@
     						</VisualBrush.Visual>
     					</VisualBrush>
     				</Style.Resources>
+					<Setter Property="Background" Value="#00000000" />
     				<Style.Triggers>
     					<Trigger Property="Text" Value="{x:Static sys:String.Empty}">
     						<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
@@ -46,9 +47,10 @@
     	</PasswordBox>
     	<Button x:Name="BtnLogin" Style="{StaticResource FadeOutButton}" Content="Log in" HorizontalAlignment="Left" Margin="382,213,0,0" VerticalAlignment="Top" FontSize="18.27" Background="#FFC926FF" Foreground="White" Width="160" Height="106" Cursor="Hand" BorderBrush="{x:Null}" BorderThickness="0" Opacity="1" Click="BtnLogin_Click"/>
     	<Button x:Name="BtnGoRegister" Style="{StaticResource FadeOutButton}" Content="Create account" HorizontalAlignment="Left" Margin="0,440,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Click="BtnGoRegister_Click" Cursor="Hand" Padding="0" Width="600" Height="61" Background="#FFDB6FFF" BorderThickness="0" Opacity="1"/>
-    	<Image x:Name="ImgLogo" HorizontalAlignment="Left" Height="85" Margin="62,107,0,0" VerticalAlignment="Top" Width="247" Source="pack://siteoforigin:,,,/Resources/epyks_logo.png"/>
+    	<Image x:Name="ImgLogo" HorizontalAlignment="Left" Height="85" Margin="62,87,0,0" VerticalAlignment="Top" Width="247" Source="pack://siteoforigin:,,,/Resources/epyks_logo.png"/>
     	<Button x:Name="BtnForgotPassWord" Style="{StaticResource FadeOutButton}" Content="Forgot you password?" HorizontalAlignment="Left" Margin="58,324,0,0" VerticalAlignment="Top" FontSize="13
 		" Foreground="Violet" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="484" Height="20" Background="White" BorderThickness="0" Opacity="1" Click="BtnForgotPassWord_Click"/>
+    	<Label x:Name="LblInvalidError" Content="Username or password invalid" HorizontalAlignment="Left" Margin="58,358,0,0" VerticalAlignment="Top" Width="484" Foreground="#FFC926FF" HorizontalContentAlignment="Center" Visibility="Hidden"/>
         
     </Grid>
 </Window>
