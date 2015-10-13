@@ -28,6 +28,14 @@ namespace Epyks
 			// Insérez le code requis pour la création d’objet sous ce point.
 		}
 
+        /// <summary>
+        /// Appel le coordonnateurLogin pour
+        /// vérifier si le email existe puis 
+        /// récupère le password et l'envoi par email.
+        /// Ferme la fenêtre après l'envoie.
+        /// </summary>
+        /// <param name="sender">Bouton send password</param>
+        /// <param name="e"></param>
         private void BtnSendPassWord_Click(object sender, RoutedEventArgs e)
         {
             coordinator = CoordonnateurLogin.GetInstance();
@@ -52,6 +60,11 @@ namespace Epyks
             }
         }
 
+        /// <summary>
+        /// Ferme la fenetre Mot de pass oublié
+        /// </summary>
+        /// <param name="sender">Fenêtre mot de passe oublié</param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Hide();

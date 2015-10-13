@@ -107,9 +107,6 @@
     <Compile Include="Application\Serveur.cs" />
     <Compile Include="Coordonnateur\CoordonnateurLogin.cs" />
     <Compile Include="Presentation\PasswordHelper.cs" />
-    <Compile Include="Presentation\WinChat.xaml.cs">
-      <DependentUpon>WinChat.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
@@ -140,10 +137,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Presentation\WinChat.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Presentation\WinLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
