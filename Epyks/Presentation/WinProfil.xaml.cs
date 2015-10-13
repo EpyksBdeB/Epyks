@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,18 +26,22 @@ namespace Epyks.Presentation
 	/// </summary>
 	public partial class WinProfil : Window
 	{
-	    private CoordonnateurLogin coordinateur;
-
-	    private WinLogin winLogin;
+	    private CoordonateurMembreCourant coordinateur;
 
         public WinProfil(WinLogin winLogin)
 		{
 			this.InitializeComponent();
-
-            this.winLogin = winLogin;
+            coordinateur = CoordonateurMembreCourant.GetInstance();
+            this.creerProfil();
 		}
 
-        private void MenuStatusItem_Click(object sender, RoutedEventArgs e)
+	    private void creerProfil()
+	    {
+	        MembreDTO mDtoCourant = coordinateur.getMembreCourant();
+	        this.TxtNomUtilisateur.Text = mDtoCourant.username;
+	    }
+
+	    private void MenuStatusItem_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -48,18 +53,22 @@ namespace Epyks.Presentation
         /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            winLogin.Show();
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Affiche les informations de l'utilisateur connecté
         /// </summary>
         /// <param name="membre">Instance de membreDTO du membre se connectant</param>
 	    public void recevoirMembre(MembreDTO membre)
+=======
+/*	    public void recevoirMembre(MembreDTO membre)
+>>>>>>> 22b901a0d0e98eb8d106a2b8dc0e17c62243d73d
 	    {
 	        this.TxtNomUtilisateur.Text = membre.firstName + " " + membre.lastName;
 	        this.txtUsername.Text = membre.username;
 	    }
+ * */
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

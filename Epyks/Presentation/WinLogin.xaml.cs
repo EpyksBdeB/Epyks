@@ -74,10 +74,10 @@ namespace Epyks.Presentation
                 mdto.firstName = m.firstName;
                 mdto.lastName = m.lastName;
                 mdto.username = m.username;
+                
 
                 Hide();
                 ResetFields();
-                winProfil.recevoirMembre(mdto);
                 winProfil.Show();
             }
         }

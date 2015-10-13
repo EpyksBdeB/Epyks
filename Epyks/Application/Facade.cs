@@ -53,5 +53,11 @@ namespace Epyks.Application
         {
            return dao.getPassword(email);
         }
+
+        public MembreDTO getMembreCourant()
+        {
+            membreCourant = new Membre();
+            return membreCourant.getDTO();
+        }
     }
 }

@@ -58,5 +58,21 @@ namespace Epyks.Application
         internal Membre()
         {
         }
+
+        internal MembreDTO getDTO()
+        {
+            MembreDTO mdto = new MembreDTO();
+            mdto.firstName = this.firstName;
+            mdto.lastName = this.lastName;
+            mdto.email = this.email;
+            mdto.gender = this.gender;
+            mdto.password = this.password;
+            mdto.username = this.username;
+            mdto.fileSize = this.fileSize;
+            mdto.imgfilename = this.imgFileName;
+            mdto.imageData = this.imageData;
+
+            return mdto;
+        }
     }
 }
