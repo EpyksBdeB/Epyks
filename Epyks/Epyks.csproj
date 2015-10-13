@@ -105,6 +105,7 @@
     <Compile Include="Application\MembreDAOInterface.cs" />
     <Compile Include="Application\MembreDTO.cs" />
     <Compile Include="Application\Serveur.cs" />
+    <Compile Include="Coordonnateur\CoordonateurMembreCourant.cs" />
     <Compile Include="Coordonnateur\CoordonnateurLogin.cs" />
     <Compile Include="Presentation\PasswordHelper.cs" />
     <Compile Include="Presentation\WinChat.xaml.cs">

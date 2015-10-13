@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,32 +20,36 @@ namespace Epyks.Presentation
 	/// </summary>
 	public partial class WinProfil : Window
 	{
-	    private CoordonnateurLogin coordinateur;
-
-	    private WinLogin winLogin;
+	    private CoordonateurMembreCourant coordinateur;
 
         public WinProfil(WinLogin winLogin)
 		{
 			this.InitializeComponent();
-
-            this.winLogin = winLogin;
+            coordinateur = CoordonateurMembreCourant.GetInstance();
+            this.creerProfil();
 		}
 
-        private void MenuStatusItem_Click(object sender, RoutedEventArgs e)
+	    private void creerProfil()
+	    {
+	        MembreDTO mDtoCourant = coordinateur.getMembreCourant();
+	        this.TxtNomUtilisateur.Text = mDtoCourant.username;
+	    }
+
+	    private void MenuStatusItem_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            winLogin.Show();
         }
 
-	    public void recevoirMembre(MembreDTO membre)
+/*	    public void recevoirMembre(MembreDTO membre)
 	    {
 	        this.TxtNomUtilisateur.Text = membre.firstName + " " + membre.lastName;
 	        this.txtUsername.Text = membre.username;
 	    }
+ * */
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
