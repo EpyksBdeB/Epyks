@@ -37,29 +37,26 @@ namespace Epyks_Test
             Assert.IsTrue(coord.verifierNomUtilisateurBD("castropeo"));
         }
 
-        [TestMethod]
+        [Test]
         public void testerConnection()
         {
             CoordonnateurLogin coord = CoordonnateurLogin.GetInstance();
+            Assert.IsNotNull(coord);
         }
-
-        //[Test]
-        //public void testFindById()
-        //{
-        //    byte[] test = new byte[1];
-        //    Facade f = Facade.GetInstance();
-            
-        //   //Membre m = mDao.getMember(1);
-        //    MembreDTO mdto = new MembreDTO("Christelle", "Sissoko", "mel08", "pass", "mel@gmail.com", Genre.FEMALE, "",test,0);
-        //    f.Register(mdto);
-            
-        //}
 
         [Test]
         public void testUsernameValide()
         {
             CoordonnateurLogin log = CoordonnateurLogin.GetInstance();
             bool exist = log.verifierNomUtilisateurBD("mel07");
+            Assert.IsTrue(exist);
+        }
+
+        [Test]
+        public void testEmailValide()
+        {
+            CoordonnateurLogin log = CoordonnateurLogin.GetInstance();
+            bool exist = log.VerifierEmail("ene@gmail.com");
             Assert.IsTrue(exist);
         }
 
