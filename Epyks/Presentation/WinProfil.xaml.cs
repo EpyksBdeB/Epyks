@@ -59,12 +59,7 @@ namespace Epyks.Presentation
         /// Affiche les informations de l'utilisateur connecté
         /// </summary>
         /// <param name="membre">Instance de membreDTO du membre se connectant</param>
-	    public void recevoirMembre(MembreDTO membre)
-	    {
-	        this.TxtNomUtilisateur.Text = membre.firstName + " " + membre.lastName;
-	        this.txtUsername.Text = membre.username;
-	    }
-
+        /// 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Serveur serveur = new Serveur();
