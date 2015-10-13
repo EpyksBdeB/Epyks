@@ -92,7 +92,7 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
             string htmlBody;
             htmlBody = "You password for you Epyks account is : " + password;
             mail.Body = htmlBody;
-            //SmtpServer.Port = 8080;
+            SmtpServer.Port = 587;
             SmtpServer.UseDefaultCredentials = false;
             SmtpServer.Credentials = new System.Net.NetworkCredential("epyks_ogc@hotmail.com", "EpyksEpyks");
             SmtpServer.EnableSsl = true;
