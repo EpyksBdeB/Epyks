@@ -6,6 +6,10 @@ namespace Epyks.Presentation
 {
     /// <summary>
     /// Logique d'interaction pour WinLogin.xaml
+    /// Fenêtre Login:
+    /// --------------
+    /// Permet à un utilisateur de se connecter à 
+    /// l'aide de son username et son password
     /// </summary>
     public partial class WinLogin : Window
     {
@@ -16,11 +20,23 @@ namespace Epyks.Presentation
                 coordinator = CoordonnateurLogin.GetInstance();
         }
 
+        /// <summary>
+        /// Change le background du passwordBox lorsqu'il
+        /// obtient le focus
+        /// </summary>
+        /// <param name="sender">Le passwordBox</param>
+        /// <param name="e"></param>
         private void TxtPassword_GotFocus(object sender, RoutedEventArgs e)
         {
             TxtPassword.Background.Opacity = 0;
         }
 
+        /// <summary>
+        /// Met le background du password transparent lorsque
+        /// perte de focus
+        /// </summary>
+        /// <param name="sender">Le passwordBox</param>
+        /// <param name="e"></param>
         private void TxtPassword_LostFocus(object sender, RoutedEventArgs e)
         {
             if (TxtPassword.Password.Length == 0)
@@ -28,7 +44,12 @@ namespace Epyks.Presentation
                 TxtPassword.Background.Opacity = 1;
             }
         }
-
+        
+        /// <summary>
+        /// Affiche la fenêtre Register
+        /// </summary>
+        /// <param name="sender">Bouton register</param>
+        /// <param name="e"></param>
         private void BtnGoRegister_Click(object sender, RoutedEventArgs e)
         {
             WinRegister winRegister = new WinRegister(this);
@@ -36,6 +57,12 @@ namespace Epyks.Presentation
             winRegister.Show();
         }
 
+        /// <summary>
+        /// Affiche la fenêtre Profil avec
+        /// les informations de l'utilisateur connecté
+        /// </summary>
+        /// <param name="sender">Bouton Login</param>
+        /// <param name="e"></param>
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             WinProfil winProfil = new WinProfil(this);
@@ -48,10 +75,10 @@ namespace Epyks.Presentation
                 mdto.firstName = m.firstName;
                 mdto.lastName = m.lastName;
                 mdto.username = m.username;
+                
 
                 Hide();
                 ResetFields();
-                winProfil.recevoirMembre(mdto);
                 winProfil.Show();
             }
             else
@@ -60,12 +87,21 @@ namespace Epyks.Presentation
             }
         }
 
+        /// <summary>
+        /// Réinitialise les champs de la
+        /// fenêtre login (username, password)
+        /// </summary>
         public void ResetFields()
         {
             TxtUsername.Text = null;
             TxtPassword.Password = null;
         }
 
+        /// <summary>
+        /// Affiche la fenêtre mot de passe oublié
+        /// </summary>
+        /// <param name="sender">Bouton Forgot Password</param>
+        /// <param name="e"></param>
         private void BtnForgotPassWord_Click(object sender, RoutedEventArgs e)
         {
            WinMotDePasseOublier winForgotPassword = new WinMotDePasseOublier(this);
