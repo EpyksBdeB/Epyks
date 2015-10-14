@@ -20,17 +20,24 @@ namespace Epyks.Presentation
 	/// </summary>
 	public partial class WinRegister : Window
 	{
+        private const string ERR_PASSWORD_EMPTY = "Le mot de passe est obligatoire";
+        private const string ERR_CONFIRM_PASSWORD_NOT_MATCH = "Les deux mots de passe sont différents";
+
         private CoordonnateurLogin coordinator;
 	    private WinLogin login;
 	    private bool errorShowned = false;
 	    private String filename;
 	    private byte[] imageData;
 	    private int fileSize;
+	    private ControlTemplate passwordDefaultTemplate;
+	    private ControlTemplate confirmPasswordDefaultTemplate;
 
 		public WinRegister(WinLogin login)
 		{
 			this.InitializeComponent();
 		    this.login = login;
+		    passwordDefaultTemplate = TxtPassword.Template;
+		    confirmPasswordDefaultTemplate = TxtConfirmPassword.Template;
 		}
 
         /// <summary>
@@ -47,19 +54,48 @@ namespace Epyks.Presentation
 
         /// <summary>
         /// Met le background du password transparent lorsque
-        /// perte de focus
+        /// perte de focus et fait la validation
         /// </summary>
         /// <param name="sender">Le passwordBox</param>
         /// <param name="e"></param>
-        private void PasswordLostFocus(object sender, RoutedEventArgs e)
+        private void TxtPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            PasswordBox passwordBox = (PasswordBox)sender;
-           // BindingExpression binding = passwordBox.GetBindingExpression(PasswordHelper.PasswordProperty);
-            if (passwordBox.Password.Length == 0)
+            ValidationError validationError = new ValidationError(new DataErrorValidationRule(), TxtPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            validationError.ErrorContent = ERR_CONFIRM_PASSWORD_NOT_MATCH;
+            if (TxtPassword.Password.Length == 0)
             {
-                passwordBox.Background.Opacity = 1;
+                TxtPassword.Background.Opacity = 1;
+                Validation.MarkInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty), validationError);
             }
-            //binding.UpdateSource();
+            else
+            {
+                Validation.ClearInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            }
+        }
+
+        /// <summary>
+        /// Met le background du password transparent lorsque
+        /// perte de focus et fait la validation
+        /// </summary>
+        /// <param name="sender">Le passwordBox</param>
+        /// <param name="e"></param>
+        private void TxtConfirmPassword_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidationError validationError = new ValidationError(new DataErrorValidationRule(), TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            validationError.ErrorContent = ERR_CONFIRM_PASSWORD_NOT_MATCH;
+            if (TxtConfirmPassword.Password.Length == 0)
+            {
+                TxtConfirmPassword.Background.Opacity = 1;
+            }
+
+            if (!TxtConfirmPassword.Password.Equals(TxtPassword.Password))
+            {
+                Validation.MarkInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty),validationError);
+            }
+            else
+            {
+                Validation.ClearInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            }
         }
 
         /// <summary>
