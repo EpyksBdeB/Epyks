@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -92,6 +93,26 @@ namespace Epyks.Application
         {
             membreCourant = new Membre();
             return membreCourant.getDTO();
+        }
+
+        public ArrayList getMembreListAmis(int id)
+        {
+            return dao.getListAmis(id);
+        }
+
+        public ArrayList getListResultat(string caracteres)
+        {
+            return dao.getListResultatRecherche(caracteres);
+        }
+
+        public void ajoutDunAmis(int idUtilisateur, int idAmis)
+        {
+            dao.ajouterUnAmis(idUtilisateur, idAmis);
+        }
+
+        public int getNewAmisId(string username)
+        {
+            return dao.getMemberIdByUsername(username);
         }
     }
 }

@@ -10,7 +10,7 @@ using Assert = NUnit.Framework.Assert;
 namespace Epyks_Test
 {
     [TestFixture]
-    public class UnitTest1
+    public class TestCoordonnateurLogin
     {
         CoordonnateurLogin coord;
         [TestFixtureSetUp]
