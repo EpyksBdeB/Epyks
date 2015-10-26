@@ -57,11 +57,11 @@ namespace Epyks.Application
 
         internal Membre()
         {
+            
         }
 
         internal MembreDTO getDTO()
         {
-            MembreDTO mdto = new MembreDTO();
             mdto.firstName = this.firstName;
             mdto.lastName = this.lastName;
             mdto.email = this.email;

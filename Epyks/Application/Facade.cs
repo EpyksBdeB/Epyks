@@ -56,8 +56,7 @@ namespace Epyks.Application
 
         public MembreDTO getMembreCourant()
         {
-            membreCourant = new Membre();
-            return membreCourant.getDTO();
+            //return membreCourant.getDTO(membreCourant);
         }
     }
 }
