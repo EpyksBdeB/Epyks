@@ -77,7 +77,8 @@
             </PasswordBox.Style>
             <w:PasswordHelper.Password>
                 <Binding Path="password" Source="{StaticResource membre}"
-                        ValidatesOnDataErrors="True"   
+                        ValidatesOnDataErrors="True"
+                        ValidatesOnExceptions="True"
                         UpdateSourceTrigger="LostFocus">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>
@@ -105,7 +106,8 @@
 			</PasswordBox.Style>
             <w:PasswordHelper.Password>
                 <Binding Path="confirmPassword" Source="{StaticResource membre}"
-                        ValidatesOnDataErrors="True"   
+                        ValidatesOnDataErrors="True"
+                        ValidatesOnExceptions="True"
                         UpdateSourceTrigger="LostFocus">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>

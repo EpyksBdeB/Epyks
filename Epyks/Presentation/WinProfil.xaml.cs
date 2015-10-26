@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Epyks.Application;
 using Epyks.Coordonnateur;
+using System.Collections;
 
 namespace Epyks.Presentation
 {
@@ -28,6 +29,10 @@ namespace Epyks.Presentation
 	{
 	    private CoordonateurMembreCourant coordinateur;
 
+        private bool enModeRecherche = false;
+
+        private MembreDTO mDtoCourant;
+
         public WinProfil(WinLogin winLogin)
 		{
 			this.InitializeComponent();
@@ -37,7 +42,7 @@ namespace Epyks.Presentation
 
 	    private void creerProfil()
 	    {
-	        MembreDTO mDtoCourant = coordinateur.getMembreCourant();
+	        mDtoCourant = coordinateur.getMembreCourant();
 	        this.TxtNomUtilisateur.Text = mDtoCourant.username;
 	    }
 
@@ -64,5 +69,89 @@ namespace Epyks.Presentation
         {
             //Serveur serveur = new Serveur();
         }
+
+        private void Bouton_rechercher_click(object sender, RoutedEventArgs e)
+        {
+            enModeRecherche = true;
+            string caractereRecherche = textRechercher.Text;
+            ArrayList listResultatRecherche = coordinateur.getListResultatRecherche(caractereRecherche);
+            if (listResultatRecherche.Count == 0)
+            {
+                AfficherAucunResultat();
+            }
+            else
+            {
+                AfficherResultatRecherche(listResultatRecherche);
+            }
+        }
+
+
+        /// <summary>
+        /// Methode qui rempli la liste d'amis de l'utilisateur
+        /// </summary>
+        private void RemplirListDamis()
+        {
+            ArrayList listAmis = coordinateur.getListAmis(mDtoCourant.id);
+            foreach (string nomAmis in listAmis)
+            {
+                listViewContact.Items.Add(nomAmis);
+            }
+        }
+
+        /// <summary>
+        /// Methode qui affiche qu'aucun resultat n'a été trouvé
+        /// </summary>
+        private void AfficherAucunResultat()
+        {
+            listViewContact.Items.Clear();
+            listViewContact.Items.Add("No Results Found");
+        }
+
+        /// <summary>
+        /// Methode qui affiche les resultat de la recherche
+        /// </summary>
+        /// <param name="resultat">list des amis trouvé</param>
+        private void AfficherResultatRecherche(ArrayList resultat)
+        {
+            listViewContact.Items.Clear();
+            foreach (string nomAmis in resultat)
+            {
+                listViewContact.Items.Add(nomAmis);
+            }
+        }
+
+        /// <summary>
+        /// Listener pour le choix ajout d'un amis.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listViewContact_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (enModeRecherche)
+            {
+                string usernameAmis = (string)listViewContact.SelectedItems[0];
+                if (!usernameAmis.Equals("No Results Found"))
+                {
+                    AjouterCeContactAuAmis(usernameAmis);
+                }
+            }
+            else
+            {
+                //Selection d'un amis pour conversation
+            }
+        }
+
+        /// <summary>
+        /// Methode qui permet d'ajouter le contact à la liste d'amis de l'utilisateur
+        /// </summary>
+        /// <param name="usernameAmis"></param>
+        private void AjouterCeContactAuAmis(string usernameAmis)
+        {
+            enModeRecherche = false;
+            coordinateur.AjouterAmis(mDtoCourant.id, coordinateur.getIdAmis(usernameAmis));
+        }
+
+        // public ... event listener pour bouton back to friend list
+        // enModeRecherche = false;
 	}
 }

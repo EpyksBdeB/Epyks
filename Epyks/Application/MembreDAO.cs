@@ -171,6 +171,71 @@ namespace Epyks.Application
             command.ExecuteNonQuery();
             return Convert.ToInt32(command.LastInsertedId);
         }
+
+        //TABLE CONTACT A FAIRE
+        //    contient:
+        //                id_utilisateur
+        //                id_amis
+
+        public ArrayList getListAmis(int id)
+        {
+            ArrayList listAmis = new ArrayList();
+            string query = "SELECT username FROM utilisateur where id_utilisateur=(SELECT id_amis FROM "+
+                "contact WHERE id_utilisateur='" + id + "')";
+            command = new MySqlCommand(query, this.connection);
+            MySqlDataReader reader = command.ExecuteReader();
+            if(reader.HasRows)
+            {
+                 while (reader.Read())
+                 {
+                     listAmis.Add(reader.GetString("username"));
+                 }           
+            }
+            reader.Close();
+            return listAmis;
+        }
+
+        public ArrayList getListResultatRecherche(string caractereRecherche)
+        {
+            ArrayList listResultat = new ArrayList();
+            string query = "SELECT username FROM utilisateur where username LIKE '%" + caractereRecherche + "%'";
+            command = new MySqlCommand(query, this.connection);
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    listResultat.Add(reader.GetString("username"));
+                }
+            }
+            reader.Close();
+            return listResultat;
+        }
+
+        public void ajouterUnAmis(int idUtilisateur, int idAmis)
+        {
+            command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO contact (id_utilisateur, id_amis) " +
+                                  "VALUES (@id_utilisateur, @id_amis)";
+            command.Parameters.AddWithValue("@id_utilisateur", idUtilisateur);
+            command.Parameters.AddWithValue("@id_amis", idAmis);
+            command.ExecuteNonQuery();
+        }
+
+        public int getMemberIdByUsername(string username)
+        {
+            int idAmis = 0;
+            string query = "SELECT id_utilisateur FROM utilisateur where username='" + username + "'";
+            command = new MySqlCommand(query, this.connection);
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                idAmis = reader.GetInt32("id_utilisateur");
+            }
+            reader.Close();
+            return idAmis;
+        }
     }
 }
     
