@@ -21,6 +21,7 @@ namespace Epyks.Application
         private string myConnectionstring = null;
         private string adresseConnection = Properties.Settings.Default.Server_address;
         private static MembreDAO instance = new MembreDAO();
+        private string passwordCrypte = null;
 
         internal static MembreDAO GetInstance()
         {
@@ -66,7 +67,7 @@ namespace Epyks.Application
         public Membre getMember(string username_membre, string password_membre)
         {
             Membre membre = null;
-            string query = "SELECT * FROM utilisateur where username='"+username_membre+"' and password='" + password_membre + "'";
+            string query = "SELECT * FROM utilisateur where username='"+username_membre+"' and password='" + passwordCrypte + "'";
             command = new MySqlCommand(query, this.connection);
 
             MySqlDataReader reader = command.ExecuteReader();
@@ -76,9 +77,11 @@ namespace Epyks.Application
 
                 reader.Read();
                 membre = new Membre();
+                //String passwordDecrypte = decryptPassword(password_membre);
+                
                 membre.id = reader.GetInt32("id_utilisateur");
                 membre.username = reader.GetString("username");
-                membre.password = reader.GetString("password");
+                membre.password = passwordCrypte;
                 membre.firstName = reader.GetString("Prenom");
                 membre.lastName = reader.GetString("Nom");
                 membre.email = reader.GetString("email");
@@ -244,7 +247,6 @@ namespace Epyks.Application
         private String cryptPassword(String passwordNonCrypte)
         {
             string EncryptionKey = "MAKV2SPBNI99212";
-            string passwordCrypte = null;
             byte[] clearBytes = Encoding.Unicode.GetBytes(passwordNonCrypte);
             using (Aes encryptor = Aes.Create())
             {
@@ -266,9 +268,27 @@ namespace Epyks.Application
         }
 
 
-        private String decryptPassword()
+        private String decryptPassword(String passwordCrypte)
         {
-            return null;
+            String passwordDecrypte = null;
+            string EncryptionKey = "MAKV2SPBNI99212";
+            byte[] cipherBytes = Convert.FromBase64String(passwordCrypte);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(cipherBytes, 0, cipherBytes.Length);
+                        cs.Close();
+                    }
+                    passwordDecrypte = Encoding.Unicode.GetString(ms.ToArray());
+                }
+            }
+            return passwordDecrypte;
         }
     }
 }
