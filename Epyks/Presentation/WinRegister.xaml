@@ -57,7 +57,7 @@
                 </Binding>
             </TextBox.Text>
 		</TextBox>
-        <PasswordBox x:Name="TxtPassword" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Left" Margin="29,157,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="PasswordLostFocus" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" SelectionBrush="#FFDB6FFF" CaretBrush="#FF969696" Foreground="#FF969696" w:PasswordHelper.Attach="True">
+        <PasswordBox x:Name="TxtPassword" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Left" Margin="29,157,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="TxtPassword_LostFocus" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" SelectionBrush="#FFDB6FFF" CaretBrush="#FF969696" Foreground="#FF969696" w:PasswordHelper.Attach="True">
             <PasswordBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type PasswordBox}">
                     <Style.Resources>
@@ -86,7 +86,7 @@
                 </Binding>
             </w:PasswordHelper.Password>
         </PasswordBox>
-        <PasswordBox x:Name="TxtConfirmPassword" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Left" Margin="29,197,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="PasswordLostFocus" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" SelectionBrush="#FFDB6FFF" CaretBrush="#FF969696" Foreground="#FF969696" w:PasswordHelper.Attach="True">
+        <PasswordBox x:Name="TxtConfirmPassword" Validation.ErrorTemplate="{x:Null}" HorizontalAlignment="Left" Margin="29,197,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" GotFocus="PasswordGotFocus" LostFocus="TxtConfirmPassword_LostFocus" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" SelectionBrush="#FFDB6FFF" CaretBrush="#FF969696" Foreground="#FF969696" w:PasswordHelper.Attach="True">
 			<PasswordBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type PasswordBox}">
 					<Style.Resources>

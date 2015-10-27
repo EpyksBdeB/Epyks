@@ -91,7 +91,7 @@ namespace Epyks.Application
         /// <returns>le dto du membre courant</returns>
         public MembreDTO getMembreCourant()
         {
-            //return membreCourant.getDTO(membreCourant);
+            return membreCourant.getDTO();
         }
 
         public ArrayList getMembreListAmis(int id)
