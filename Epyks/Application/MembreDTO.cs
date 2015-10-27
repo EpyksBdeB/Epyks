@@ -43,10 +43,9 @@ namespace Epyks.Application
         public int fileSize { get; set; }
 
 
-        public MembreDTO(int id, string firstName, string lastName, string username, string password,
+        public MembreDTO(string firstName, string lastName, string username, string password,
             string email, Genre gender, String imgfilename, byte[] imageData, int fileSize)
         {
-            this.id = id;
             this.firstName = firstName;
             this.lastName = lastName;
             this.username = username;

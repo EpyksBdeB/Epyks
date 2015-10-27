@@ -28,7 +28,7 @@ namespace Epyks.Application
         internal int fileSize { get; set; }
         internal MessageStack MessageStack { get; private set; }
 
-        internal Membre(int id,string firstName, string lastName, string username, string password,
+        internal Membre(int id, string firstName, string lastName, string username, string password,
             string email, Genre gender, String imgFileName, byte[] imageData, int fileSize)
         {
             this.id = id;
@@ -65,6 +65,7 @@ namespace Epyks.Application
         internal MembreDTO getDTO()
         {
             MembreDTO mdto = new MembreDTO();
+            mdto.id = this.id;
             mdto.firstName = this.firstName;
             mdto.lastName = this.lastName;
             mdto.email = this.email;
