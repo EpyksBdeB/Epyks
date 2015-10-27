@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.IO;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Media;
 using MySql.Data.MySqlClient;
@@ -153,13 +154,15 @@ namespace Epyks.Application
             FileStream fs;
             BinaryReader br;
 
+            string passwordCrypte = cryptPassword(nouveauMembre.password);
+
             command = connection.CreateCommand();
             command.CommandText = "INSERT INTO utilisateur (username, password," +
                                   "Nom, Prenom, email, sexe, image, imgFile_name, imgFile_size) " +
                                   "VALUES (@nom_utilisateur, @mdp, @nom," +
                                   "@prenom, @email, @sexe, @image, @imgFile_name, @imgFile_size)";
             command.Parameters.AddWithValue("@nom_utilisateur", nouveauMembre.username);
-            command.Parameters.AddWithValue("@mdp", nouveauMembre.password);
+            command.Parameters.AddWithValue("@mdp", passwordCrypte);
             command.Parameters.AddWithValue("@nom", nouveauMembre.lastName);
             command.Parameters.AddWithValue("@prenom", nouveauMembre.firstName);
             command.Parameters.AddWithValue("@email", nouveauMembre.email);
@@ -236,6 +239,36 @@ namespace Epyks.Application
             }
             reader.Close();
             return idAmis;
+        }
+
+        private String cryptPassword(String passwordNonCrypte)
+        {
+            string EncryptionKey = "MAKV2SPBNI99212";
+            string passwordCrypte = null;
+            byte[] clearBytes = Encoding.Unicode.GetBytes(passwordNonCrypte);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(clearBytes, 0, clearBytes.Length);
+                        cs.Close();
+                    }
+                    passwordCrypte = Convert.ToBase64String(ms.ToArray());
+                }
+            }
+            
+            return passwordCrypte;
+        }
+
+
+        private String decryptPassword()
+        {
+            return null;
         }
     }
 }

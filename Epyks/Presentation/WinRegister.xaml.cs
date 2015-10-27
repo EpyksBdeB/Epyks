@@ -60,16 +60,16 @@ namespace Epyks.Presentation
         /// <param name="e"></param>
         private void TxtPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            ValidationError validationError = new ValidationError(new DataErrorValidationRule(), TxtPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
-            validationError.ErrorContent = ERR_CONFIRM_PASSWORD_NOT_MATCH;
+           // ValidationError validationError = new ValidationError(new DataErrorValidationRule(), TxtPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            //validationError.ErrorContent = ERR_CONFIRM_PASSWORD_NOT_MATCH;
             if (TxtPassword.Password.Length == 0)
             {
                 TxtPassword.Background.Opacity = 1;
-                Validation.MarkInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty), validationError);
+              //  Validation.MarkInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty), validationError);
             }
             else
             {
-                Validation.ClearInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            //    Validation.ClearInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
             }
         }
 
@@ -81,8 +81,8 @@ namespace Epyks.Presentation
         /// <param name="e"></param>
         private void TxtConfirmPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            ValidationError validationError = new ValidationError(new DataErrorValidationRule(), TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
-            validationError.ErrorContent = ERR_CONFIRM_PASSWORD_NOT_MATCH;
+            //ValidationError validationError = new ValidationError(new DataErrorValidationRule(), TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            //validationError.ErrorContent = ERR_CONFIRM_PASSWORD_NOT_MATCH;
             if (TxtConfirmPassword.Password.Length == 0)
             {
                 TxtConfirmPassword.Background.Opacity = 1;
@@ -90,11 +90,11 @@ namespace Epyks.Presentation
 
             if (!TxtConfirmPassword.Password.Equals(TxtPassword.Password))
             {
-                Validation.MarkInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty),validationError);
+             //   Validation.MarkInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty),validationError);
             }
             else
             {
-                Validation.ClearInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+             //   Validation.ClearInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
             }
         }
 
