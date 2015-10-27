@@ -147,7 +147,7 @@ namespace Epyks.Presentation
         /// <summary>
         /// Methode qui permet d'ajouter le contact à la liste d'amis de l'utilisateur
         /// </summary>
-        /// <param name="usernameAmis"></param>
+        /// <param name="usernameAmis">Username de l'amis à ajouter</param>
         private void AjouterCeContactAuAmis(string usernameAmis)
         {
             enModeRecherche = false;

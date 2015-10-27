@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using MySql;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace Epyks.Application
         private void initializeDatabase()
         {
             //myConnectionstring = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
-            myConnectionstring = "server=melissa07.ddns.net;uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=8080;";
+            myConnectionstring = "server=localhost;uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
@@ -188,8 +189,8 @@ namespace Epyks.Application
         public ArrayList getListAmis(int id)
         {
             ArrayList listAmis = new ArrayList();
-            string query = "SELECT username FROM utilisateur where id_utilisateur=(SELECT id_amis FROM "+
-                "contact WHERE id_utilisateur='" + id + "')";
+            string query = "SELECT username FROM utilisateur where id_utilisateur IN (SELECT id_amis FROM "+
+                "contact WHERE id_utilisateur='" + id + "' UNION SELECT id_utilisateur FROM contact WHERE id_amis='" + id + "')";
             command = new MySqlCommand(query, this.connection);
             MySqlDataReader reader = command.ExecuteReader();
             if(reader.HasRows)

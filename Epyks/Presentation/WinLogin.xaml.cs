@@ -65,18 +65,14 @@ namespace Epyks.Presentation
         /// <param name="e"></param>
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            WinProfil winProfil = new WinProfil(this);
+            WinProfil winProfil;
             Membre m = MembreDAO.GetInstance().getMember(TxtUsername.Text, TxtPassword.Password.ToString());
 
             if (coordinator.Login(TxtUsername.Text, TxtPassword.Password))
             {
-                MembreDTO mdto = new MembreDTO();
+                winProfil = new WinProfil(this);
                 LblInvalidError.Visibility = Visibility.Hidden;
-                mdto.firstName = m.firstName;
-                mdto.lastName = m.lastName;
-                mdto.username = m.username;
                 
-
                 Hide();
                 ResetFields();
                 winProfil.Show();
