@@ -25,7 +25,7 @@ namespace Epyks.Presentation
     /// Contient la liste des amis de l'utilisateur,
     /// et la fenêtre de conversation.
 	/// </summary>
-	public partial class WinProfil : Window
+	public partial class WinProfil : Window, IObserver<Message>
 	{
 	    private CoordonateurMembreCourant coordinateur;
 
@@ -33,11 +33,14 @@ namespace Epyks.Presentation
 
         private MembreDTO mDtoCourant;
 
+	    private IDisposable observable;
+
         public WinProfil(WinLogin winLogin)
 		{
 			this.InitializeComponent();
             coordinateur = CoordonateurMembreCourant.GetInstance();
             this.creerProfil();
+            observable = coordinateur.SubscribeToStack(this);
 		}
 
 	    private void creerProfil()
@@ -153,5 +156,19 @@ namespace Epyks.Presentation
 
         // public ... event listener pour bouton back to friend list
         // enModeRecherche = false;
+	    public void OnNext(Message value)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    public void OnError(Exception error)
+	    {
+	        MessageBox.Show(error.Message);
+	    }
+
+	    public void OnCompleted()
+	    {
+	        observable.Dispose();
+	    }
 	}
 }

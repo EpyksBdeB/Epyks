@@ -53,5 +53,10 @@ namespace Epyks.Coordonnateur
         {
             return api.getNewAmisId(username);
         }
+
+        public IDisposable SubscribeToStack(IObserver<Message> observer)
+        {
+            return api.SubscribeToStack(observer);
+        }
     }
 }

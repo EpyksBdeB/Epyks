@@ -42,7 +42,7 @@ namespace EpyksServer
                     line = reader.ReadLine();
                     if (String.IsNullOrEmpty(line))
                     {
-                        temp = Regex.Replace(line, @".*?<userid>(\d+?)</userid>.*$", "$1");
+                        temp = Regex.Replace(line, @".*?<destid>(\d+?)</destid>.*$", "$1");
                         if (temp.Equals("TOUS"))
                         {
                             foreach (TcpClient destClient in serveur.ClientList.Values)

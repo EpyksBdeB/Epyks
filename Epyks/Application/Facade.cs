@@ -113,5 +113,16 @@ namespace Epyks.Application
         {
             return dao.getMemberIdByUsername(username);
         }
+
+        public IDisposable SubscribeToStack(IObserver<Message> observer)
+        {
+            return membreCourant.SubscribeToStack(observer);
+        }
+
+        public void EvoyerMessage(string messageText)
+        {
+            Message message = new Message(membreCourant.id, membreCourant.username, messageText);
+            membreCourant.AddMessageInStack(message);
+        }
     }
 }

@@ -8,18 +8,18 @@ namespace Epyks.Application
 {
     internal class MessageStack : IObservable<Message>
     {
-        internal List<Message> Messages { get; private set; }
+        private List<Message> messages;
         private List<IObserver<Message>> observers;
 
         public MessageStack()
         {
-            Messages = new List<Message>();
+            messages = new List<Message>();
         }
 
         public IDisposable Subscribe(IObserver<Message> observer)
         {
             observers.Add(observer);
-            foreach (Message message in Messages)
+            foreach (Message message in messages)
             {
                 observer.OnNext(message);
             }
@@ -28,7 +28,7 @@ namespace Epyks.Application
 
         internal void Add(Message message)
         {
-            Messages.Add(message);
+            messages.Add(message);
             foreach (IObserver<Message> observer in observers)
             {
                 observer.OnNext(message);

@@ -64,6 +64,7 @@ namespace Epyks.Application
 
         internal MembreDTO getDTO()
         {
+            MembreDTO mdto = new MembreDTO();
             mdto.firstName = this.firstName;
             mdto.lastName = this.lastName;
             mdto.email = this.email;
@@ -77,9 +78,14 @@ namespace Epyks.Application
             return mdto;
         }
 
-        internal void SubscribeToStack(IObserver<Message> observer)
+        internal IDisposable SubscribeToStack(IObserver<Message> observer)
         {
-            MessageStack.Subscribe(observer);
+            return MessageStack.Subscribe(observer);
+        }
+
+        internal void AddMessageInStack(Message message)
+        {
+           MessageStack.Add(message); 
         }
     }
 }
