@@ -13,40 +13,98 @@ namespace Epyks.Presentation
 {
 	/// <summary>
 	/// Logique d'interaction pour WinRegister.xaml
+    /// Fenêtre Register
+    /// ----------------
+    /// Permet à une nouvel utilisateur d'entrer ses
+    /// informations pour se créer un compte Epyks
 	/// </summary>
 	public partial class WinRegister : Window
 	{
+        private const string ERR_PASSWORD_EMPTY = "Le mot de passe est obligatoire";
+        private const string ERR_CONFIRM_PASSWORD_NOT_MATCH = "Les deux mots de passe sont différents";
+
         private CoordonnateurLogin coordinator;
 	    private WinLogin login;
 	    private bool errorShowned = false;
 	    private String filename;
 	    private byte[] imageData;
 	    private int fileSize;
-
+	    private ControlTemplate passwordDefaultTemplate;
+	    private ControlTemplate confirmPasswordDefaultTemplate;
 
 		public WinRegister(WinLogin login)
 		{
 			this.InitializeComponent();
 		    this.login = login;
+		    passwordDefaultTemplate = TxtPassword.Template;
+		    confirmPasswordDefaultTemplate = TxtConfirmPassword.Template;
 		}
 
+        /// <summary>
+        /// Change le background du passwordBox lorsqu'il
+        /// obtient le focus
+        /// </summary>
+        /// <param name="sender">Le passwordBox</param>
+        /// <param name="e"></param>
 	    private void PasswordGotFocus(object sender, RoutedEventArgs e)
         {
             PasswordBox passwordBox = (PasswordBox) sender;
             passwordBox.Background.Opacity = 0;
         }
 
-        private void PasswordLostFocus(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Met le background du password transparent lorsque
+        /// perte de focus et fait la validation
+        /// </summary>
+        /// <param name="sender">Le passwordBox</param>
+        /// <param name="e"></param>
+        private void TxtPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            PasswordBox passwordBox = (PasswordBox)sender;
-           // BindingExpression binding = passwordBox.GetBindingExpression(PasswordHelper.PasswordProperty);
-            if (passwordBox.Password.Length == 0)
+            ValidationError validationError = new ValidationError(new DataErrorValidationRule(), TxtPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            validationError.ErrorContent = ERR_CONFIRM_PASSWORD_NOT_MATCH;
+            if (TxtPassword.Password.Length == 0)
             {
-                passwordBox.Background.Opacity = 1;
+                TxtPassword.Background.Opacity = 1;
+                Validation.MarkInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty), validationError);
             }
-            //binding.UpdateSource();
+            else
+            {
+                Validation.ClearInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            }
         }
 
+        /// <summary>
+        /// Met le background du password transparent lorsque
+        /// perte de focus et fait la validation
+        /// </summary>
+        /// <param name="sender">Le passwordBox</param>
+        /// <param name="e"></param>
+        private void TxtConfirmPassword_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ValidationError validationError = new ValidationError(new DataErrorValidationRule(), TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            validationError.ErrorContent = ERR_CONFIRM_PASSWORD_NOT_MATCH;
+            if (TxtConfirmPassword.Password.Length == 0)
+            {
+                TxtConfirmPassword.Background.Opacity = 1;
+            }
+
+            if (!TxtConfirmPassword.Password.Equals(TxtPassword.Password))
+            {
+                Validation.MarkInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty),validationError);
+            }
+            else
+            {
+                Validation.ClearInvalid(TxtConfirmPassword.GetBindingExpression(PasswordHelper.PasswordProperty));
+            }
+        }
+
+        /// <summary>
+        /// Ouverture de la fenêtre de fichier windows
+        /// lorsque l'on clique sur le boutton pour uploader
+        /// une photo et enresgistre l'image sélectionnée
+        /// </summary>
+        /// <param name="sender">Bouton upload</param>
+        /// <param name="e"></param>
         private void BtnLoadImage_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -62,14 +120,15 @@ namespace Epyks.Presentation
             enregistrerImage();
         }
 
+        /// <summary>
+        /// Enregistre l'image sélectionnée
+        /// dans la variable fileSize
+        /// </summary>
         private void enregistrerImage()
         {
             filename = new Uri(ImgProfil.Source.ToString()).LocalPath;
             FileStream fs = null;
             BinaryReader br = null;
-
-            //if (!(String.IsNullOrEmpty(filename)) || !(filename.Equals("C:/Resources/profil_default.png")))
-            //{
                 try
                 {
                     fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
@@ -83,29 +142,37 @@ namespace Epyks.Presentation
                 catch (DirectoryNotFoundException)
                 {
                     //
-                }
-
-                
-                
-            //}
-                
-
-            //MessageBox.Show(imageData.Length.ToString());
-            //MessageBox.Show(filename);
-
+                }                           
         }
 
+        /// <summary>
+        /// Réinitialise les champs de la fenêtre register
+        /// et ouvre la fenêtre de Login
+        /// </summary>
+        /// <param name="sender">La fenêtre register</param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ResetFields();
             login.Show();
         }
 
+        /// <summary>
+        /// Ferme la fenêtre en cours (Register)
+        /// </summary>
+        /// <param name="sender">Bouton back to signIn</param>
+        /// <param name="e"></param>
         private void BtnBackToSignIn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Crée une nouvelle instance du coordonnateurLogin
+        /// et enregistre le nouveau membre
+        /// </summary>
+        /// <param name="sender">Bouton Register</param>
+        /// <param name="e"></param>
         private void BtnRegister_Click_1(object sender, RoutedEventArgs e)
         {
             coordinator = CoordonnateurLogin.GetInstance();
@@ -124,6 +191,10 @@ namespace Epyks.Presentation
 
         }
 
+        /// <summary>
+        /// Réinitialise tous les champs 
+        /// de la fenêtre Register
+        /// </summary>
         private void ResetFields()
         {
             TxtUsername.Text = null;
@@ -137,6 +208,11 @@ namespace Epyks.Presentation
             ImgProfil.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/profil_default.png"));
         }
 
+        /// <summary>
+        /// Vérifie si tous les 
+        /// champs sont valident
+        /// </summary>
+        /// <returns>True: valide, False: invalide</returns>
 	    private bool ValidateFields()
 	    {
 	        return !Validation.GetHasError(TxtUsername) && !Validation.GetHasError(TxtPassword) &&
@@ -144,6 +220,10 @@ namespace Epyks.Presentation
 	               !Validation.GetHasError(TxtLastName) && !Validation.GetHasError(TxtEmail);
 	    }
 
+        /// <summary>
+        /// Affiche les errors si
+        /// validateFields() == false
+        /// </summary>
 	    private void ShowErrors()
 	    {
             ResourceDictionary dictionary = new ResourceDictionary();

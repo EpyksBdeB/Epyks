@@ -74,14 +74,14 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
 							<ColumnDefinition Width="0*"/>
 						</Grid.ColumnDefinitions>
 
-						<TextBox Margin="0" TextWrapping="Wrap" FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" Padding="12,0,0,0" Background="#FFEEEEEE" BorderBrush="{x:Null}" CaretBrush="#FF969696" Foreground="#FF969696" Grid.Column="0"/>
-						<Button Style="{StaticResource FadeOutButton}" Grid.Column="1" BorderThickness="0" BorderBrush="{x:Null}" Background="#FFC926FF" Margin="0,0,0,0.002">
+						<TextBox x:Name="textRechercher" Margin="0" TextWrapping="Wrap" FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" Padding="12,0,0,0" Background="#FFEEEEEE" BorderBrush="{x:Null}" CaretBrush="#FF969696" Foreground="#FF969696" Grid.Column="0"/>
+						<Button Style="{StaticResource FadeOutButton}" Grid.Column="1" BorderThickness="0" BorderBrush="{x:Null}" Background="#FFC926FF" Height="41" VerticalAlignment="Top" Click="Bouton_rechercher_click">
 							<StackPanel Margin="10,5">
 								<Image Source="pack://siteoforigin:,,,/Resources/Loupe.png" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill"/>
 							</StackPanel>
 						</Button>
 					</Grid>
-					<ListView Margin="0,10,0,0" Grid.Row="2">
+                    <ListView x:Name="listViewContact" Margin="0,10,0,0" Grid.Row="2" SelectionMode="Single" SelectionChanged="listViewContact_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn/>
