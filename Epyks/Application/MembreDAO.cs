@@ -182,7 +182,7 @@ namespace Epyks.Application
         {
             ArrayList listAmis = new ArrayList();
             string query = "SELECT username FROM utilisateur where id_utilisateur IN (SELECT id_amis FROM "+
-                "contact WHERE id_utilisateur=" + id + " UNION SELECT id_utilisateur FROM contact WHERE id_amis=" + id + ")";
+                "contact WHERE id_utilisateur='" + id + "' UNION SELECT id_utilisateur FROM contact WHERE id_amis='" + id + "')";
             command = new MySqlCommand(query, this.connection);
             MySqlDataReader reader = command.ExecuteReader();
             if(reader.HasRows)
