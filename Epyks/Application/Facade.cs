@@ -16,6 +16,7 @@ namespace Epyks.Application
         private static Facade instance;
         private Membre membreCourant = null;
         private MembreDAO dao;
+        private GestionnaireCommunication gestionnaireCommunication;
 
         /// <summary>
         /// Retourne l'instance de la facade (Singleton)
@@ -44,6 +45,12 @@ namespace Epyks.Application
         public bool Login(string username, string password)
         {
             membreCourant = dao.getMember(username, password);
+            if (membreCourant != null)
+            {
+                gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
+                gestionnaireCommunication.StartReading();
+            }
+
             return membreCourant != null;
         }
 
@@ -123,6 +130,7 @@ namespace Epyks.Application
         {
             Message message = new Message(membreCourant.id, membreCourant.username, messageText);
             membreCourant.AddMessageInStack(message);
+            gestionnaireCommunication.EcrireMessage(message);
         }
     }
 }

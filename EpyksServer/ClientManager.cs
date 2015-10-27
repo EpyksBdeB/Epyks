@@ -25,6 +25,7 @@ namespace EpyksServer
             reader = new StreamReader(client.GetStream());
             
             Thread thread = new Thread(new ThreadStart(ChatListener));
+			thread.Start();
         }
 
         private void ChatListener()

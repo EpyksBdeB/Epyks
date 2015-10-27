@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Epyks.Application
@@ -17,6 +18,7 @@ namespace Epyks.Application
         private StreamReader reader;
         private StreamWriter writer;
         private Membre membreCourant;
+        private bool reading = true;
 
         public GestionnaireCommunication(Membre membreCourant)
         {
@@ -31,6 +33,28 @@ namespace Epyks.Application
         public void EcrireMessage(Message message)
         {
             writer.WriteLine(message.getXml());
+        }
+
+        public void StartReading()
+        {
+            Thread thread = new Thread(new ThreadStart(Reading));
+            thread.Start();
+        }
+
+        private void Reading()
+        {
+            string line = "";
+            Message message = null;
+
+            while (tcpClient.Connected && reading)
+            {
+                line = reader.ReadLine();
+                if (!String.IsNullOrEmpty(line))
+                {
+                    message = new Message(line);
+                    membreCourant.AddMessageInStack(message);
+                }
+            }
         }
     }
 }
