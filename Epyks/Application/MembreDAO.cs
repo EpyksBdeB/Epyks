@@ -22,6 +22,7 @@ namespace Epyks.Application
         private string adresseConnection = Properties.Settings.Default.Server_address;
         private static MembreDAO instance = new MembreDAO();
         private string passwordCrypte = null;
+        private String passwordDecrypte = null;
 
         internal static MembreDAO GetInstance()
         {
@@ -66,8 +67,9 @@ namespace Epyks.Application
 
         public Membre getMember(string username_membre, string password_membre)
         {
+            String crypt = cryptPassword(password_membre);
             Membre membre = null;
-            string query = "SELECT * FROM utilisateur where username='"+username_membre+"' and password='" + passwordCrypte + "'";
+            string query = "SELECT * FROM utilisateur where username='" + username_membre + "' and password='" + crypt + "'";
             command = new MySqlCommand(query, this.connection);
 
             MySqlDataReader reader = command.ExecuteReader();
@@ -77,7 +79,7 @@ namespace Epyks.Application
 
                 reader.Read();
                 membre = new Membre();
-                //String passwordDecrypte = decryptPassword(password_membre);
+                
                 
                 membre.id = reader.GetInt32("id_utilisateur");
                 membre.username = reader.GetString("username");
@@ -268,7 +270,7 @@ namespace Epyks.Application
         }
 
 
-        private String decryptPassword(String passwordCrypte)
+      /*  private String decryptPassword(String passwordCrypte)
         {
             String passwordDecrypte = null;
             string EncryptionKey = "MAKV2SPBNI99212";
@@ -289,8 +291,8 @@ namespace Epyks.Application
                 }
             }
             return passwordDecrypte;
-        }
-    }
+        }*/
+    } 
 }
     
 
