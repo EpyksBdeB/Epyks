@@ -27,7 +27,15 @@ namespace Epyks.Application
 
         private MembreDAO()
         {
-            initializeDatabase();
+            try
+            {
+                initializeDatabase();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
         }
 
         private void initializeDatabase()
