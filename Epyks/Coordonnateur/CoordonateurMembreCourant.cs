@@ -53,5 +53,10 @@ namespace Epyks.Coordonnateur
         {
             return api.getNewAmisId(username);
         }
+
+        public bool VerifierSiAmis(int idUtilisateur, int idAmis)
+        {
+            return api.verifierSiAmis(idUtilisateur, idAmis);
+        }
     }
 }

@@ -113,5 +113,10 @@ namespace Epyks.Application
         {
             return dao.getMemberIdByUsername(username);
         }
+
+        public bool verifierSiAmis(int idUtilisateur, int idAmis)
+        {
+            return dao.dejaAmis(idUtilisateur, idAmis);
+        }
     }
 }

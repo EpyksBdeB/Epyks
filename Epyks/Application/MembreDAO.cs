@@ -37,7 +37,11 @@ namespace Epyks.Application
         private void initializeDatabase()
         {
             //myConnectionstring = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
-            myConnectionstring = "server=localhost;uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=3306;";
+
+            //Olivier: ma connectionString pour chez moi!
+            //myConnectionstring = "server = localhost; user id = FakeUser; password = FakePass; database = epyks; persistsecurityinfo = True";
+
+            myConnectionstring = "server=melissa07.ddns.net;uid=epyksbdeb;pwd=gr007,,;database=epyksbd;port=8080;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
@@ -267,6 +271,21 @@ namespace Epyks.Application
             }
             
             return passwordCrypte;
+        }
+
+        public bool dejaAmis(int idUtilisateur, int idAmis)
+        {
+            bool DejaAmis = false;
+
+            string query = "SELECT id_utilisateur FROM contact where id_amis='" + idAmis + "'";
+            command = new MySqlCommand(query, this.connection);
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                DejaAmis = true;
+            }
+            reader.Close();
+            return DejaAmis;
         }
 
 

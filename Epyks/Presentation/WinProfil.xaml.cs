@@ -44,6 +44,8 @@ namespace Epyks.Presentation
 	    {
 	        mDtoCourant = coordinateur.getMembreCourant();
 	        this.TxtNomUtilisateur.Text = mDtoCourant.username;
+         
+            RemplirListDamis();
 	    }
 
 	    private void MenuStatusItem_Click(object sender, RoutedEventArgs e)
@@ -91,6 +93,8 @@ namespace Epyks.Presentation
         /// </summary>
         private void RemplirListDamis()
         {
+            listViewContact.Items.Clear();
+            textRechercher.Clear();
             ArrayList listAmis = coordinateur.getListAmis(mDtoCourant.id);
             foreach (string nomAmis in listAmis)
             {
@@ -125,20 +129,35 @@ namespace Epyks.Presentation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void listViewContact_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void listViewContact_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (enModeRecherche)
             {
                 string usernameAmis = (string)listViewContact.SelectedItems[0];
                 if (!usernameAmis.Equals("No Results Found"))
                 {
-                    AjouterCeContactAuAmis(usernameAmis);
+                    if (!VerifierSiDejaAmis(usernameAmis))
+                    {
+                        AjouterCeContactAuAmis(usernameAmis);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vous etes déja amis avec ce contact!");
+                    }
+                    RemplirListDamis();
+                    enModeRecherche = false;
                 }
             }
             else
             {
+                MessageBox.Show("Conversation à faire!");
                 //Selection d'un amis pour conversation
             }
+        }
+
+        public bool VerifierSiDejaAmis(string usernameAmis)
+        {
+            return coordinateur.VerifierSiAmis(mDtoCourant.id, coordinateur.getIdAmis(usernameAmis));
         }
 
         /// <summary>
@@ -147,7 +166,6 @@ namespace Epyks.Presentation
         /// <param name="usernameAmis">Username de l'amis à ajouter</param>
         private void AjouterCeContactAuAmis(string usernameAmis)
         {
-            enModeRecherche = false;
             coordinateur.AjouterAmis(mDtoCourant.id, coordinateur.getIdAmis(usernameAmis));
         }
 
