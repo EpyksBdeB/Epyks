@@ -54,6 +54,16 @@ namespace Epyks.Coordonnateur
             return api.getNewAmisId(username);
         }
 
+        public IDisposable SubscribeToStack(IObserver<Message> observer)
+        {
+            return api.SubscribeToStack(observer);
+        }
+
+        public void EnvoyerMessage(string messageText)
+        {
+            api.EvoyerMessage(messageText);
+        }
+
         public bool VerifierSiAmis(int idUtilisateur, int idAmis)
         {
             return api.verifierSiAmis(idUtilisateur, idAmis);

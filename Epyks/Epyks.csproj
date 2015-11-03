@@ -100,11 +100,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Application\Facade.cs" />
+    <Compile Include="Application\GestionnaireCommunication.cs" />
     <Compile Include="Application\Membre.cs" />
     <Compile Include="Application\MembreDAO.cs" />
     <Compile Include="Application\MembreDAOInterface.cs" />
     <Compile Include="Application\MembreDTO.cs" />
+    <Compile Include="Application\Message.cs" />
+    <Compile Include="Application\MessageStack.cs" />
     <Compile Include="Application\Serveur.cs" />
+    <Compile Include="Application\Unsuscriber.cs" />
     <Compile Include="Coordonnateur\CoordonateurMembreCourant.cs" />
     <Compile Include="Coordonnateur\CoordonnateurLogin.cs" />
     <Compile Include="Presentation\PasswordHelper.cs" />

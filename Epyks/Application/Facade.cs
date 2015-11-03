@@ -16,6 +16,7 @@ namespace Epyks.Application
         private static Facade instance;
         private Membre membreCourant = null;
         private MembreDAO dao;
+        private GestionnaireCommunication gestionnaireCommunication;
 
         /// <summary>
         /// Retourne l'instance de la facade (Singleton)
@@ -43,7 +44,16 @@ namespace Epyks.Application
         /// <returns>vrai si le login a réussi faux sinon</returns>
         public bool Login(string username, string password)
         {
-            membreCourant = dao.getMember(username, password);
+            Random rand = new Random();
+            int id = rand.Next(100);
+           // membreCourant = dao.getMember(username, password);
+            membreCourant = new Membre(id, "m", "m", "m" + id, "m", "m", Genre.MALE, "m", new byte[1], 1);
+            if (membreCourant != null)
+            {
+                gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
+                gestionnaireCommunication.StartReading();
+            }
+
             return membreCourant != null;
         }
 
@@ -112,6 +122,26 @@ namespace Epyks.Application
         public int getNewAmisId(string username)
         {
             return dao.getMemberIdByUsername(username);
+        }
+
+        public IDisposable SubscribeToStack(IObserver<Message> observer)
+        {
+            return membreCourant.SubscribeToStack(observer);
+        }
+
+        public void EvoyerMessage(string messageText)
+        {
+            Message message = new Message(membreCourant.id, membreCourant.username, messageText);
+            membreCourant.AddMessageInStack(message);
+            gestionnaireCommunication.EcrireMessage(message);
+        }
+
+        public void EndThreads()
+        {
+            if (gestionnaireCommunication != null)
+            {
+                gestionnaireCommunication.IsReading = false;
+            }
         }
 
         public bool verifierSiAmis(int idUtilisateur, int idAmis)

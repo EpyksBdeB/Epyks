@@ -25,7 +25,7 @@ namespace Epyks.Presentation
     /// Contient la liste des amis de l'utilisateur,
     /// et la fenêtre de conversation.
 	/// </summary>
-	public partial class WinProfil : Window
+	public partial class WinProfil : Window, IObserver<Message>
 	{
 	    private CoordonateurMembreCourant coordinateur;
 
@@ -33,11 +33,19 @@ namespace Epyks.Presentation
 
         private MembreDTO mDtoCourant;
 
+	    private IDisposable observable;
+
+	    private WinLogin login;
+
         public WinProfil(WinLogin winLogin)
-		{
-			this.InitializeComponent();
+        {
+            login = winLogin;
+			InitializeComponent();
+
             coordinateur = CoordonateurMembreCourant.GetInstance();
-            this.creerProfil();
+
+            creerProfil();
+            observable = coordinateur.SubscribeToStack(this);
 		}
 
 	    private void creerProfil()
@@ -60,6 +68,7 @@ namespace Epyks.Presentation
         /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            login.Show();
         }
 
         /// <summary>
@@ -171,5 +180,28 @@ namespace Epyks.Presentation
 
         // public ... event listener pour bouton back to friend list
         // enModeRecherche = false;
+	    public void OnNext(Message value)
+	    {
+            LblBlockConversation.Dispatcher.BeginInvoke(new Action(delegate()
+            {
+                LblBlockConversation.Text = LblBlockConversation.Text + (value.AuthorUsername + ": " + value.Content + "\n");
+            }));
+	    }
+
+	    public void OnError(Exception error)
+	    {
+	        MessageBox.Show(error.Message);
+	    }
+
+	    public void OnCompleted()
+	    {
+	        observable.Dispose();
+	    }
+
+        private void BtnSendMsg_Click(object sender, RoutedEventArgs e)
+        {
+            coordinateur.EnvoyerMessage(TxtMessage.Text);
+            TxtMessage.Text = null;
+        }
 	}
 }
