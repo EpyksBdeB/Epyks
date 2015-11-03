@@ -66,7 +66,6 @@ namespace Epyks.Presentation
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             WinProfil winProfil;
-            Membre m = MembreDAO.GetInstance().getMember(TxtUsername.Text, TxtPassword.Password.ToString());
 
             if (coordinator.Login(TxtUsername.Text, TxtPassword.Password))
             {
@@ -103,6 +102,11 @@ namespace Epyks.Presentation
            WinMotDePasseOublier winForgotPassword = new WinMotDePasseOublier(this);
             Hide();
             winForgotPassword.Show();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            coordinator.EndThreads();
         }
     }
 }

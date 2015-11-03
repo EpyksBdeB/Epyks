@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 
 namespace Epyks.Application
@@ -23,12 +24,12 @@ namespace Epyks.Application
 
         public Message(string xmlString)
         {
+            MessageBox.Show(xmlString);
             XmlReader reader = XmlReader.Create(new StringReader(xmlString));
+
             reader.ReadToFollowing("authid");
             AuthorId = reader.ReadElementContentAsInt();
-            reader.ReadToNextSibling("authuser");
             AuthorUsername = reader.ReadElementContentAsString();
-            reader.ReadToNextSibling("msgtext");
             Content = reader.ReadElementContentAsString();
         }
 

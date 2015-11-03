@@ -28,7 +28,7 @@ namespace EpyksServer
         /// </summary>
         public Serveur()
         {
-            chatServer = new TcpListener(8181);
+            chatServer = new TcpListener(8080);
             ServerUp = true;
             ClientList = new Dictionary<int, TcpClient>();
 
@@ -42,6 +42,7 @@ namespace EpyksServer
                     Console.WriteLine("You are now connected");
                     StreamReader reader = new StreamReader(chatClient.GetStream());
                     int id = Convert.ToInt32(reader.ReadLine());
+                    Console.WriteLine("Id obtained: " + id);
                     ClientList.Add(id, chatClient);
                     ClientManager manager = new ClientManager(this, chatClient, id);
                 }

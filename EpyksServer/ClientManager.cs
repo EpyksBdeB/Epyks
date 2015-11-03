@@ -30,32 +30,38 @@ namespace EpyksServer
 
         private void ChatListener()
         {
+            Console.WriteLine("Listening started");
             try
             {
                 string line = "";
-                string temp = "";
+                string tempDestId = "";
                 TcpClient destinationClient = null;
                 StreamWriter writer =null;
-                int destinationId =-1;
+                int destId =-1;
 
                 while (serveur.ServerUp && client.Connected)
                 {
                     line = reader.ReadLine();
-                    if (String.IsNullOrEmpty(line))
+                    if (!String.IsNullOrEmpty(line))
                     {
-                        temp = Regex.Replace(line, @".*?<destid>(\d+?)</destid>.*$", "$1");
-                        if (temp.Equals("TOUS"))
+                        tempDestId = Regex.Replace(line, @"^.*?<destid>(\d+?|TOUS)</destid>.*$", "$1");
+                        if (tempDestId.Equals("TOUS"))
                         {
-                            foreach (TcpClient destClient in serveur.ClientList.Values)
+                            foreach (int userId in serveur.ClientList.Keys)
                             {
-                                writer = new StreamWriter(destClient.GetStream());
-                                writer.WriteLine(line);
+                                if (userId != id)
+                                {
+                                    Console.WriteLine("Send to " + userId);
+                                    writer = new StreamWriter(serveur.ClientList[id].GetStream());
+                                    writer.AutoFlush = true;
+                                    writer.WriteLine(line);
+                                }
                             }
                         }
                         else
                         {
-                            destinationId = Convert.ToInt32(temp);
-                            destinationClient = serveur.ClientList[destinationId];
+                            destId = Convert.ToInt32(tempDestId);
+                            destinationClient = serveur.ClientList[destId];
                             if (destinationClient != null)
                             {
                                 writer = new StreamWriter(destinationClient.GetStream());

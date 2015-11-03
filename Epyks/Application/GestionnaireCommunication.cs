@@ -6,27 +6,30 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 
 namespace Epyks.Application
 {
     internal class GestionnaireCommunication
     {
-        private const int PORT = 8181;
+        private const int PORT = 8080;
         private const string HOSTNAME = "localhost";
 
         private TcpClient tcpClient;
         private StreamReader reader;
         private StreamWriter writer;
         private Membre membreCourant;
-        private bool reading = true;
+        internal bool IsReading {get; set; }
 
         public GestionnaireCommunication(Membre membreCourant)
         {
             this.membreCourant = membreCourant;
+            IsReading = true;
             tcpClient = new TcpClient(HOSTNAME, PORT);
             reader = new StreamReader(tcpClient.GetStream());
             writer = new StreamWriter(tcpClient.GetStream());
-
+            writer.AutoFlush = true;
             writer.WriteLine(Convert.ToString(membreCourant.id));
         }
 
@@ -46,7 +49,7 @@ namespace Epyks.Application
             string line = "";
             Message message = null;
 
-            while (tcpClient.Connected && reading)
+            while (tcpClient.Connected && IsReading)
             {
                 line = reader.ReadLine();
                 if (!String.IsNullOrEmpty(line))

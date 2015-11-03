@@ -44,7 +44,10 @@ namespace Epyks.Application
         /// <returns>vrai si le login a réussi faux sinon</returns>
         public bool Login(string username, string password)
         {
-            membreCourant = dao.getMember(username, password);
+            Random rand = new Random();
+            int id = rand.Next(100);
+           // membreCourant = dao.getMember(username, password);
+            membreCourant = new Membre(id, "m", "m", "m" + id, "m", "m", Genre.MALE, "m", new byte[1], 1);
             if (membreCourant != null)
             {
                 gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
@@ -131,6 +134,14 @@ namespace Epyks.Application
             Message message = new Message(membreCourant.id, membreCourant.username, messageText);
             membreCourant.AddMessageInStack(message);
             gestionnaireCommunication.EcrireMessage(message);
+        }
+
+        public void EndThreads()
+        {
+            if (gestionnaireCommunication != null)
+            {
+                gestionnaireCommunication.IsReading = false;
+            }
         }
     }
 }

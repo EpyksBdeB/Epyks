@@ -14,6 +14,7 @@ namespace Epyks.Application
         public MessageStack()
         {
             messages = new List<Message>();
+            observers = new List<IObserver<Message>>();
         }
 
         public IDisposable Subscribe(IObserver<Message> observer)

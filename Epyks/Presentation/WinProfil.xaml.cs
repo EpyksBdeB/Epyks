@@ -35,11 +35,16 @@ namespace Epyks.Presentation
 
 	    private IDisposable observable;
 
+	    private WinLogin login;
+
         public WinProfil(WinLogin winLogin)
-		{
-			this.InitializeComponent();
+        {
+            login = winLogin;
+			InitializeComponent();
+
             coordinateur = CoordonateurMembreCourant.GetInstance();
-            this.creerProfil();
+
+            creerProfil();
             observable = coordinateur.SubscribeToStack(this);
 		}
 
@@ -61,6 +66,7 @@ namespace Epyks.Presentation
         /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            login.Show();
         }
 
         /// <summary>
@@ -158,7 +164,10 @@ namespace Epyks.Presentation
         // enModeRecherche = false;
 	    public void OnNext(Message value)
 	    {
-	        throw new NotImplementedException();
+            LblBlockConversation.Dispatcher.BeginInvoke(new Action(delegate()
+            {
+                LblBlockConversation.Text = LblBlockConversation.Text + (value.AuthorUsername + ": " + value.Content + "\n");
+            }));
 	    }
 
 	    public void OnError(Exception error)
@@ -170,5 +179,11 @@ namespace Epyks.Presentation
 	    {
 	        observable.Dispose();
 	    }
+
+        private void BtnSendMsg_Click(object sender, RoutedEventArgs e)
+        {
+            coordinateur.EnvoyerMessage(TxtMessage.Text);
+            TxtMessage.Text = null;
+        }
 	}
 }

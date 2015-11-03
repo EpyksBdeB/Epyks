@@ -55,11 +55,12 @@ namespace Epyks.Application
             this.fileSize = membre.fileSize;
             this.imgFileName = membre.imgfilename;
             this.imageData = membre.imageData;
+            this.MessageStack = new MessageStack();
         }
 
         internal Membre()
         {
-            
+            this.MessageStack = new MessageStack();
         }
 
         internal MembreDTO getDTO()

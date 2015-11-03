@@ -173,5 +173,10 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
         {
             return api.UsernameExist(username);
         }
+
+        public void EndThreads()
+        {
+            api.EndThreads();
+        }
     }
 }

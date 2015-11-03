@@ -58,5 +58,10 @@ namespace Epyks.Coordonnateur
         {
             return api.SubscribeToStack(observer);
         }
+
+        public void EnvoyerMessage(string messageText)
+        {
+            api.EvoyerMessage(messageText);
+        }
     }
 }
