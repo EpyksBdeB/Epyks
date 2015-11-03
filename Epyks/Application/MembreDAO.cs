@@ -290,7 +290,14 @@ namespace Epyks.Application
             MySqlDataReader reader = command.ExecuteReader();
             if (reader.HasRows)
             {
-                DejaAmis = true;
+                reader.Read();
+                while (reader.Read())
+                {
+                    if (reader.GetInt32("id_utilisateur") == idUtilisateur)
+                    {
+                        DejaAmis = true;
+                    }
+                }
             }
             reader.Close();
             return DejaAmis;
