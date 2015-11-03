@@ -20,12 +20,12 @@ namespace Epyks.Application
         private StreamReader reader;
         private StreamWriter writer;
         private Membre membreCourant;
-        internal bool IsReading {get; set; }
+        private bool isReading;
 
         public GestionnaireCommunication(Membre membreCourant)
         {
             this.membreCourant = membreCourant;
-            IsReading = true;
+            isReading = true;
             tcpClient = new TcpClient(HOSTNAME, PORT);
             reader = new StreamReader(tcpClient.GetStream());
             writer = new StreamWriter(tcpClient.GetStream());
@@ -49,7 +49,7 @@ namespace Epyks.Application
             string line = "";
             Message message = null;
 
-            while (tcpClient.Connected && IsReading)
+            while (tcpClient.Connected && isReading)
             {
                 line = reader.ReadLine();
                 if (!String.IsNullOrEmpty(line))
@@ -58,6 +58,12 @@ namespace Epyks.Application
                     membreCourant.AddMessageInStack(message);
                 }
             }
+        }
+
+        internal void EndThread()
+        {
+            isReading = false;
+            tcpClient.Close();
         }
     }
 }

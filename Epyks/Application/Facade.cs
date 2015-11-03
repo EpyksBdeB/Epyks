@@ -140,7 +140,7 @@ namespace Epyks.Application
         {
             if (gestionnaireCommunication != null)
             {
-                gestionnaireCommunication.IsReading = false;
+                gestionnaireCommunication.EndThread();
             }
         }
 
