@@ -52,7 +52,7 @@ namespace EpyksServer
                                 if (userId != id)
                                 {
                                     Console.WriteLine("Send to " + userId);
-                                    writer = new StreamWriter(serveur.ClientList[id].GetStream());
+                                    writer = new StreamWriter(serveur.ClientList[userId].GetStream());
                                     writer.AutoFlush = true;
                                     writer.WriteLine(line);
                                 }
