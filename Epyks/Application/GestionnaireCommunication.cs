@@ -14,7 +14,7 @@ namespace Epyks.Application
     internal class GestionnaireCommunication
     {
         private const int PORT = 8080;
-        private const string HOSTNAME = "localhost";
+        private const string HOSTNAME = "aegaur.ddns.net";
 
         private TcpClient tcpClient;
         private StreamReader reader;
