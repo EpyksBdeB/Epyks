@@ -6,16 +6,36 @@
         xmlns:local="clr-namespace:Epyks"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Epyks.winModifProfil"
         mc:Ignorable="d"
-        Title="winModifProfil" Height="300" Width="300">
+        Title="winModifProfil" ResizeMode="NoResize" Height="525">
     <Grid>
-        <Button x:Name="btnChangeImage" Content="Modifier image" HorizontalAlignment="Left" Height="16" Margin="10,87,0,0" VerticalAlignment="Top" Width="81" FontSize="8" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White"/>
-        <Image x:Name="image" Margin="10,5,0,0" HorizontalAlignment="Left" Height="77" VerticalAlignment="Top" Width="81" Source="default_profile.jpg" Stretch="Fill">
+        <Button x:Name="btnChangeImage" Content="Modifier image" HorizontalAlignment="Left" Height="25" Margin="10,132,0,0" VerticalAlignment="Top" Width="120" FontSize="13.333" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White" Click="btnChangeImage_Click"/>
+        <Image x:Name="imgProfil" Margin="10,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Source="default_profile.jpg" Stretch="Fill" Width="120" Height="120">
             <Image.OpacityMask>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/profil_default.png"/>
             </Image.OpacityMask>
         </Image>
-        <Label x:Name="lblNom" Content="Christelle S." Margin="96,5,63.507,0" VerticalAlignment="Top"/>
-        <Label x:Name="label" Content="20 ans" Margin="96,24.96,0,0" VerticalAlignment="Top" FontSize="8" Height="19.14" HorizontalAlignment="Left" Width="41.66"/>
-        <Separator Height="0.5" Margin="79.5,114,79.5,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblNom" Content="Christelle S." Margin="150,5,10,0" VerticalAlignment="Top" FontSize="16" FontFamily="Leelawadee UI Semilight"/>
+        <Label x:Name="label" Content="20 ans" Margin="150,29,0,0" VerticalAlignment="Top" FontSize="13.333" Height="26" HorizontalAlignment="Left" Width="79" FontFamily="Leelawadee UI Semilight"/>
+        <Separator Height="1" Margin="150,179,176,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" Height="65" Margin="150,60,18,0" TextWrapping="Wrap" Text="Go Habs go ! " VerticalAlignment="Top" FontFamily="Leelawadee UI Semilight"/>
+        <Button x:Name="button" Content="Modifier mon message" HorizontalAlignment="Right" Margin="0,82,18,0" VerticalAlignment="Top" Width="124" Height="24" FontSize="10.667" Background="#FFB900FF" BorderBrush="White" Foreground="White" BorderThickness="0"/>
+        <Label x:Name="lblNom1" Content="Nom" HorizontalAlignment="Left" Margin="10,219,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="lblSexe" Content="Sexe" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="lblPrenom" Content="Prenom" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="lblNomUtilisateur" Content="Nom d'utilisateur" HorizontalAlignment="Left" Margin="452,219,0,0" VerticalAlignment="Top" Width="147" RenderTransformOrigin="0.317,0.538" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="label2" Content="Christelle" HorizontalAlignment="Left" Margin="135,219,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.261,0.538" Width="112" FontFamily="Leelawadee UI Semilight" FontSize="14.667" Background="White" Foreground="#FFB900FF"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="32" Margin="715,160,0,0" VerticalAlignment="Top" Width="37" Source="/Epyks;component/Resources/Feedbin-Icon-home-edit.svg.png" MouseUp="image_MouseUp"/>
+        <Separator HorizontalAlignment="Left" Height="100" Margin="267,265,0,0" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.5,0.5">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.293"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <Button x:Name="btnEnregistrerInfos" Content="Enregistrer" HorizontalAlignment="Center" Height="25" Margin="595,461,0,0" VerticalAlignment="Center" Width="149" FontSize="13.333" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White"/>
     </Grid>
 </Window>

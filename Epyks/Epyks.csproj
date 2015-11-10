@@ -134,6 +134,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\winModifProfil.xaml.cs">
+      <DependentUpon>winModifProfil.xaml</DependentUpon>
+    </Compile>
     <Page Include="CustomStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -165,6 +168,10 @@
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Presentation\winModifProfil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +221,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Presentation\default_profile.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Edit-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Feedbin-Icon-home-edit.svg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

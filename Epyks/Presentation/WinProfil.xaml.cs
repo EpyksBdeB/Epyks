@@ -203,5 +203,12 @@ namespace Epyks.Presentation
             coordinateur.EnvoyerMessage(TxtMessage.Text);
             TxtMessage.Text = null;
         }
-	}
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            winModifProfil modifProfil = new winModifProfil();
+            modifProfil.Show();
+        }
+    }
 }
