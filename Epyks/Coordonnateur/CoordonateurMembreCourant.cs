@@ -68,5 +68,10 @@ namespace Epyks.Coordonnateur
         {
             return api.verifierSiAmis(idUtilisateur, idAmis);
         }
+
+        public bool deleteFriend(string usernameAmis)
+        {
+            return api.deleteAmis(usernameAmis);
+        }
     }
 }

@@ -127,40 +127,10 @@ namespace Epyks.Presentation
         private void AfficherResultatRecherche(ArrayList resultat)
         {
             listViewContact.Items.Clear();
+            resultat.Remove(mDtoCourant.username);
             foreach (string nomAmis in resultat)
             {
                 listViewContact.Items.Add(nomAmis);
-            }
-        }
-
-        /// <summary>
-        /// Listener pour le choix ajout d'un amis.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void listViewContact_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (enModeRecherche)
-            {
-                string usernameAmis = (string)listViewContact.SelectedItems[0];
-                if (!usernameAmis.Equals("No Results Found"))
-                {
-                    if (!VerifierSiDejaAmis(usernameAmis))
-                    {
-                        AjouterCeContactAuAmis(usernameAmis);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Vous etes déja amis avec ce contact!");
-                    }
-                    RemplirListDamis();
-                    enModeRecherche = false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Conversation à faire!");
-                //Selection d'un amis pour conversation
             }
         }
 
@@ -175,7 +145,17 @@ namespace Epyks.Presentation
         /// <param name="usernameAmis">Username de l'amis à ajouter</param>
         private void AjouterCeContactAuAmis(string usernameAmis)
         {
-            coordinateur.AjouterAmis(mDtoCourant.id, coordinateur.getIdAmis(usernameAmis));
+            MessageBoxResult m = MessageBox.Show("Do you want to add " + usernameAmis 
+                + " to your friends list?", "Add a friend", MessageBoxButton.YesNo);
+            switch (m)
+            {
+                case MessageBoxResult.Yes:
+                    coordinateur.AjouterAmis(mDtoCourant.id, coordinateur.getIdAmis(usernameAmis));
+                    break;
+                case MessageBoxResult.No:
+                    RemplirListDamis();
+                    break;
+            }
         }
 
         // public ... event listener pour bouton back to friend list
@@ -209,6 +189,53 @@ namespace Epyks.Presentation
             this.Hide();
             winModifProfil modifProfil = new winModifProfil();
             modifProfil.Show();
+        }
+
+        private void listViewContact_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (listViewContact.SelectedItem != null)
+            {
+                if (enModeRecherche)
+                {
+                    string usernameAmis = (string)listViewContact.SelectedItems[0];
+                    if (!usernameAmis.Equals("No Results Found"))
+                    {
+                        if (!VerifierSiDejaAmis(usernameAmis))
+                        {
+                            AjouterCeContactAuAmis(usernameAmis);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vous etes déja amis avec ce contact!");
+                        }
+                        RemplirListDamis();
+                        enModeRecherche = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Conversation à faire!");
+                    listViewContact.UnselectAll();
+                    //Selection d'un amis pour conversation
+                }
+            }
+             
+        }
+
+        private void listViewContact_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            if (listViewContact.SelectedItem != null)
+            {
+                
+            }
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (coordinateur.deleteFriend((string)listViewContact.SelectedItems[0]))
+            {
+                MessageBox.Show("Friend deleted!");
+            }               
         }
     }
 }

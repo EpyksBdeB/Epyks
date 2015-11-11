@@ -111,6 +111,7 @@
     <Compile Include="Application\Unsuscriber.cs" />
     <Compile Include="Coordonnateur\CoordonateurMembreCourant.cs" />
     <Compile Include="Coordonnateur\CoordonnateurLogin.cs" />
+    <Compile Include="Presentation\ContextMenuStrip.cs" />
     <Compile Include="Presentation\PasswordHelper.cs" />
     <Compile Include="Presentation\WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
