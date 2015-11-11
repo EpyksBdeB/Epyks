@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Epyks.Presentation;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,13 @@ namespace Epyks
         private void image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Je voudrais modifier mes informations de mon profil!");
+        }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+
+            
+
         }
     }
 }
