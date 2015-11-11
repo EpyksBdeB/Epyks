@@ -14,19 +14,19 @@
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/profil_default.png"/>
             </Image.OpacityMask>
         </Image>
-        <Label x:Name="lblNom" Content="Christelle S." Margin="150,5,10,0" VerticalAlignment="Top" FontSize="16" FontFamily="Leelawadee UI Semilight"/>
-        <Label x:Name="label" Content="20 ans" Margin="150,29,0,0" VerticalAlignment="Top" FontSize="13.333" Height="26" HorizontalAlignment="Left" Width="79" FontFamily="Leelawadee UI Semilight"/>
-        <Separator Height="1" Margin="150,179,176,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock" Height="65" Margin="150,60,18,0" TextWrapping="Wrap" Text="Go Habs go ! " VerticalAlignment="Top" FontFamily="Leelawadee UI Semilight"/>
+        <Label x:Name="lblNom" Content="Christelle S." Margin="150,5,10,0" VerticalAlignment="Top" FontSize="24" FontFamily="Leelawadee UI Semilight"/>
+        <Label x:Name="label" Content="20 ans" Margin="150,43.667,0,0" VerticalAlignment="Top" FontSize="18.667" Height="31" HorizontalAlignment="Left" Width="79" FontFamily="Leelawadee UI Semilight"/>
+        <Separator Height="1" Margin="150,179,176,0" VerticalAlignment="Top" Width="230"/>
+        <TextBlock x:Name="textBlock" Height="50" Margin="166,75,18,0" TextWrapping="Wrap" Text="Go Habs go ! " VerticalAlignment="Top" FontFamily="Leelawadee UI Semilight"/>
         <Button x:Name="button" Content="Modifier mon message" HorizontalAlignment="Right" Margin="0,82,18,0" VerticalAlignment="Top" Width="124" Height="24" FontSize="10.667" Background="#FFB900FF" BorderBrush="White" Foreground="White" BorderThickness="0"/>
-        <Label x:Name="lblNom1" Content="Nom" HorizontalAlignment="Left" Margin="10,219,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
-        <Label x:Name="lblSexe" Content="Sexe" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
-        <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
-        <Label x:Name="lblPrenom" Content="Prenom" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
-        <Label x:Name="lblNomUtilisateur" Content="Nom d'utilisateur" HorizontalAlignment="Left" Margin="452,219,0,0" VerticalAlignment="Top" Width="147" RenderTransformOrigin="0.317,0.538" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
-        <Label x:Name="label2" Content="Christelle" HorizontalAlignment="Left" Margin="135,219,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.261,0.538" Width="112" FontFamily="Leelawadee UI Semilight" FontSize="14.667" Background="White" Foreground="#FFB900FF"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="32" Margin="715,160,0,0" VerticalAlignment="Top" Width="37" Source="/Epyks;component/Resources/Feedbin-Icon-home-edit.svg.png" MouseUp="image_MouseUp"/>
-        <Separator HorizontalAlignment="Left" Height="100" Margin="267,265,0,0" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.5,0.5">
+        <Label x:Name="lblNom1" Content="Nom" HorizontalAlignment="Left" Margin="34,219,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="lblSexe" Content="Sexe" HorizontalAlignment="Left" Margin="34,349,0,0" VerticalAlignment="Top" Width="77" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="34,301,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="lblPrenom" Content="Prenom" HorizontalAlignment="Left" Margin="34,260,0,0" VerticalAlignment="Top" Width="120" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="lblNomUtilisateur" Content="Nom d'utilisateur" HorizontalAlignment="Left" Margin="426,219,0,0" VerticalAlignment="Top" Width="158" RenderTransformOrigin="0.317,0.538" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="lblContenuNom" Content="Sissoko"  HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="121,219,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.261,0.538" Width="206" FontFamily="Leelawadee UI Semilight" FontSize="14.667" Background="White" Foreground="#FFB900FF"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="55" Margin="637,144,0,0" VerticalAlignment="Top" Width="61" Source="/Epyks;component/Resources/Edit User-64.png" MouseUp="image_MouseUp"/>
+        <Separator HorizontalAlignment="Left" Height="27.006" Margin="261.497,302.446,0,0" VerticalAlignment="Top" Width="194" RenderTransformOrigin="0.5,0.5" Foreground="#FFB900FF">
             <Separator.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -36,6 +36,24 @@
                 </TransformGroup>
             </Separator.RenderTransform>
         </Separator>
-        <Button x:Name="btnEnregistrerInfos" Content="Enregistrer" HorizontalAlignment="Center" Height="25" Margin="595,461,0,0" VerticalAlignment="Center" Width="149" FontSize="13.333" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White"/>
+        <Button x:Name="btnEnregistrerInfos" Content="Enregistrer" HorizontalAlignment="Right" Height="46" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="189" FontSize="14.667" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White">
+        </Button>
+        <Label x:Name="lblContenuPrenom"  HorizontalContentAlignment="Right" Content="Christelle" HorizontalAlignment="Left" Margin="121,260,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.261,0.538" Width="206" FontFamily="Leelawadee UI Semilight" FontSize="14.667" Background="White" Foreground="#FFB900FF"/>
+        <Label x:Name="lblContenuEmail"  HorizontalContentAlignment="Right" Content="adeolamel@gmail.com" HorizontalAlignment="Left" Margin="121,302.773,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.261,0.538" Width="206" FontFamily="Leelawadee UI Semilight" FontSize="14.667" Background="White" Foreground="#FFB900FF"/>
+        <CheckBox x:Name="chBMasculin" Content="Masculin" HorizontalAlignment="Left" Height="30.44" Margin="243,0,0,100.107" VerticalAlignment="Bottom" Width="84" Foreground="#FFB900FF" FontSize="14.667" FontFamily="Leelawadee UI Semilight"/>
+        <CheckBox x:Name="chBFeminin" Content="Feminin" HorizontalAlignment="Left" Height="31.173" Margin="116,0,0,99.374" VerticalAlignment="Bottom" Width="84" Foreground="#FFB900FF" FontSize="14.667" FontFamily="Leelawadee UI Semilight" IsChecked="True"/>
+        <Label x:Name="lblContenuUsername" Content="Melissa07"  HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,219,18,0" VerticalAlignment="Top" RenderTransformOrigin="-2.261,0.538" Width="181" FontFamily="Leelawadee UI Semilight" FontSize="14.667" Background="White" Foreground="#FFB900FF"/>
+        <Label x:Name="lblDateDeNaissance" Content="Date de naissance" HorizontalAlignment="Left" Margin="426,260,0,0" VerticalAlignment="Top" Width="158" RenderTransformOrigin="0.317,0.538" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <DatePicker x:Name="datePBirthday" HorizontalAlignment="Right" Height="31.28" Margin="0,0,18,204.72" VerticalAlignment="Bottom" Width="181" BorderThickness="0" Text="Selectionnez votre" FontSize="14.667" FontFamily="Leelawadee UI Semilight"/>
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="31.28" Margin="5,0,0,108.28" VerticalAlignment="Bottom" Width="29" Source="/Epyks;component/Resources/Gender-64.png"/>
+        <Image x:Name="imgEmail" HorizontalAlignment="Left" Height="31.28" Margin="5,0,0,152" VerticalAlignment="Bottom" Width="29" Source="/Epyks;component/Resources/Email-64.png"/>
+        <Image x:Name="image1_Copy1" HorizontalAlignment="Left" Height="31.28" Margin="5,0,0,198.227" VerticalAlignment="Bottom" Width="29" Source="/Epyks;component/Resources/Name-64.png"/>
+        <Image x:Name="image1_Copy2" HorizontalAlignment="Left" Margin="5,219,0,245.72" Width="29" Source="/Epyks;component/Resources/Contacts-64.png"/>
+        <Label x:Name="lblPassword" Content="Mot de passe" HorizontalAlignment="Left" Margin="426,300.999,0,0" VerticalAlignment="Top" Width="158" RenderTransformOrigin="0.317,0.538" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
+        <Label x:Name="lblConfirmPassword" Content="Confirmer mot de passe" HorizontalAlignment="Left" Margin="426,349,0,0" VerticalAlignment="Top" Width="180" RenderTransformOrigin="0.317,0.538" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic" Visibility="Hidden"/>
+        <Label x:Name="lblContenuUsername_Copy" Content="**********"  HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,302.773,18,0" VerticalAlignment="Top" RenderTransformOrigin="-2.261,0.538" Width="181" FontFamily="Leelawadee UI Semilight" FontSize="14.667" Background="White" Foreground="#FFB900FF"/>
+        <Label x:Name="lblContenuUsername_Copy1" Content="**********"  HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,349,18,0" VerticalAlignment="Top" RenderTransformOrigin="-2.261,0.538" Width="133" FontFamily="Leelawadee UI Semilight" FontSize="14.667" Background="White" Foreground="#FFB900FF" Visibility="Hidden"/>
+        <Image x:Name="image1_Copy3" HorizontalAlignment="Right" Height="31.28" Margin="0,0,341,163.721" VerticalAlignment="Bottom" Width="29" Source="/Epyks;component/Resources/Lock 2-64.png"/>
+        <Button x:Name="btnRetour" Content="Retour" HorizontalAlignment="Left" Height="46" Margin="11,0,0,10" VerticalAlignment="Bottom" Width="189" FontSize="14.667" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White" Click="btnRetour_Click"/>
     </Grid>
 </Window>

@@ -18,6 +18,7 @@ namespace Epyks.Presentation
         {
                 InitializeComponent();
                 coordinator = CoordonnateurLogin.GetInstance();
+            TxtUsername.Focus();
         }
 
         /// <summary>

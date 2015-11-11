@@ -232,6 +232,36 @@
   <ItemGroup>
     <Resource Include="Resources\Feedbin-Icon-home-edit.svg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Edit User-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Calendar-64.png" />
+    <Resource Include="Resources\Contacts-64.png" />
+    <Resource Include="Resources\Email-64.png" />
+    <Resource Include="Resources\Gender-64.png" />
+    <Resource Include="Resources\Lock 2-64.png" />
+    <Resource Include="Resources\Login As User-64.png" />
+    <Resource Include="Resources\Name-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Back-64.png" />
+    <Resource Include="Resources\Save-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Presentation\Gender-64.png" />
+    <Resource Include="Presentation\Lock 2-64.png" />
+    <Resource Include="Presentation\Login As User-64.png" />
+    <Resource Include="Presentation\Name-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Presentation\Edit User-64.png" />
+    <Resource Include="Presentation\Email-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Presentation\Calendar-64.png" />
+    <Resource Include="Presentation\Contacts-64.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

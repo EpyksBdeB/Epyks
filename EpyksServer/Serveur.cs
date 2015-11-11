@@ -37,21 +37,15 @@ namespace EpyksServer
             while (ServerUp)
             {
                 TcpClient chatClient = null;
-                if (chatServer.Pending()){
-                    chatClient = chatServer.AcceptTcpClient();
-                    Console.WriteLine("You are now connected");
-                    StreamReader reader = new StreamReader(chatClient.GetStream());
-                    int id = Convert.ToInt32(reader.ReadLine());
-                    Console.WriteLine("Id obtained: " + id);
-                    ClientList.Add(id, chatClient);
-                    ClientManager manager = new ClientManager(this, chatClient, id);
-                }
+                chatClient = chatServer.AcceptTcpClient();
+                Console.WriteLine("You are now connected");
+                StreamReader reader = new StreamReader(chatClient.GetStream());
+                int id = Convert.ToInt32(reader.ReadLine());
+                Console.WriteLine("Id obtained: " + id);
+                ClientList.Add(id, chatClient);
+                ClientManager manager = new ClientManager(this, chatClient, id);
             }
         }
-
-
-
-        
 
     }
 
