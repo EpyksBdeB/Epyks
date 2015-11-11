@@ -5,33 +5,33 @@
     <Grid Width="600" Height="500">
     	<Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="50" Margin="58,213,0,0" VerticalAlignment="Top" Width="319"/>
     	<Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="50" Margin="58,269,0,0" VerticalAlignment="Top" Width="319"/>
-        
-    	<TextBox x:Name="TxtUsername"  HorizontalAlignment="Left" Margin="58,213,0,0" VerticalAlignment="Top" Width="319" FontSize="16" Height="50" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" SelectionBrush="#FFDB6FFF" Foreground="#FF969696" Padding="12,0,0,0" CaretBrush="#FF969696">
-    		<TextBox.Style>
-    			<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
-    				<Style.Resources>
-    					<VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-    						<VisualBrush.Visual>
-    							<Label Content="username" Foreground="#FF969696" FontSize="16" FontFamily="Segoe UI"  Padding="12,0,0,0"/>
-    						</VisualBrush.Visual>
-    					</VisualBrush>
-    				</Style.Resources>
-					<Setter Property="Background" Value="#00000000" />
-    				<Style.Triggers>
-    					<Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-    						<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
-    					</Trigger>
-    					<Trigger Property="Text" Value="{x:Null}">
-    						<Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
-    					</Trigger>
+
+        <TextBox x:Name="TxtUsername"  HorizontalAlignment="Left" Margin="58,213,0,0" VerticalAlignment="Top" Width="319" FontSize="16" Height="50" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" SelectionBrush="#FFDB6FFF" Foreground="#FF969696" Padding="12,0,0,0" CaretBrush="#FF969696">
+            <TextBox.Style>
+                <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+                    <Style.Resources>
+                        <VisualBrush x:Key="placeHolderBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="username" Foreground="#FF969696" FontSize="16" FontFamily="Segoe UI"  Padding="12,0,0,0"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Setter Property="Background" Value="#00000000" />
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource placeHolderBrush}" />
+                        </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
                             <Setter Property="Background" Value="#00000000" />
                         </Trigger>
                     </Style.Triggers>
-    			</Style>
-    		</TextBox.Style>
-    	</TextBox>
-    	<PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Margin="58,269,0,0" VerticalAlignment="Top" Width="319" FontSize="16" Height="50" VerticalContentAlignment="Center" GotFocus="TxtPassword_GotFocus" LostFocus="TxtPassword_LostFocus" BorderThickness="0" BorderBrush="{x:Null}" Foreground="#FF969696" SelectionBrush="#FFDB6FFF" Padding="12,0,0,0" CaretBrush="#FF969696">
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Margin="58,269,0,0" VerticalAlignment="Top" Width="319" FontSize="16" Height="50" VerticalContentAlignment="Center" GotFocus="TxtPassword_GotFocus" LostFocus="TxtPassword_LostFocus" BorderThickness="0" BorderBrush="{x:Null}" Foreground="#FF969696" SelectionBrush="#FFDB6FFF" Padding="12,0,0,0" CaretBrush="#FF969696">
     		<PasswordBox.Style>
     			<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type PasswordBox}">
     				<Style.Resources>
