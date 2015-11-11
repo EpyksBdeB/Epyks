@@ -48,15 +48,22 @@ namespace Epyks.Application
         {
             string line = "";
             Message message = null;
-
-            while (tcpClient.Connected && isReading)
+            try
             {
-                line = reader.ReadLine();
-                if (!String.IsNullOrEmpty(line))
+                while (tcpClient.Connected && isReading)
                 {
-                    message = new Message(line);
-                    membreCourant.AddMessageInStack(message);
+                    line = reader.ReadLine();
+                    if (!String.IsNullOrEmpty(line))
+                    {
+                        message = new Message(line);
+                        membreCourant.AddMessageInStack(message);
+                    }
                 }
+            }
+            catch (IOException e)
+            {
+                isReading = false;
+                tcpClient.Close();
             }
         }
 
