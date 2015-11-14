@@ -26,6 +26,7 @@ namespace Epyks_Test
              /* ... */
         }
         
+        [Test]
         public void testLogin()
         {
             Assert.IsTrue(coord.Login("castropeo", "monPassword"));          

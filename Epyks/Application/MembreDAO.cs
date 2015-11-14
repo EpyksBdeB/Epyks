@@ -155,15 +155,10 @@ namespace Epyks.Application
 
         public void deleteMember(int userId)
         {
-            throw new NotImplementedException();
-        }
-
-        /*public void deleteMember(int userId)
-        {
             string query = "DELETE FROM utilisateur where id_utilisateur='" + userId + "'";
             command = new MySqlCommand(query, this.connection);
             command.ExecuteNonQuery();
-        }*/
+        }
 
         // Ajouter parametre pour recevoir un membre
         public int insertMember(Membre nouveauMembre)
@@ -199,9 +194,13 @@ namespace Epyks.Application
         //                id_amis
 
 
-        public bool deleteFriend(String usernameAmis)
+        public bool deleteFriend(int userId, int idAmis)
         {
-            return true;
+            string query = "DELETE FROM contact WHERE id_amis='" + idAmis + "'";
+            command = new MySqlCommand(query, this.connection);
+            command.ExecuteNonQuery();
+
+            return !dejaAmis(userId, idAmis);
         }
 
         public ArrayList getListAmis(int id)

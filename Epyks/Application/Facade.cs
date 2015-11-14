@@ -149,9 +149,9 @@ namespace Epyks.Application
             return dao.dejaAmis(idUtilisateur, idAmis);
         }
 
-        public bool deleteAmis(string usernameAmis)
+        public bool deleteAmis(int userId, int idAmis)
         {
-            return dao.deleteFriend(usernameAmis);
+            return dao.deleteFriend(userId, idAmis);
         }
     }
 }

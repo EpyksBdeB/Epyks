@@ -46,14 +46,15 @@ namespace Epyks.Presentation
 
             creerProfil();
             observable = coordinateur.SubscribeToStack(this);
+            btnBack.IsEnabled = false;
 		}
 
 	    private void creerProfil()
 	    {
 	        mDtoCourant = coordinateur.getMembreCourant();
 	        this.TxtNomUtilisateur.Text = mDtoCourant.username;
-         
-            RemplirListDamis();
+
+            rafraichirListDamis();
 	    }
 
 	    private void MenuStatusItem_Click(object sender, RoutedEventArgs e)
@@ -84,6 +85,7 @@ namespace Epyks.Presentation
         private void Bouton_rechercher_click(object sender, RoutedEventArgs e)
         {
             enModeRecherche = true;
+            btnBack.IsEnabled = true;
             string caractereRecherche = textRechercher.Text;
             ArrayList listResultatRecherche = coordinateur.getListResultatRecherche(caractereRecherche);
             if (listResultatRecherche.Count == 0)
@@ -100,7 +102,7 @@ namespace Epyks.Presentation
         /// <summary>
         /// Methode qui rempli la liste d'amis de l'utilisateur
         /// </summary>
-        private void RemplirListDamis()
+        private void rafraichirListDamis()
         {
             listViewContact.Items.Clear();
             textRechercher.Clear();
@@ -153,7 +155,7 @@ namespace Epyks.Presentation
                     coordinateur.AjouterAmis(mDtoCourant.id, coordinateur.getIdAmis(usernameAmis));
                     break;
                 case MessageBoxResult.No:
-                    RemplirListDamis();
+                    rafraichirListDamis();
                     break;
             }
         }
@@ -208,8 +210,9 @@ namespace Epyks.Presentation
                         {
                             MessageBox.Show("Vous etes déja amis avec ce contact!");
                         }
-                        RemplirListDamis();
+                        rafraichirListDamis();
                         enModeRecherche = false;
+                        btnBack.IsEnabled = false;
                     }
                 }
                 else
@@ -224,18 +227,31 @@ namespace Epyks.Presentation
 
         private void listViewContact_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
-            if (listViewContact.SelectedItem != null)
+            ContextMenu cMenu = listViewContact.ContextMenu;
+            MenuItem item = (MenuItem) cMenu.Items[0];
+            if (listViewContact.SelectedItems.Count == 0 || enModeRecherche)
             {
-                
+                item.IsEnabled = false;
+            }
+            else
+            {
+                item.IsEnabled = true;
             }
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            if (coordinateur.deleteFriend((string)listViewContact.SelectedItems[0]))
+            if (coordinateur.deleteFriend(mDtoCourant.id ,coordinateur.getIdAmis((string)listViewContact.SelectedItems[0])))
             {
+                rafraichirListDamis();
                 MessageBox.Show("Friend deleted!");
-            }               
+            }
+            }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            rafraichirListDamis();
+            btnBack.IsEnabled = false;
+        }
         }
     }
-}

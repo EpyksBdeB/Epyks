@@ -1,40 +1,44 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
+using Epyks.Application;
+using NUnit.Framework;
+using Epyks.Coordonnateur;
+using Epyks.Presentation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Core;
+using Assert = NUnit.Framework.Assert;
+using System.Collections;
 
 namespace Epyks_Test
 {
     /// <summary>
     /// Description résumée pour UnitTest1
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class TestCoordonnateurMembreCourant
     {
-        public TestCoordonnateurMembreCourant()
+        [TestFixtureSetUp]
+        public void Init()
         {
-            //
-            // TODO: ajoutez ici la logique du constructeur
-            //
+            coordMembre = CoordonateurMembreCourant.GetInstance();
+            coord = CoordonnateurLogin.GetInstance();
+            if (!coord.verifierNomUtilisateurBD("FakeUser"))
+            {
+                coord.Register("FakeFirst", "FakeLast", "fake@gmail.com", "FakeUser", "FakePass", Genre.MALE, null, null, 0);
+            }
+            coord.Login("FakeUser", "FakePass");
+            mdtoCourant = coordMembre.getMembreCourant();
         }
 
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Obtient ou définit le contexte de test qui fournit
-        ///des informations sur la série de tests active ainsi que ses fonctionnalités.
-        ///</summary>
-        public TestContext TestContext
+        [TestFixtureTearDown]
+        public void Cleanup()
         {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
+            /* ... */
         }
+
+        private Facade api;
+        private MembreDTO mdtoCourant;
+        CoordonnateurLogin coord;
+        CoordonateurMembreCourant coordMembre;
 
         #region Attributs de tests supplémentaires
         //
@@ -58,12 +62,52 @@ namespace Epyks_Test
         //
         #endregion
 
-        [TestMethod]
-        public void TestMethod1()
+        [Test]
+        public void testerMembreCourantNotNull()
         {
-            //
-            // TODO: ajoutez ici la logique du test
-            //
+            Assert.IsNotNull(coordMembre.getMembreCourant());
+        }
+
+        [Test]
+        public void testerAjoutDamis()
+        {
+            if (!coord.verifierNomUtilisateurBD("Amis1") && !coord.verifierNomUtilisateurBD("Amis2"))
+            {
+                coord.Register("FakeFirst", "FakeLast", "Amis1@gmail.com", "Amis1", "FakePass", Genre.MALE, null, null, 0);
+                coord.Register("FakeFirst", "FakeLast", "Amis2@gmail.com", "Amis2", "FakePass", Genre.MALE, null, null, 0);
+            }
+            int idAmis1 = coordMembre.getIdAmis("Amis1");
+            int idAmis2 = coordMembre.getIdAmis("Amis2");
+            if(!coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1)
+                && !coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1))
+            {
+                coordMembre.AjouterAmis(mdtoCourant.id, idAmis1);
+                coordMembre.AjouterAmis(mdtoCourant.id, idAmis2);
+            }
+            Assert.IsTrue(coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1));
+            Assert.IsTrue(coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis2));
+        }
+
+        [Test]
+        public void testerRecupererListAmis()
+        {
+            int idAmis1 = coordMembre.getIdAmis("Amis1");
+            int idAmis2 = coordMembre.getIdAmis("Amis2");
+            coordMembre.AjouterAmis(mdtoCourant.id, idAmis1);
+            coordMembre.AjouterAmis(mdtoCourant.id, idAmis2);
+            ArrayList listAmis = coordMembre.getListAmis(mdtoCourant.id);
+            Assert.IsTrue(listAmis.Count == 2 && listAmis[0].Equals("Amis1") && listAmis[1].Equals("Amis2"));
+        }
+
+        [Test]
+        public void testerSupprimerUnAmis()
+        {
+            int idAmis1 = coordMembre.getIdAmis("Amis1");
+            int idAmis2 = coordMembre.getIdAmis("Amis2");
+            coordMembre.deleteFriend(mdtoCourant.id, idAmis1);
+            coordMembre.deleteFriend(mdtoCourant.id, idAmis2);
+            Assert.IsFalse(coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1));
+            Assert.IsFalse(coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis2));
         }
     }
 }
