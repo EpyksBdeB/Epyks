@@ -29,6 +29,7 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                 </MenuItem>
                 <Separator/>
                 <MenuItem Header="Mon profil" Click="MenuItem_Click"/>
+                <MenuItem Header="Changer mot de passe" Click="ChangerMDP_Click_1"/>
                 <MenuItem Header="Déconnexion"/>
                 <MenuItem Header="Fermer"/>
             </MenuItem>
