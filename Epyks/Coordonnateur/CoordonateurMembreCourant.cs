@@ -61,7 +61,7 @@ namespace Epyks.Coordonnateur
 
         public void EnvoyerMessage(string messageText)
         {
-            api.EvoyerMessage(messageText);
+            api.EnvoyerMessage(messageText);
         }
 
         public bool VerifierSiAmis(int idUtilisateur, int idAmis)
