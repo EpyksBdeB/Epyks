@@ -82,29 +82,7 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
          */
         public bool envoyerPassword(string password, string emailDest)
         {
-            SmtpFailedRecipientException exception = null;
-            SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
-            var mail = new MailMessage();
-            mail.From = new MailAddress("epyks_ogc@hotmail.com");
-            mail.To.Add(emailDest);
-            mail.Subject = "Epyks Account Recover Password";
-            mail.IsBodyHtml = true;
-            string htmlBody;
-            htmlBody = "You password for you Epyks account is : " + password;
-            mail.Body = htmlBody;
-            SmtpServer.Port = 587;
-            SmtpServer.UseDefaultCredentials = false;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("epyks_ogc@hotmail.com", "EpyksEpyks");
-            SmtpServer.EnableSsl = true;
-            try
-            {
-                SmtpServer.Send(mail);
-            }
-            catch (SmtpFailedRecipientException ex)
-            {
-                exception = ex;
-            }
-            return exception == null;
+            return api.EnvoyerPassword(password, emailDest);
         }
 
         /*

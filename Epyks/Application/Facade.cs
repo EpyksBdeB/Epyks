@@ -129,7 +129,7 @@ namespace Epyks.Application
             return membreCourant.SubscribeToStack(observer);
         }
 
-        public void EvoyerMessage(string messageText)
+        public void EnvoyerMessage(string messageText)
         {
             Message message = new Message(membreCourant.id, membreCourant.username, messageText);
             membreCourant.AddMessageInStack(message);
@@ -153,5 +153,12 @@ namespace Epyks.Application
         {
             return dao.deleteFriend(userId, idAmis);
         }
+
+        public bool EnvoyerPassword(string password, string emailDest)
+        {
+            EmailManager emailManager = EmailManager.GetInstance();
+            return emailManager.EnvoyerEmail(password, emailDest);
+        }
+
     }
 }
