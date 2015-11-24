@@ -3,7 +3,6 @@ using Epyks.Application;
 using NUnit.Framework;
 using Epyks.Coordonnateur;
 using Epyks.Presentation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Core;
 using Assert = NUnit.Framework.Assert;
 

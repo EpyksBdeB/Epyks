@@ -13,7 +13,7 @@ namespace Epyks.Application
 {
     internal class GestionnaireCommunication
     {
-        private const int PORT = 8080;
+        private const int PORT = 8181;
         private const string HOSTNAME = "aegaur.ddns.net";
 
         private TcpClient tcpClient;
@@ -53,7 +53,7 @@ namespace Epyks.Application
                 while (tcpClient.Connected && isReading)
                 {
                     line = reader.ReadLine();
-                    if (!String.IsNullOrEmpty(line))
+                    if (!String.IsNullOrEmpty(line) && line.StartsWith("<?xml version='1.0'?>"))
                     {
                         message = new Message(line);
                         membreCourant.AddMessageInStack(message);

@@ -49,7 +49,7 @@ namespace Epyks.Application
             //Olivier: ma connectionString pour chez moi!
             //myConnectionstring = "server = localhost; user id = FakeUser; password = FakePass; database = epyks; persistsecurityinfo = True";
 
-           myConnectionstring = "server=localhost;uid=root;pwd=Cartigan0;database=epyks;port=3306;";
+           myConnectionstring = "server=aegaur.ddns.net;uid=epyks;pwd=gr007,,;database=epyks;port=8080;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
