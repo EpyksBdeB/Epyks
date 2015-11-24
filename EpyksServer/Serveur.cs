@@ -28,7 +28,7 @@ namespace EpyksServer
         /// </summary>
         public Serveur()
         {
-            chatServer = new TcpListener(8080);
+            chatServer = new TcpListener(8181);
             ServerUp = true;
             ClientList = new Dictionary<int, TcpClient>();
 
