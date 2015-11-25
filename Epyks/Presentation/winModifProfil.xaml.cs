@@ -25,9 +25,11 @@ namespace Epyks
     {
         private CoordonateurMembreCourant membreCourant;
         private MembreDTO mdto;
+        private WinProfil profil;
 
-        public winModifProfil()
+        public winModifProfil(WinProfil winProfil)
         {
+            profil = winProfil;
             InitializeComponent();
             membreCourant = CoordonateurMembreCourant.GetInstance();
             mdto = membreCourant.getMembreCourant();
@@ -72,6 +74,7 @@ namespace Epyks
         private void btnRetour_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            profil.Show();
 
 
         }
@@ -86,12 +89,33 @@ namespace Epyks
             string prenom = this.txtBContenuPrenom.Text.ToString();
             string email = this.txtBContenuEmail.Text.ToString();
             string notel = this.txtBContenuNoTelephone.Text.ToString();
+            if (rdBMasculin.IsChecked == true)
+            {
+                Genre genre = Genre.MALE;
+            }
+            else if(rdB_Feminin.IsChecked == true)
+            {
+                Genre genre = Genre.FEMALE;
+            }
 
 
             mdao.modifierInfosAPartirProfil(nom, prenom, email, notel, mdto.id);
             MessageBox.Show("Vos informations ont ete modifiees avec succes!");
 
 
+        }
+
+        private void modifierMessagePerso_Click(object sender, RoutedEventArgs e)
+        {
+           string messagePrive =  txtBoxMessagePrive.Text.ToString();
+            bool correct = membreCourant.verifierInput(messagePrive);
+            if (correct)
+            {
+                MembreDAO mdao = MembreDAO.GetInstance();
+                mdao.modifierMessagePersonnel(mdto.id, messagePrive);
+            }
+            
+            
         }
     }
 }

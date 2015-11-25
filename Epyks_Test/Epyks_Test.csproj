@@ -71,6 +71,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Application\MembreDAOTest.cs" />
     <Compile Include="Application\MembreTest.cs" />
     <Compile Include="Coordonnateur\TestCoordonnateurLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

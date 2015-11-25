@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Epyks.Presentation"
         mc:Ignorable="d"
-        Title="Modification du mot de passe" Height="380.488" Width="659.077" ResizeMode="NoResize">
+        Title="Modification du mot de passe" Height="380.488" Width="659.077" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid>
         <Label x:Name="lblAncienMDP" Content="Entrez votre mot de passe courant" HorizontalAlignment="Left" Margin="34,124,0,0" VerticalAlignment="Top" Width="251" FontSize="16" Background="White" Foreground="#FFB900FF" FontFamily="Leelawadee UI Semilight"/>
         <Label x:Name="lblAncienMDP_Copy" Content="Confirmez votre nouveau mot de passe" HorizontalAlignment="Left" Margin="34,232,0,0" VerticalAlignment="Top" Width="290" FontSize="16" Background="White" Foreground="#FFB900FF" FontFamily="Leelawadee UI Semilight"/>

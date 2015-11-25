@@ -59,7 +59,22 @@ namespace Epyks.Presentation
 
 	    private void MenuStatusItem_Click(object sender, RoutedEventArgs e)
         {
-
+            if (menuAbsent.IsChecked)
+            {
+                imgStatusConnection.Source = new BitmapImage(new Uri(@"Resources/EnLigne.png", UriKind.RelativeOrAbsolute));
+                menuConnecte.IsChecked = false;
+                menuDeconnecte.IsChecked = false;
+            }
+            else if (menuConnecte.IsChecked)
+            {
+                menuAbsent.IsChecked = false;
+                menuDeconnecte.IsChecked = false;
+            }
+            else if (menuDeconnecte.IsChecked)
+            {
+                menuAbsent.IsChecked = false;
+                menuConnecte.IsChecked = false;
+            }
         }
 
         /// <summary>
@@ -186,10 +201,10 @@ namespace Epyks.Presentation
             TxtMessage.Text = null;
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void modifProfil_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            winModifProfil modifProfil = new winModifProfil();
+            winModifProfil modifProfil = new winModifProfil(this);
             modifProfil.Show();
         }
 
@@ -259,5 +274,17 @@ namespace Epyks.Presentation
             rafraichirListDamis();
             btnBack.IsEnabled = false;
         }
+
+        private void seDeconnecter_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            WinLogin login = new WinLogin();
+            login.Show();
         }
+
+        private void fermerProgramme_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+    }
     }

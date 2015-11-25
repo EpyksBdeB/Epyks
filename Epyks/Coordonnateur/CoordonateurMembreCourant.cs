@@ -73,5 +73,10 @@ namespace Epyks.Coordonnateur
         {
             return api.deleteAmis(userId, idAmis);
         }
+
+        public bool verifierInput(string messagePrive)
+        {
+            return (messagePrive.Length < 5 || messagePrive.Length > 140);
+        }
     }
 }
