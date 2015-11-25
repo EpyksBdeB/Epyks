@@ -9,3 +9,6 @@ C:\Users\Melissa\Documents\Epyks v.1.3\EpyksServer\obj\Debug\EpyksServer.pdb
 C:\Users\Melissa\Documents\Epyks v.1.3\EpyksServer\bin\Debug\EpyksServer.exe
 C:\Users\Melissa\Documents\Epyks v.1.3\EpyksServer\bin\Debug\EpyksServer.pdb
 C:\Users\Melissa\Documents\Epyks v.1.3\EpyksServer\obj\Debug\EpyksServer.csprojResolveAssemblyReference.cache
+C:\Users\Christelle\Documents\Epyks v1.2\EpyksServer\bin\Debug\EpyksServer.exe.config
+C:\Users\Christelle\Documents\Epyks v1.2\EpyksServer\obj\Debug\EpyksServer.exe
+C:\Users\Christelle\Documents\Epyks v1.2\EpyksServer\obj\Debug\EpyksServer.pdb

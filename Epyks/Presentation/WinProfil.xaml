@@ -11,27 +11,27 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
         <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Fichier" Height="24.776" Width="51.79" FontSize="13.333">
                 <MenuItem Header="Status" Click="MenuStatusItem_Click">
-                    <MenuItem Header="En ligne">
+                    <MenuItem x:Name="menuConnecte" Header="En ligne" IsCheckable="True" IsChecked="True">
                         <MenuItem.Icon>
                             <Image Source="EnLigne.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Absent" Click="MenuStatusItem_Click">
+                    <MenuItem x:Name="menuAbsent" Header="Absent" Click="MenuStatusItem_Click" IsCheckable="True">
                         <MenuItem.Icon>
                             <Image Source="Absent.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Déconnecté" Click="MenuStatusItem_Click">
+                    <MenuItem x:Name="menuDeconnecte" Header="Déconnecté" Click="MenuStatusItem_Click" IsCheckable="True">
                         <MenuItem.Icon>
                             <Image Source="Deconnecte.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="Mon profil" Click="MenuItem_Click"/>
+                <MenuItem Header="Mon profil" Click="modifProfil_Click"/>
                 <MenuItem Header="Changer mot de passe" Click="ChangerMDP_Click_1"/>
-                <MenuItem Header="Déconnexion"/>
-                <MenuItem Header="Fermer"/>
+                <MenuItem Header="Déconnexion" Click="seDeconnecter_Click"/>
+                <MenuItem Header="Fermer" Click="fermerProgramme_Click"/>
             </MenuItem>
             <MenuItem FontSize="13.333" Header="Outils"/>
             <MenuItem FontSize="13.333" Header="À propos"/>
@@ -81,7 +81,7 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                                 <Image Source="pack://siteoforigin:,,,/Resources/search.png" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill"/>
                             </StackPanel>
                         </Button>
-                       
+
                         <Button Style="{StaticResource FadeOutButton}" Name="btnBack" BorderThickness="0" BorderBrush="{x:Null}" Background="#FFC926FF" Height="41" VerticalAlignment="Top" Margin="0,0,149,0" Click="Button_Click_1">
                             <StackPanel Margin="10,5">
                                 <Image Source="pack://siteoforigin:,,,/Resources/back_arrow.png" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill"/>
@@ -115,6 +115,7 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="9.995,5.692,1.663,1.489"/>
                     <TextBlock Grid.Column="1" Foreground="#FFC926FF" Padding="0" Margin="7.623,4.028,113.002,80.375"><Run Text="E"/><Run Text="n discussion avec "/><Run Text="Prénom Nom"/></TextBlock>
+                    <Image x:Name="imgStatusConnection" HorizontalAlignment="Left" Height="24" Margin="-31,45,0,0" VerticalAlignment="Top" Width="22" Source="Absent.png" RenderTransformOrigin="0.409,1.25"/>
                 </Grid>
                 <Grid Grid.Row="1">
                     <TextBlock x:Name="LblBlockConversation" Background="#FFFFD8FF" Margin="9.993,10,10.007,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="308.518"/>

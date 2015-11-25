@@ -83,5 +83,9 @@ namespace Epyks.Presentation
             }
             return passwordCrypte;
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+        }
     }
 }

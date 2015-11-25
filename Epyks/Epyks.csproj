@@ -196,7 +196,7 @@
     <AppDesigner Include="Properties\" />
     <Resource Include="Presentation\Absent.png" />
     <Resource Include="Presentation\Deconnecte.png" />
-    <Resource Include="Presentation\EnLigne.png" />
+    <Resource Include="Resources\EnLigne.png" />
     <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>

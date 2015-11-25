@@ -1,4 +1,4 @@
-﻿
+﻿ The following untracked working tree files would be overwritten by merge:z
 using System;
 using System.Collections.Generic;
 using MySql;
@@ -129,6 +129,11 @@ namespace Epyks.Application
             return membre;
         }
 
+        internal void modifierMessagePersonnel(int id, string messagePrive)
+        {
+            string query = "UPDATE utilisateur SET message_perso= '" + messagePrive + "' where id_utilisateur= '" + id + "'";
+            command = new MySqlCommand(query, this.connection);
+        }
         /// <summary>
         /// Modification des info du profil
         /// </summary>
@@ -395,30 +400,6 @@ namespace Epyks.Application
             reader.Close();
             return DejaAmis;
         }
-
-
-      /*  private String decryptPassword(String passwordCrypte)
-        {
-            String passwordDecrypte = null;
-            string EncryptionKey = "MAKV2SPBNI99212";
-            byte[] cipherBytes = Convert.FromBase64String(passwordCrypte);
-            using (Aes encryptor = Aes.Create())
-            {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
-                encryptor.Key = pdb.GetBytes(32);
-                encryptor.IV = pdb.GetBytes(16);
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(cipherBytes, 0, cipherBytes.Length);
-                        cs.Close();
-                    }
-                    passwordDecrypte = Encoding.Unicode.GetString(ms.ToArray());
-                }
-            }
-            return passwordDecrypte;
-        }*/
 
         public List<Membre> getAllMembers()
         {
