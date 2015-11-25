@@ -27,7 +27,7 @@ namespace Epyks
         private MembreDTO mdto;
         private WinProfil profil;
 
-        public WsinModifProfil(WinProfil winProfil)
+        public WinModifProfil(WinProfil winProfil)
         {
             profil = winProfil;
             InitializeComponent();
@@ -116,6 +116,23 @@ namespace Epyks
             }
             
             
+        }
+
+        private void supprimer_compte_click(object sender, MouseButtonEventArgs e)
+        {
+            if (MessageBox.Show("Voulez-vous vraiment supprimer votre compte?", "Supprimer mon compte", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                // TODO: Supprimer compte de la BD 
+                MembreDAO mdao = MembreDAO.GetInstance();
+                mdao.DeleteMember(mdto.id);
+                MessageBox.Show("Votre compte a ete supprime avec succes! Vous serez ridirige vers la fenetre de connection");
+                WinLogin login = new WinLogin();
+                login.Show();
+            }
+            else
+            {
+                //CLOSE MESSAGEBOX
+            }
         }
     }
 }
