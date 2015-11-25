@@ -14,7 +14,7 @@ namespace Epyks.Application
     internal class GestionnaireCommunication
     {
         private const int PORT = 8181;
-        private const string HOSTNAME = "aegaur.ddns.net";
+        private const string HOSTNAME = "localhost";
 
         private TcpClient tcpClient;
         private StreamReader reader;
@@ -24,13 +24,13 @@ namespace Epyks.Application
 
         public GestionnaireCommunication(Membre membreCourant)
         {
-            ////this.membreCourant = membreCourant;
-            ////isReading = true;
-            ////tcpClient = new TcpClient(HOSTNAME, PORT);
-            ////reader = new StreamReader(tcpClient.GetStream());
-            ////writer = new StreamWriter(tcpClient.GetStream());
-            ////writer.AutoFlush = true;
-            ////writer.WriteLine(Convert.ToString(membreCourant.id));
+            this.membreCourant = membreCourant;
+            isReading = true;
+            tcpClient = new TcpClient(HOSTNAME, PORT);
+            reader = new StreamReader(tcpClient.GetStream());
+            writer = new StreamWriter(tcpClient.GetStream());
+            writer.AutoFlush = true;
+            writer.WriteLine(Convert.ToString(membreCourant.id));
         }
 
         public void EcrireMessage(Message message)
