@@ -3,12 +3,11 @@ using Epyks.Application;
 using NUnit.Framework;
 using Epyks.Coordonnateur;
 using Epyks.Presentation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Core;
 using Assert = NUnit.Framework.Assert;
 using System.Collections;
 
-namespace Epyks_Test
+namespace Epyks.Coordonnateur.Test
 {
     /// <summary>
     /// Description résumée pour UnitTest1
@@ -79,7 +78,7 @@ namespace Epyks_Test
             int idAmis1 = coordMembre.getIdAmis("Amis1");
             int idAmis2 = coordMembre.getIdAmis("Amis2");
             if(!coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1)
-                && !coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1))
+                && !coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis2))
             {
                 coordMembre.AjouterAmis(mdtoCourant.id, idAmis1);
                 coordMembre.AjouterAmis(mdtoCourant.id, idAmis2);

@@ -248,6 +248,12 @@ namespace Epyks.Presentation
             }
             }
 
+        private void ChangerMDP_Click_1(object sender, RoutedEventArgs e)
+        {
+            WinmodifMotDePasse modifMDP = new WinmodifMotDePasse();
+            modifMDP.Show();
+        }
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             rafraichirListDamis();

@@ -3,11 +3,10 @@ using Epyks.Application;
 using NUnit.Framework;
 using Epyks.Coordonnateur;
 using Epyks.Presentation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Core;
 using Assert = NUnit.Framework.Assert;
 
-namespace Epyks_Test
+namespace Epyks.Coordonnateur.Test
 {
     [TestFixture]
     public class TestCoordonnateurLogin
@@ -16,8 +15,9 @@ namespace Epyks_Test
         [TestFixtureSetUp]
         public void Init()
         {
-            coord = CoordonnateurLogin.GetInstance();
+
             coord.Register("Olivier", "Castro", "casof@gmail.com", "castropeo", "monPassword", Genre.MALE, null, null, 0);
+            coord = CoordonnateurLogin.GetInstance();
         }
 
         [TestFixtureTearDown]
@@ -39,25 +39,9 @@ namespace Epyks_Test
         }
 
         [Test]
-        public void testerConnection()
-        {
-            CoordonnateurLogin coord = CoordonnateurLogin.GetInstance();
-            Assert.IsNotNull(coord);
-        }
-
-        [Test]
         public void testUsernameValide()
         {
-            CoordonnateurLogin log = CoordonnateurLogin.GetInstance();
-            bool exist = log.verifierNomUtilisateurBD("mel07");
-            Assert.IsTrue(exist);
-        }
-
-        [Test]
-        public void testEmailValide()
-        {
-            CoordonnateurLogin log = CoordonnateurLogin.GetInstance();
-            bool exist = log.VerifierEmail("ene@gmail.com");
+            bool exist = coord.verifierNomUtilisateurBD("castropeo");
             Assert.IsTrue(exist);
         }
 
@@ -98,17 +82,5 @@ namespace Epyks_Test
          {
              Assert.IsTrue(coord.envoyerPassword("monPassword", "casof@gmail.com"));
          }
-    
-        [Test]
-        public void testGetAllMember()
-        {
-            //mDao.getMember();
-        }
-
-        [Test]
-        public void testUpdateInfoMembre()
-        {
-            //mDao.updateMember();
-        }
     }
 }

@@ -50,8 +50,8 @@ namespace Epyks.Application
            // membreCourant = new Membre(id, "m", "m", "m" + id, "m", "m", Genre.MALE, "m", new byte[1], 1);
             if (membreCourant != null)
             {
-             //  gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
-               //gestionnaireCommunication.StartReading();
+               gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
+               gestionnaireCommunication.StartReading();
             }
 
             return membreCourant != null;
@@ -129,7 +129,7 @@ namespace Epyks.Application
             return membreCourant.SubscribeToStack(observer);
         }
 
-        public void EvoyerMessage(string messageText)
+        public void EnvoyerMessage(string messageText)
         {
             Message message = new Message(membreCourant.id, membreCourant.username, messageText);
             membreCourant.AddMessageInStack(message);
@@ -153,5 +153,12 @@ namespace Epyks.Application
         {
             return dao.deleteFriend(userId, idAmis);
         }
+
+        public bool EnvoyerPassword(string password, string emailDest)
+        {
+            EmailManager emailManager = EmailManager.GetInstance();
+            return emailManager.EnvoyerEmail(password, emailDest);
+        }
+
     }
 }

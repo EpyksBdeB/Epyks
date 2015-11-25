@@ -47,9 +47,9 @@ namespace Epyks.Application
             //myConnectionstring = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
 
             //Olivier: ma connectionString pour chez moi!
-            myConnectionstring = "server = localhost; user id = FakeUser; password = FakePass; database = epyks; persistsecurityinfo = True";
+            //myConnectionstring = "server = localhost; user id = FakeUser; password = FakePass; database = epyks; persistsecurityinfo = True";
 
-          // myConnectionstring = "server=localhost;uid=root;pwd=Cartigan0;database=epyks;port=3306;";
+           myConnectionstring = "server=aegaur.ddns.net;uid=epyks;pwd=gr007,,;database=epyks;port=8080;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
@@ -70,6 +70,15 @@ namespace Epyks.Application
                         break;
                 }
             }
+        }
+
+        internal void updatePassword(int id, string nouveauPassword)
+        {
+            String passwordCrypte = cryptPassword(nouveauPassword);
+            string query = "UPDATE utilisateur SET password= '" + passwordCrypte + "' where id_utilisateur= '" + id + "'";
+            command = new MySqlCommand(query, this.connection);
+
+            command.ExecuteNonQuery();
         }
 
         public List<Membre> getAllMembers()
@@ -104,6 +113,14 @@ namespace Epyks.Application
             reader.Close();
 
             return membre;
+        }
+
+        internal void modifierInfosAPartirProfil(string nom, string prenom, string email, string notel, int id)
+        {
+            string query = "UPDATE utilisateur SET nom= '" + nom + "', prenom= '" + prenom + "', email= '" + email + "'  where id_utilisateur= '" + id + "'";
+            command = new MySqlCommand(query, this.connection);
+
+            command.ExecuteNonQuery();
         }
 
         private string GetDBstring(string SqlFieldName, MySqlDataReader Reader)
