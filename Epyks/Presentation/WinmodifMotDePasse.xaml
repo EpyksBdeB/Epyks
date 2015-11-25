@@ -15,7 +15,7 @@
         <PasswordBox x:Name="passBCurrentPassword" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="349,124,0,0" VerticalAlignment="Top" Width="263" Height="38" Foreground="#FFB900FF" FontFamily="Leelawadee UI Semilight" FontSize="16"/>
         <PasswordBox x:Name="passBNewMDP" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="349,176,0,0" VerticalAlignment="Top" Width="263" Height="38" Foreground="#FFB900FF" FontFamily="Leelawadee UI Semilight" FontSize="16"/>
         <PasswordBox x:Name="passBConfirmNewMDP" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="349,225,0,0" VerticalAlignment="Top" Width="263" Height="38" Foreground="#FFB900FF" FontFamily="Leelawadee UI Semilight" FontSize="16"/>
-        <Button x:Name="btnModifierMDP" Content="Valider" HorizontalAlignment="Left" Height="73" Margin="239,268,0,0" VerticalAlignment="Top" Width="275" Foreground="#FFB900FF" FontFamily="Leelawadee UI" FontSize="29.333" Background="White" BorderThickness="0" FontWeight="Bold" Click="btnModifierMDP_Click"/>
+        <Button x:Name="btnModifierMDP" Content="Valider" HorizontalAlignment="Left" Height="73" Margin="239,268,0,0" VerticalAlignment="Top" Width="275" Foreground="#FFB900FF" FontFamily="Leelawadee UI" FontSize="29.333" Background="White" BorderThickness="0" FontWeight="Bold" Click="BtnModifierMDP_Click"/>
         <Image x:Name="image_Copy" HorizontalAlignment="Left" Margin="239,263,0,5" Width="85" Source="/Epyks;component/Resources/Ok-100.png"/>
 
     </Grid>

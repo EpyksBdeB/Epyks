@@ -1,4 +1,4 @@
-﻿
+﻿ The following untracked working tree files would be overwritten by merge:z
 using System;
 using System.Collections.Generic;
 using MySql;
@@ -42,6 +42,9 @@ namespace Epyks.Application
             }
         }
 
+        /// <summary>
+        /// Initialisation de la base de donnée
+        /// </summary>
         private void initializeDatabase()
         {
             //myConnectionstring = "server=localhost;uid=melissa_07;" + "pwd=Cartigan0;database=test;";
@@ -49,7 +52,7 @@ namespace Epyks.Application
             //Olivier: ma connectionString pour chez moi!
             //myConnectionstring = "server = localhost; user id = FakeUser; password = FakePass; database = epyks; persistsecurityinfo = True";
 
-           myConnectionstring = "server=localhost;uid=root;pwd=Cartigan0;database=epyks;port=3306;";
+           myConnectionstring = "server=aegaur.ddns.net;uid=epyks;pwd=gr007,,;database=epyks;port=8080;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
@@ -72,23 +75,34 @@ namespace Epyks.Application
             }
         }
 
-        internal void updatePassword(int id, string nouveauPassword)
+        /// <summary>
+        /// Changement du mot de passe d'un utilisateur
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nouveauPassword"></param>
+        internal void UpdatePassword(int id, string nouveauPassword)
         {
-            String passwordCrypte = cryptPassword(nouveauPassword);
+            String passwordCrypte = CryptPassword(nouveauPassword);
             string query = "UPDATE utilisateur SET password= '" + passwordCrypte + "' where id_utilisateur= '" + id + "'";
             command = new MySqlCommand(query, this.connection);
 
             command.ExecuteNonQuery();
         }
 
-        public List<Membre> getAllMembers()
+        public List<Membre> GetAllMembers()
         {
             throw new NotImplementedException();
         }
 
-        public Membre getMember(string username_membre, string password_membre)
+        /// <summary>
+        /// Récupération d'un membre par son username et password
+        /// </summary>
+        /// <param name="username_membre"></param>
+        /// <param name="password_membre"></param>
+        /// <returns>Retourne le membre en question</returns>
+        public Membre GetMember(string username_membre, string password_membre)
         {
-            String crypt = cryptPassword(password_membre);
+            String crypt = CryptPassword(password_membre);
             Membre membre = null;
             string query = "SELECT * FROM utilisateur where username='" + username_membre + "' and password='" + crypt + "'";
             command = new MySqlCommand(query, this.connection);
@@ -120,8 +134,15 @@ namespace Epyks.Application
             string query = "UPDATE utilisateur SET message_perso= '" + messagePrive + "' where id_utilisateur= '" + id + "'";
             command = new MySqlCommand(query, this.connection);
         }
-
-        internal void modifierInfosAPartirProfil(string nom, string prenom, string email, string notel, int id)
+        /// <summary>
+        /// Modification des info du profil
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <param name="email"></param>
+        /// <param name="notel"></param>
+        /// <param name="id"></param>
+        internal void ModifierInfosAPartirProfil(string nom, string prenom, string email, string notel, int id)
         {
             string query = "UPDATE utilisateur SET nom= '" + nom + "', prenom= '" + prenom + "', email= '" + email + "'  where id_utilisateur= '" + id + "'";
             command = new MySqlCommand(query, this.connection);
@@ -134,6 +155,11 @@ namespace Epyks.Application
             return Reader[SqlFieldName].Equals(DBNull.Value) ? string.Empty : Reader.GetString(SqlFieldName);
         }
 
+        /// <summary>
+        /// Vérifie si un username existe dans la base de donnée
+        /// </summary>
+        /// <param name="username">Username d'un membre</param>
+        /// <returns>Retourne True si existant, False si non</returns>
         public bool UsernameExist(string username)
         {
             bool hasRows = false;
@@ -146,6 +172,11 @@ namespace Epyks.Application
          return hasRows;
         }
 
+        /// <summary>
+        /// Vérifie si un adresse email existe dans la bd
+        /// </summary>
+        /// <param name="email">Email du membre</param>
+        /// <returns>Retourne True si oui, False si non</returns>
         public bool EmailAdressExist(string email)
         {
             bool hasRows = false;
@@ -158,7 +189,12 @@ namespace Epyks.Application
             return hasRows;
         }
 
-        public string getPassword(string email)
+        /// <summary>
+        /// Récupère le password d'un membre grace à son adresse email
+        /// </summary>
+        /// <param name="email">Email de membre ayant oublié son password</param>
+        /// <returns>Retourne le password</returns>
+        public string GetPassword(string email)
         {
             string motDePasse = null;
             string query = "SELECT password FROM utilisateur where email='" + email + "'";
@@ -171,25 +207,28 @@ namespace Epyks.Application
             return motDePasse;
         }
 
-        public void updateMember()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void deleteMember(int userId)
+        /// <summary>
+        /// Supprime un membre de la BD grace à son id
+        /// </summary>
+        /// <param name="userId">Id du membre</param>
+        public void DeleteMember(int userId)
         {
             string query = "DELETE FROM utilisateur where id_utilisateur='" + userId + "'";
             command = new MySqlCommand(query, this.connection);
             command.ExecuteNonQuery();
         }
 
-        // Ajouter parametre pour recevoir un membre
-        public int insertMember(Membre nouveauMembre)
+        /// <summary>
+        /// Ajout d'un membre
+        /// </summary>
+        /// <param name="nouveauMembre"></param>
+        /// <returns>Retourne l'id du membre inséré</returns>
+        public int InsertMember(Membre nouveauMembre)
         {
             FileStream fs;
             BinaryReader br;
 
-            string passwordCrypte = cryptPassword(nouveauMembre.password);
+            string passwordCrypte = CryptPassword(nouveauMembre.password);
 
             command = connection.CreateCommand();
             command.CommandText = "INSERT INTO utilisateur (username, password," +
@@ -211,22 +250,27 @@ namespace Epyks.Application
             return Convert.ToInt32(command.LastInsertedId);
         }
 
-        //TABLE CONTACT A FAIRE
-        //    contient:
-        //                id_utilisateur
-        //                id_amis
-
-
-        public bool deleteFriend(int userId, int idAmis)
+        /// <summary>
+        /// Supprime un membre de la liste d'amis de l'utilisateur
+        /// </summary>
+        /// <param name="userId">Id de l'utilisateur voulant supprimer un amis</param>
+        /// <param name="idAmis">Id de l'amis à supprimer</param>
+        /// <returns>Retourne True si suppression réussi, False si non</returns>
+        public bool DeleteFriend(int userId, int idAmis)
         {
             string query = "DELETE FROM contact WHERE id_amis='" + idAmis + "'";
             command = new MySqlCommand(query, this.connection);
             command.ExecuteNonQuery();
 
-            return !dejaAmis(userId, idAmis);
+            return !DejaAmis(userId, idAmis);
         }
 
-        public ArrayList getListAmis(int id)
+        /// <summary>
+        /// Récupère la liste d'amis d'un membre
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retourne la liste d'amis d'un membre</returns>
+        public ArrayList GetListAmis(int id)
         {
             ArrayList listAmis = new ArrayList();
             string query = "SELECT username FROM utilisateur where id_utilisateur IN (SELECT id_amis FROM "+
@@ -244,7 +288,12 @@ namespace Epyks.Application
             return listAmis;
         }
 
-        public ArrayList getListResultatRecherche(string caractereRecherche)
+        /// <summary>
+        /// Récupère la liste de membre résultant d'un string de recherche
+        /// </summary>
+        /// <param name="caractereRecherche">String de recherche</param>
+        /// <returns></returns>
+        public ArrayList GetListResultatRecherche(string caractereRecherche)
         {
             ArrayList listResultat = new ArrayList();
             string query = "SELECT username FROM utilisateur where username LIKE '%" + caractereRecherche + "%'";
@@ -261,7 +310,12 @@ namespace Epyks.Application
             return listResultat;
         }
 
-        public void ajouterUnAmis(int idUtilisateur, int idAmis)
+        /// <summary>
+        /// Ajoute un amis dans la table contact
+        /// </summary>
+        /// <param name="idUtilisateur">Id du membre qui ajoute un amis</param>
+        /// <param name="idAmis">Id de l'Amis ajouté dans la liste d'amis du membre</param>
+        public void AjouterUnAmis(int idUtilisateur, int idAmis)
         {
             command = connection.CreateCommand();
             command.CommandText = "INSERT INTO contact (id_utilisateur, id_amis) " +
@@ -271,7 +325,12 @@ namespace Epyks.Application
             command.ExecuteNonQuery();
         }
 
-        public int getMemberIdByUsername(string username)
+        /// <summary>
+        /// Récupère l'id d'un membre grace à son username
+        /// </summary>
+        /// <param name="username">username du membre</param>
+        /// <returns>Retourne L'id du membre</returns>
+        public int GetMemberIdByUsername(string username)
         {
             int idAmis = 0;
             string query = "SELECT id_utilisateur FROM utilisateur where username='" + username + "'";
@@ -286,7 +345,12 @@ namespace Epyks.Application
             return idAmis;
         }
 
-        private String cryptPassword(String passwordNonCrypte)
+        /// <summary>
+        /// Encryption d'un motde pass
+        /// </summary>
+        /// <param name="passwordNonCrypte">password sans encryption</param>
+        /// <returns>Retourne le password crypté</returns>
+        private String CryptPassword(String passwordNonCrypte)
         {
             string EncryptionKey = "MAKV2SPBNI99212";
             byte[] clearBytes = Encoding.Unicode.GetBytes(passwordNonCrypte);
@@ -309,7 +373,13 @@ namespace Epyks.Application
             return passwordCrypte;
         }
 
-        public bool dejaAmis(int idUtilisateur, int idAmis)
+        /// <summary>
+        /// Vérifie si un membre est amis avec un autre
+        /// </summary>
+        /// <param name="idUtilisateur">Id du membre</param>
+        /// <param name="idAmis">Id de l'autre membre</param>
+        /// <returns>Retourne True si amis, False si non</returns>
+        public bool DejaAmis(int idUtilisateur, int idAmis)
         {
             bool DejaAmis = false;
 
@@ -329,6 +399,16 @@ namespace Epyks.Application
             }
             reader.Close();
             return DejaAmis;
+        }
+
+        public List<Membre> getAllMembers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateMember()
+        {
+            throw new NotImplementedException();
         }
     } 
 }

@@ -29,29 +29,29 @@ namespace Epyks.Coordonnateur
             api = Facade.GetInstance();
         }
 
-        public MembreDTO getMembreCourant()
+        public MembreDTO GetMembreCourant()
         {
-            return mdtoCourant = api.getMembreCourant();
+            return mdtoCourant = api.GetMembreCourant();
         }
 
-        public ArrayList getListAmis(int id)
+        public ArrayList GetListAmis(int id)
         {
-            return api.getMembreListAmis(id);
+            return api.GetMembreListAmis(id);
         }
 
-        public ArrayList getListResultatRecherche(string caracteres)
+        public ArrayList GetListResultatRecherche(string caracteres)
         {
-            return api.getListResultat(caracteres);
+            return api.GetListResultat(caracteres);
         }
 
         public void AjouterAmis(int idUtilisateur, int idAmis)
         {
-            api.ajoutDunAmis(idUtilisateur, idAmis);
+            api.AjoutDunAmis(idUtilisateur, idAmis);
         }
 
-        public int getIdAmis(string username)
+        public int GetIdAmis(string username)
         {
-            return api.getNewAmisId(username);
+            return api.GetNewAmisId(username);
         }
 
         public IDisposable SubscribeToStack(IObserver<Message> observer)
@@ -61,17 +61,17 @@ namespace Epyks.Coordonnateur
 
         public void EnvoyerMessage(string messageText)
         {
-            api.EvoyerMessage(messageText);
+            api.EnvoyerMessage(messageText);
         }
 
         public bool VerifierSiAmis(int idUtilisateur, int idAmis)
         {
-            return api.verifierSiAmis(idUtilisateur, idAmis);
+            return api.VerifierSiAmis(idUtilisateur, idAmis);
         }
 
-        public bool deleteFriend(int userId, int idAmis)
+        public bool DeleteFriend(int userId, int idAmis)
         {
-            return api.deleteAmis(userId, idAmis);
+            return api.DeleteAmis(userId, idAmis);
         }
 
         public bool verifierInput(string messagePrive)

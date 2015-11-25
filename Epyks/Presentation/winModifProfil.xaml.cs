@@ -21,25 +21,25 @@ namespace Epyks
     /// <summary>
     /// Interaction logic for winModifProfil.xaml
     /// </summary>
-    public partial class winModifProfil : Window
+    public partial class WinModifProfil : Window
     {
         private CoordonateurMembreCourant membreCourant;
         private MembreDTO mdto;
         private WinProfil profil;
 
-        public winModifProfil(WinProfil winProfil)
+        public WsinModifProfil(WinProfil winProfil)
         {
             profil = winProfil;
             InitializeComponent();
             membreCourant = CoordonateurMembreCourant.GetInstance();
-            mdto = membreCourant.getMembreCourant();
+            mdto = membreCourant.GetMembreCourant();
 
-            initialiserInfos();
+            InitialiserInfos();
 
 
         }
 
-        private void initialiserInfos()
+        private void InitialiserInfos()
         {
             this.lblNom.Content = mdto.firstName + " " + mdto.lastName;
             this.lblNomUtilisateur.Content = mdto.username;
@@ -49,7 +49,7 @@ namespace Epyks
             this.txtBContenuEmail.Text = mdto.email;
         }
 
-        private void btnChangeImage_Click(object sender, RoutedEventArgs e)
+        private void BtnChangeImage_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Title = "Select a picture";
@@ -62,7 +62,7 @@ namespace Epyks
             }
         }
 
-        private void image_MouseUp(object sender, MouseButtonEventArgs e)
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Je voudrais modifier mes informations de mon profil!");
             txtBContenuNoTelephone.IsEnabled = true;
@@ -71,7 +71,7 @@ namespace Epyks
             txtBContenuNom.IsEnabled = true;
         }
 
-        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        private void BtnRetour_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             profil.Show();
@@ -79,9 +79,9 @@ namespace Epyks
 
         }
 
-        private void btnEnregistrerInfos_Click_1(object sender, RoutedEventArgs e)
+        private void BtnEnregistrerInfos_Click_1(object sender, RoutedEventArgs e)
         {
-            mdto = membreCourant.getMembreCourant();
+            mdto = membreCourant.GetMembreCourant();
 
             MembreDAO mdao = MembreDAO.GetInstance();
 
@@ -99,7 +99,7 @@ namespace Epyks
             }
 
 
-            mdao.modifierInfosAPartirProfil(nom, prenom, email, notel, mdto.id);
+            mdao.ModifierInfosAPartirProfil(nom, prenom, email, notel, mdto.id);
             MessageBox.Show("Vos informations ont ete modifiees avec succes!");
 
 

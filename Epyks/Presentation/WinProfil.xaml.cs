@@ -44,17 +44,17 @@ namespace Epyks.Presentation
 
             coordinateur = CoordonateurMembreCourant.GetInstance();
 
-            creerProfil();
+            CreerProfil();
             observable = coordinateur.SubscribeToStack(this);
             btnBack.IsEnabled = false;
 		}
 
-	    private void creerProfil()
+	    private void CreerProfil()
 	    {
-	        mDtoCourant = coordinateur.getMembreCourant();
+	        mDtoCourant = coordinateur.GetMembreCourant();
 	        this.TxtNomUtilisateur.Text = mDtoCourant.username;
 
-            rafraichirListDamis();
+            RafraichirListDamis();
 	    }
 
 	    private void MenuStatusItem_Click(object sender, RoutedEventArgs e)
@@ -102,7 +102,7 @@ namespace Epyks.Presentation
             enModeRecherche = true;
             btnBack.IsEnabled = true;
             string caractereRecherche = textRechercher.Text;
-            ArrayList listResultatRecherche = coordinateur.getListResultatRecherche(caractereRecherche);
+            ArrayList listResultatRecherche = coordinateur.GetListResultatRecherche(caractereRecherche);
             if (listResultatRecherche.Count == 0)
             {
                 AfficherAucunResultat();
@@ -117,11 +117,11 @@ namespace Epyks.Presentation
         /// <summary>
         /// Methode qui rempli la liste d'amis de l'utilisateur
         /// </summary>
-        private void rafraichirListDamis()
+        private void RafraichirListDamis()
         {
             listViewContact.Items.Clear();
             textRechercher.Clear();
-            ArrayList listAmis = coordinateur.getListAmis(mDtoCourant.id);
+            ArrayList listAmis = coordinateur.GetListAmis(mDtoCourant.id);
             foreach (string nomAmis in listAmis)
             {
                 listViewContact.Items.Add(nomAmis);
@@ -153,7 +153,7 @@ namespace Epyks.Presentation
 
         public bool VerifierSiDejaAmis(string usernameAmis)
         {
-            return coordinateur.VerifierSiAmis(mDtoCourant.id, coordinateur.getIdAmis(usernameAmis));
+            return coordinateur.VerifierSiAmis(mDtoCourant.id, coordinateur.GetIdAmis(usernameAmis));
         }
 
         /// <summary>
@@ -167,10 +167,10 @@ namespace Epyks.Presentation
             switch (m)
             {
                 case MessageBoxResult.Yes:
-                    coordinateur.AjouterAmis(mDtoCourant.id, coordinateur.getIdAmis(usernameAmis));
+                    coordinateur.AjouterAmis(mDtoCourant.id, coordinateur.GetIdAmis(usernameAmis));
                     break;
                 case MessageBoxResult.No:
-                    rafraichirListDamis();
+                    RafraichirListDamis();
                     break;
             }
         }
@@ -204,7 +204,7 @@ namespace Epyks.Presentation
         private void modifProfil_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            winModifProfil modifProfil = new winModifProfil(this);
+            WinModifProfil modifProfil = new WinModifProfil(this);
             modifProfil.Show();
         }
 
@@ -225,7 +225,7 @@ namespace Epyks.Presentation
                         {
                             MessageBox.Show("Vous etes déja amis avec ce contact!");
                         }
-                        rafraichirListDamis();
+                        RafraichirListDamis();
                         enModeRecherche = false;
                         btnBack.IsEnabled = false;
                     }
@@ -240,7 +240,7 @@ namespace Epyks.Presentation
              
         }
 
-        private void listViewContact_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        private void ListViewContact_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
             ContextMenu cMenu = listViewContact.ContextMenu;
             MenuItem item = (MenuItem) cMenu.Items[0];
@@ -256,9 +256,9 @@ namespace Epyks.Presentation
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            if (coordinateur.deleteFriend(mDtoCourant.id ,coordinateur.getIdAmis((string)listViewContact.SelectedItems[0])))
+            if (coordinateur.DeleteFriend(mDtoCourant.id ,coordinateur.GetIdAmis((string)listViewContact.SelectedItems[0])))
             {
-                rafraichirListDamis();
+                RafraichirListDamis();
                 MessageBox.Show("Friend deleted!");
             }
             }
@@ -271,7 +271,7 @@ namespace Epyks.Presentation
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            rafraichirListDamis();
+            RafraichirListDamis();
             btnBack.IsEnabled = false;
         }
 

@@ -33,24 +33,24 @@ namespace Epyks.Presentation
 
         }
 
-        private void btnModifierMDP_Click(object sender, RoutedEventArgs e)
+        private void BtnModifierMDP_Click(object sender, RoutedEventArgs e)
         {
-            validerMotDePasse();
+            ValiderMotDePasse();
 
             this.Close();
         }
 
-        private void validerMotDePasse()
+        private void ValiderMotDePasse()
         {
-            mdto = coordinateur.getMembreCourant();
-            string mdpCrypte = cryptPasswordEntered();
+            mdto = coordinateur.GetMembreCourant();
+            string mdpCrypte = CryptPasswordEntered();
             if (mdpCrypte.Equals(mdto.password.ToString()))
             {
                 if (this.passBNewMDP.Password.ToString().Equals(this.passBConfirmNewMDP.Password.ToString()))
                 {
 
                     MembreDAO mdao = MembreDAO.GetInstance();
-                    mdao.updatePassword(mdto.id, this.passBNewMDP.Password.ToString());
+                    mdao.UpdatePassword(mdto.id, this.passBNewMDP.Password.ToString());
                     MessageBox.Show("Mot de passe modifie avec succes!");
                 }
                 else { MessageBox.Show("Les nouveaux mots de passe ne concordent pas"); }
@@ -61,7 +61,7 @@ namespace Epyks.Presentation
 
         }
 
-        private string cryptPasswordEntered()
+        private string CryptPasswordEntered()
         {
             string EncryptionKey = "MAKV2SPBNI99212";
             string passwordCrypte = null;
