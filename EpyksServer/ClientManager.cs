@@ -69,6 +69,10 @@ namespace EpyksServer
                             }
                         }
                     }
+                    else
+                    {
+                        client.Close();
+                    }
                 }
             }
             catch (Exception e)
