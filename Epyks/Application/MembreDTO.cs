@@ -82,7 +82,7 @@ namespace Epyks.Application
                         {
                             result = ERR_USERNAME_EMPTY;
                         }
-                        else if (coordonnateurLogin.verifierNomUtilisateurBD(this.username))
+                        else if (coordonnateurLogin.VerifierNomUtilisateurBD(this.username))
                         {
                             result = ERR_USERNAME_ALREADY_EXIST;
                         }

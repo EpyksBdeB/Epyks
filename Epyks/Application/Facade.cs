@@ -46,12 +46,12 @@ namespace Epyks.Application
         {
             Random rand = new Random();
             int id = rand.Next(100);
-            membreCourant = dao.getMember(username, password);
+            membreCourant = dao.GetMember(username, password);
            // membreCourant = new Membre(id, "m", "m", "m" + id, "m", "m", Genre.MALE, "m", new byte[1], 1);
             if (membreCourant != null)
             {
-             //  gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
-               //gestionnaireCommunication.StartReading();
+               gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
+               gestionnaireCommunication.StartReading();
             }
 
             return membreCourant != null;
@@ -63,7 +63,7 @@ namespace Epyks.Application
         /// <param name="membre">le dto du membre</param>
         public void Register(MembreDTO membre)
         {
-            dao.insertMember(new Membre(membre));
+            dao.InsertMember(new Membre(membre));
         }
         /// <summary>
         /// Vérifie si le nom d'utilisateur existe
@@ -90,38 +90,58 @@ namespace Epyks.Application
         /// </summary>
         /// <param name="email">le couriel</param>
         /// <returns>le mot de passe</returns>
-        public string recupererPassword(string email)
+        public string RecupererPassword(string email)
         {
-           return dao.getPassword(email);
+           return dao.GetPassword(email);
         }
 
         /// <summary>
         /// Renvoie le membre courant
         /// </summary>
         /// <returns>le dto du membre courant</returns>
-        public MembreDTO getMembreCourant()
+        public MembreDTO GetMembreCourant()
         {
-            return membreCourant.getDTO();
+            return membreCourant.GetDTO();
         }
 
-        public ArrayList getMembreListAmis(int id)
+        /// <summary>
+        /// Récupère la liste d'amis de l'utilisateur en cours
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Retourne la list d'amis de l'utilisateur en cours</returns>
+        public ArrayList GetMembreListAmis(int id)
         {
-            return dao.getListAmis(id);
+            return dao.GetListAmis(id);
         }
 
-        public ArrayList getListResultat(string caracteres)
+        /// <summary>
+        /// Récupère la liste d'utilisateur correspondant au string de recherche
+        /// </summary>
+        /// <param name="caracteres"></param>
+        /// <returns>Retourne la liste des contacts résultant</returns>
+        public ArrayList GetListResultat(string caracteres)
         {
-            return dao.getListResultatRecherche(caracteres);
+            return dao.GetListResultatRecherche(caracteres);
         }
 
-        public void ajoutDunAmis(int idUtilisateur, int idAmis)
+        /// <summary>
+        /// Ajout d'un amis dans la liste d'amis de l'utilisateur en cours
+        /// </summary>
+        /// <param name="idUtilisateur"></param>
+        /// <param name="idAmis"></param>
+        public void AjoutDunAmis(int idUtilisateur, int idAmis)
         {
-            dao.ajouterUnAmis(idUtilisateur, idAmis);
+            dao.AjouterUnAmis(idUtilisateur, idAmis);
         }
 
-        public int getNewAmisId(string username)
+        /// <summary>
+        /// Récupère l'id d'un utilisateur par son username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>Retourne l'id de l'utilisateur</returns>
+        public int GetNewAmisId(string username)
         {
-            return dao.getMemberIdByUsername(username);
+            return dao.GetMemberIdByUsername(username);
         }
 
         public IDisposable SubscribeToStack(IObserver<Message> observer)
@@ -129,7 +149,7 @@ namespace Epyks.Application
             return membreCourant.SubscribeToStack(observer);
         }
 
-        public void EvoyerMessage(string messageText)
+        public void EnvoyerMessage(string messageText)
         {
             Message message = new Message(membreCourant.id, membreCourant.username, messageText);
             membreCourant.AddMessageInStack(message);
@@ -144,14 +164,39 @@ namespace Epyks.Application
             }
         }
 
-        public bool verifierSiAmis(int idUtilisateur, int idAmis)
+        /// <summary>
+        /// Vérifier si l'utilisateur en cours est amis avec un autre utilisateur 
+        /// </summary>
+        /// <param name="idUtilisateur"></param>
+        /// <param name="idAmis"></param>
+        /// <returns>Retourne True si amis, False si non</returns>
+        public bool VerifierSiAmis(int idUtilisateur, int idAmis)
         {
-            return dao.dejaAmis(idUtilisateur, idAmis);
+            return dao.DejaAmis(idUtilisateur, idAmis);
         }
 
-        public bool deleteAmis(int userId, int idAmis)
+        /// <summary>
+        /// Supprimer un utilisateur de la liste d'amis de l'utilisateur en cours
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="idAmis"></param>
+        /// <returns>Retourne True si delete complèté, False si non</returns>
+        public bool DeleteAmis(int userId, int idAmis)
         {
-            return dao.deleteFriend(userId, idAmis);
+            return dao.DeleteFriend(userId, idAmis);
         }
+        
+        /// <summary>
+        /// Appel EmailManager pour envoyer par email le password de l'utilisateur correspondant au email
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="emailDest"></param>
+        /// <returns>Retourne True si email envoyé, False si non</returns>
+        public bool EnvoyerPassword(string password, string emailDest)
+        {
+            EmailManager emailManager = EmailManager.GetInstance();
+            return emailManager.EnvoyerEmail(password, emailDest);
+        }
+
     }
 }

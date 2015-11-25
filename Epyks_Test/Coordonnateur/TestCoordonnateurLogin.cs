@@ -3,7 +3,6 @@ using Epyks.Application;
 using NUnit.Framework;
 using Epyks.Coordonnateur;
 using Epyks.Presentation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Core;
 using Assert = NUnit.Framework.Assert;
 
@@ -36,13 +35,13 @@ namespace Epyks.Coordonnateur.Test
         [Test]
         public void testRegister()
         {
-            Assert.IsTrue(coord.verifierNomUtilisateurBD("castropeo"));
+            Assert.IsTrue(coord.VerifierNomUtilisateurBD("castropeo"));
         }
 
         [Test]
         public void testUsernameValide()
         {
-            bool exist = coord.verifierNomUtilisateurBD("castropeo");
+            bool exist = coord.VerifierNomUtilisateurBD("castropeo");
             Assert.IsTrue(exist);
         }
 
@@ -75,13 +74,13 @@ namespace Epyks.Coordonnateur.Test
          [Test]
          public void testGetUserPassword()
          {
-             Assert.AreEqual("monPassword", coord.recoverPassword("casof@gmail.com"));
+             Assert.AreEqual("monPassword", coord.RecoverPassword("casof@gmail.com"));
          }
         
         [Test]
          public void testerEnvoieDunEmail()
          {
-             Assert.IsTrue(coord.envoyerPassword("monPassword", "casof@gmail.com"));
+             Assert.IsTrue(coord.EnvoyerPassword("monPassword", "casof@gmail.com"));
          }
     }
 }

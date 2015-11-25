@@ -43,8 +43,8 @@ namespace Epyks
             {
                 if (coordinator.VerifierEmail(TxtEmail.Text.ToString()))
                 {
-                    string password = coordinator.recoverPassword(TxtEmail.Text.ToString());
-                    coordinator.envoyerPassword(password, TxtEmail.Text.ToString());
+                    string password = coordinator.RecoverPassword(TxtEmail.Text.ToString());
+                    coordinator.EnvoyerPassword(password, TxtEmail.Text.ToString());
                     LblEmailError.Visibility = Visibility.Hidden;
                     this.Close();
                 }
