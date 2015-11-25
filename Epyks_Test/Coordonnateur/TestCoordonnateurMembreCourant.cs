@@ -20,12 +20,18 @@ namespace Epyks.Coordonnateur.Test
         {
             coordMembre = CoordonateurMembreCourant.GetInstance();
             coord = CoordonnateurLogin.GetInstance();
-            if (!coord.verifierNomUtilisateurBD("FakeUser"))
+            if (!coord.VerifierNomUtilisateurBD("FakeUser"))
             {
                 coord.Register("FakeFirst", "FakeLast", "fake@gmail.com", "FakeUser", "FakePass", Genre.MALE, null, null, 0);
+
+            }
+            if (!coord.VerifierNomUtilisateurBD("Amis1") && !coord.VerifierNomUtilisateurBD("Amis2"))
+            {
+                coord.Register("FakeFirst", "FakeLast", "Amis1@gmail.com", "Amis1", "FakePass", Genre.MALE, null, null, 0);
+                coord.Register("FakeFirst", "FakeLast", "Amis2@gmail.com", "Amis2", "FakePass", Genre.MALE, null, null, 0);
             }
             coord.Login("FakeUser", "FakePass");
-            mdtoCourant = coordMembre.getMembreCourant();
+            mdtoCourant = coordMembre.GetMembreCourant();
         }
 
         [TestFixtureTearDown]
@@ -64,19 +70,14 @@ namespace Epyks.Coordonnateur.Test
         [Test]
         public void testerMembreCourantNotNull()
         {
-            Assert.IsNotNull(coordMembre.getMembreCourant());
+            Assert.IsNotNull(coordMembre.GetMembreCourant());
         }
 
         [Test]
         public void testerAjoutDamis()
         {
-            if (!coord.verifierNomUtilisateurBD("Amis1") && !coord.verifierNomUtilisateurBD("Amis2"))
-            {
-                coord.Register("FakeFirst", "FakeLast", "Amis1@gmail.com", "Amis1", "FakePass", Genre.MALE, null, null, 0);
-                coord.Register("FakeFirst", "FakeLast", "Amis2@gmail.com", "Amis2", "FakePass", Genre.MALE, null, null, 0);
-            }
-            int idAmis1 = coordMembre.getIdAmis("Amis1");
-            int idAmis2 = coordMembre.getIdAmis("Amis2");
+            int idAmis1 = coordMembre.GetIdAmis("Amis1");
+            int idAmis2 = coordMembre.GetIdAmis("Amis2");
             if(!coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1)
                 && !coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis2))
             {
@@ -90,21 +91,21 @@ namespace Epyks.Coordonnateur.Test
         [Test]
         public void testerRecupererListAmis()
         {
-            int idAmis1 = coordMembre.getIdAmis("Amis1");
-            int idAmis2 = coordMembre.getIdAmis("Amis2");
+            int idAmis1 = coordMembre.GetIdAmis("Amis1");
+            int idAmis2 = coordMembre.GetIdAmis("Amis2");
             coordMembre.AjouterAmis(mdtoCourant.id, idAmis1);
             coordMembre.AjouterAmis(mdtoCourant.id, idAmis2);
-            ArrayList listAmis = coordMembre.getListAmis(mdtoCourant.id);
+            ArrayList listAmis = coordMembre.GetListAmis(mdtoCourant.id);
             Assert.IsTrue(listAmis.Count == 2 && listAmis[0].Equals("Amis1") && listAmis[1].Equals("Amis2"));
         }
 
         [Test]
         public void testerSupprimerUnAmis()
         {
-            int idAmis1 = coordMembre.getIdAmis("Amis1");
-            int idAmis2 = coordMembre.getIdAmis("Amis2");
-            coordMembre.deleteFriend(mdtoCourant.id, idAmis1);
-            coordMembre.deleteFriend(mdtoCourant.id, idAmis2);
+            int idAmis1 = coordMembre.GetIdAmis("Amis1");
+            int idAmis2 = coordMembre.GetIdAmis("Amis2");
+            coordMembre.DeleteFriend(mdtoCourant.id, idAmis1);
+            coordMembre.DeleteFriend(mdtoCourant.id, idAmis2);
             Assert.IsFalse(coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1));
             Assert.IsFalse(coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis2));
         }

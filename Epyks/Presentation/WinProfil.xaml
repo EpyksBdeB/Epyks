@@ -88,7 +88,7 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                             </StackPanel>
                         </Button>
                     </Grid>
-                    <ListView x:Name="listViewContact" Margin="0,10,0,0" Grid.Row="2" SelectionMode="Single" Background="White" PreviewMouseLeftButtonUp="listViewContact_PreviewMouseLeftButtonUp" ContextMenuOpening="listViewContact_ContextMenuOpening">
+                    <ListView x:Name="listViewContact" Margin="0,10,0,0" Grid.Row="2" SelectionMode="Single" Background="White" PreviewMouseLeftButtonUp="listViewContact_PreviewMouseLeftButtonUp" ContextMenuOpening="ListViewContact_ContextMenuOpening">
                         <ListView.View>
                             <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource myHeader}"  >
                                 <GridViewColumn Width="237"/>

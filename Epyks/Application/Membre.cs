@@ -63,7 +63,7 @@ namespace Epyks.Application
             this.MessageStack = new MessageStack();
         }
 
-        internal MembreDTO getDTO()
+        internal MembreDTO GetDTO()
         {
             MembreDTO mdto = new MembreDTO();
             mdto.id = this.id;

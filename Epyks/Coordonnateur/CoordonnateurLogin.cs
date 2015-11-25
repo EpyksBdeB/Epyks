@@ -72,15 +72,15 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
         /*
          * Testé
          */
-        public string recoverPassword(string email)
+        public string RecoverPassword(string email)
         {
-            return api.recupererPassword(email);
+            return api.RecupererPassword(email);
         }
 
         /*
          * Testé
          */
-        public bool envoyerPassword(string password, string emailDest)
+        public bool EnvoyerPassword(string password, string emailDest)
         {
             return api.EnvoyerPassword(password, emailDest);
         }
@@ -147,7 +147,7 @@ using System.Net.Mail;namespace Epyks.Coordonnateur
         /*
          * Testé
          */
-        public bool verifierNomUtilisateurBD(string username)
+        public bool VerifierNomUtilisateurBD(string username)
         {
             return api.UsernameExist(username);
         }
