@@ -126,6 +126,7 @@ namespace Epyks
                 MembreDAO mdao = MembreDAO.GetInstance();
                 mdao.DeleteMember(mdto.id);
                 MessageBox.Show("Votre compte a ete supprime avec succes! Vous serez ridirige vers la fenetre de connection");
+                this.Close();
                 WinLogin login = new WinLogin();
                 login.Show();
             }

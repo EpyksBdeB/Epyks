@@ -1,7 +1,7 @@
 ﻿<Window x:Name="Window" x:Class="Epyks.Presentation.WinLogin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Epyks" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" FontSize="16" Icon="pack://siteoforigin:,,,/Resources/epyks_icon.png" SizeToContent="WidthAndHeight" Closing="Window_Closing">
+        Title="Epyks" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" FontSize="16" Icon="pack://siteoforigin:,,,/Resources/epyks_icon.png" SizeToContent="WidthAndHeight" Closing="Window_Closing" KeyUp="seConnecter_enter_click">
     <Grid Width="600" Height="500">
     	<Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="50" Margin="58,213,0,0" VerticalAlignment="Top" Width="319"/>
     	<Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="50" Margin="58,269,0,0" VerticalAlignment="Top" Width="319"/>

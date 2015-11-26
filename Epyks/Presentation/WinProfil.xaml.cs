@@ -52,8 +52,8 @@ namespace Epyks.Presentation
 	    private void CreerProfil()
 	    {
 	        mDtoCourant = coordinateur.GetMembreCourant();
-	        this.TxtNomUtilisateur.Text = mDtoCourant.username;
-
+	        this.TxtNomUtilisateur.Text = mDtoCourant.firstName+ " " + mDtoCourant.lastName;
+            this.txtUsername.Text = "@"+mDtoCourant.username;
             RafraichirListDamis();
 	    }
 
@@ -285,6 +285,16 @@ namespace Epyks.Presentation
         private void fermerProgramme_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void TxtMessage_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TxtMessage.Text = "";
+        }
+
+        private void envoyer_message_enter(object sender, KeyEventArgs e)
+        {
+            // TODO: Envoyer message when enter is pressed
         }
     }
     }

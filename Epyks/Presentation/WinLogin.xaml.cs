@@ -66,13 +66,19 @@ namespace Epyks.Presentation
         /// <param name="e"></param>
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            seConnecter();
+            
+        }
+
+        private void seConnecter()
+        {
             WinProfil winProfil;
 
             if (coordinator.Login(TxtUsername.Text, TxtPassword.Password))
             {
                 winProfil = new WinProfil(this);
                 LblInvalidError.Visibility = Visibility.Hidden;
-                
+
                 Hide();
                 ResetFields();
                 winProfil.Show();
@@ -108,6 +114,15 @@ namespace Epyks.Presentation
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             coordinator.EndThreads();
+        }
+
+        private void seConnecter_enter_click(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                seConnecter();
+            }
+            
         }
     }
 }

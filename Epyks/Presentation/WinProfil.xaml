@@ -3,9 +3,10 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
 xmlns:ec="http://schemas.microsoft.com/expression/2010/controls"
+xmlns:Properties="clr-namespace:Epyks.Properties"
 x:Class="Epyks.Presentation.WinProfil"
 x:Name="Window"
-Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closing="Window_Closing">
+Title="WinProfil" ResizeMode="NoResize" Width="1000" Height="624.804" Closing="Window_Closing">
 
     <Grid>
         <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
@@ -13,17 +14,17 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                 <MenuItem Header="Status" Click="MenuStatusItem_Click">
                     <MenuItem x:Name="menuConnecte" Header="En ligne" IsCheckable="True" IsChecked="True">
                         <MenuItem.Icon>
-                            <Image Source="EnLigne.png"/>
+                            <Image Source="/Epyks;component/Resources/Online-50.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem x:Name="menuAbsent" Header="Absent" Click="MenuStatusItem_Click" IsCheckable="True">
                         <MenuItem.Icon>
-                            <Image Source="Absent.png"/>
+                            <Image Source="/Epyks;component/Resources/dont-disturb.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem x:Name="menuDeconnecte" Header="Déconnecté" Click="MenuStatusItem_Click" IsCheckable="True">
                         <MenuItem.Icon>
-                            <Image Source="Deconnecte.png"/>
+                            <Image Source="/Epyks;component/Resources/Offline-50.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
@@ -41,8 +42,8 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                 <ColumnDefinition Width="250*"/>
                 <ColumnDefinition Width="750*"/>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="#FFDB6FFF" BorderThickness="0,0,1,0" Margin="0,24.776,0,0" Grid.Column="0">
-                <Grid Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <Border BorderBrush="#FFDB6FFF" BorderThickness="0,0,1,0" Margin="0,25,0,10" Grid.Column="0">
+                <Grid Margin="0,0,0,10" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="1*"/>
@@ -53,18 +54,18 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                             <ColumnDefinition Width="4*"/>
                             <ColumnDefinition Width="6*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
-                        <Grid Grid.Column="1">
+                        <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,15,138,0" Height="110" Width="109" Grid.ColumnSpan="2"/>
+                        <Grid Grid.Column="1" Margin="20,0,10,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="4*"/>
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="4*"/>
                             </Grid.RowDefinitions>
                             <Viewbox Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                <TextBlock Name="TxtNomUtilisateur" Text="Prénom Nom" Foreground="#FFC926FF" Padding="0" Margin="0,5,5,5"/>
+                                <TextBlock x:Name="TxtNomUtilisateur" Text="Prénom Nom" Foreground="#FFC926FF" Padding="0" Margin="0,5,5,5" Width="90" FontFamily="Leelawadee UI" FontSize="14.667"/>
                             </Viewbox>
                             <Viewbox Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                <TextBlock Name="txtUsername" Text="username" Foreground="#FFDB6FFF" Padding="0" Margin="0"/>
+                                <TextBlock x:Name="txtUsername" Text="username" Foreground="#FFDB6FFF" Padding="0" Margin="0" FontFamily="Leelawadee UI"/>
                             </Viewbox>
                         </Grid>
                     </Grid>
@@ -82,13 +83,13 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                             </StackPanel>
                         </Button>
 
-                        <Button Style="{StaticResource FadeOutButton}" Name="btnBack" BorderThickness="0" BorderBrush="{x:Null}" Background="#FFC926FF" Height="41" VerticalAlignment="Top" Margin="0,0,149,0" Click="Button_Click_1">
+                        <Button Style="{StaticResource FadeOutButton}" x:Name="btnBack" BorderThickness="0" BorderBrush="{x:Null}" Background="#FFC926FF" Height="41" VerticalAlignment="Top" Margin="0,0,149,0" Click="Button_Click_1">
                             <StackPanel Margin="10,5">
                                 <Image Source="pack://siteoforigin:,,,/Resources/back_arrow.png" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill"/>
                             </StackPanel>
                         </Button>
                     </Grid>
-                    <ListView x:Name="listViewContact" Margin="0,10,0,0" Grid.Row="2" SelectionMode="Single" Background="White" PreviewMouseLeftButtonUp="listViewContact_PreviewMouseLeftButtonUp" ContextMenuOpening="ListViewContact_ContextMenuOpening">
+                    <ListView x:Name="listViewContact" Grid.Row="2" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FFFFD8FF" PreviewMouseLeftButtonUp="listViewContact_PreviewMouseLeftButtonUp" ContextMenuOpening="ListViewContact_ContextMenuOpening" BorderBrush="#FFC926FF" Foreground="#FF6D7072" FontFamily="Leelawadee UI" FontSize="13.333" Margin="0,0,0,-12">
                         <ListView.View>
                             <GridView AllowsColumnReorder="False" ColumnHeaderContainerStyle="{StaticResource myHeader}"  >
                                 <GridViewColumn Width="237"/>
@@ -96,7 +97,7 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                         </ListView.View>
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Name="MenuRemove" Header="Remove" Click="MenuItem_Click_1"/>
+                                <MenuItem x:Name="MenuRemove" Header="Remove" Click="MenuItem_Click_1"/>
                             </ContextMenu>
                         </ListView.ContextMenu>
                     </ListView>
@@ -113,20 +114,22 @@ Title="WinProfil" ResizeMode="CanResizeWithGrip" Width="1000" Height="600" Closi
                         <ColumnDefinition Width="1.65*"/>
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="9.995,5.692,1.663,1.489"/>
-                    <TextBlock Grid.Column="1" Foreground="#FFC926FF" Padding="0" Margin="7.623,4.028,113.002,80.375"><Run Text="E"/><Run Text="n discussion avec "/><Run Text="Prénom Nom"/></TextBlock>
-                    <Image x:Name="imgStatusConnection" HorizontalAlignment="Left" Height="24" Margin="-31,45,0,0" VerticalAlignment="Top" Width="22" Source="Absent.png" RenderTransformOrigin="0.409,1.25"/>
+                    <Image Grid.Column="1" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="498,4,8,3" Width="133"/>
+                    <TextBlock x:Name="txtEnDiscussionAvec" Foreground="#FFC926FF" Padding="0" Margin="10,10,146,74" TextAlignment="Right" Grid.ColumnSpan="2" Text="Vous etes en discussion avec Molly Ken" FontFamily="Leelawadee UI" FontSize="16" FontWeight="Bold"/>
+                    <Image x:Name="imgStatusConnection" HorizontalAlignment="Left" Height="24" Margin="-123,87,0,0" VerticalAlignment="Top" Width="22" Source="/Epyks;component/Resources/Online-50.png" RenderTransformOrigin="0.409,1.25"/>
+                    <TextBlock x:Name="txtMessagePrive" HorizontalAlignment="Left" Height="52" Margin="10,59,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elit ex, congue sit amet tincidunt at, auctor a tortor. Sed porta orci ipsum, id tempus neque congue eget. Nulla facilisi." VerticalAlignment="Top" Width="588" Grid.ColumnSpan="2" FontFamily="Leelawadee UI" FontStyle="Italic" FontSize="13.333" TextAlignment="Center"/>
+                    <TextBlock x:Name="txtUsernameAmi" Grid.Column="1" HorizontalAlignment="Left" Margin="377,39,0,0" TextWrapping="Wrap" Text="@MollyKen" VerticalAlignment="Top" Height="20" Width="116" FontFamily="Leelawadee UI" Foreground="#FFEA96FF" TextAlignment="Right"/>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBlock x:Name="LblBlockConversation" Background="#FFFFD8FF" Margin="9.993,10,10.007,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="308.518"/>
+                    <TextBlock x:Name="LblBlockConversation" Background="#FFFFD8FF" Margin="0,10,10,-19" TextWrapping="Wrap" VerticalAlignment="Top" Height="352" HorizontalAlignment="Right" Width="714"/>
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="TxtMessage" Grid.Column="0" Background="#FFFBBCFB" IsReadOnly="False" Padding="6" Margin="9.993,3.749,1.5,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="96.573" Grid.Row="1"/>
-                    <Button Grid.Column="1" x:Name="BtnSendMsg" Style="{StaticResource FadeOutButton}" Content="Send" HorizontalAlignment="Left" Margin="4.032,3.749,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="109.718" Height="95.819" Background="#FFC926FF" BorderThickness="0" Opacity="1" Click="BtnSendMsg_Click" />
+                    <TextBox x:Name="TxtMessage" Grid.Column="0" Background="White" IsReadOnly="False" Padding="6" Margin="10,34,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="65" Text="Tapez votre message ici ..." GotFocus="TxtMessage_GotFocus" FontSize="14.667" FontFamily="Leelawadee UI Semilight" Foreground="#FF515255" Grid.ColumnSpan="2" BorderBrush="#FFC926FF" KeyDown="envoyer_message_enter"/>
+                    <Button x:Name="BtnSendMsg" Style="{StaticResource FadeOutButton}" Content="Envoyer" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="114" Height="65" Background="#FFC926FF" BorderThickness="0" Opacity="1" Click="BtnSendMsg_Click" Grid.Column="1" />
 
                 </Grid>
             </Grid>
