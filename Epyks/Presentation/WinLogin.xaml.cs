@@ -30,11 +30,13 @@ namespace Epyks.Presentation
             {
                 chBRememberMe.IsChecked = true;
                 TxtPassword.Focus();
+                
             }
             else if (Properties.Settings.Default.Username.ToString().Equals(""))
             {
                 chBRememberMe.IsChecked = false;
                 TxtUsername.Focus();
+                txtVousNetesPas.Visibility = Visibility.Hidden;
             }
         }
 

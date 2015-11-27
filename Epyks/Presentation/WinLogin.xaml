@@ -48,11 +48,11 @@
         <Button x:Name="BtnLogin" Style="{StaticResource FadeOutButton}" Content="Log in" HorizontalAlignment="Left" Margin="382,213,0,0" VerticalAlignment="Top" FontSize="18.27" Background="#FFC926FF" Foreground="White" Width="160" Height="106" Cursor="Hand" BorderBrush="{x:Null}" BorderThickness="0" Opacity="1" Click="BtnLogin_Click"/>
         <Button x:Name="BtnGoRegister" Style="{StaticResource FadeOutButton}" Content="Create account" HorizontalAlignment="Left" Margin="0,440,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Click="BtnGoRegister_Click" Cursor="Hand" Padding="0" Width="600" Height="61" Background="#FFDB6FFF" BorderThickness="0" Opacity="1"/>
         <Image x:Name="ImgLogo" HorizontalAlignment="Left" Height="85" Margin="62,87,0,0" VerticalAlignment="Top" Width="247" Source="pack://siteoforigin:,,,/Resources/epyks_logo.png"/>
-        <Button x:Name="BtnForgotPassWord" Style="{StaticResource FadeOutButton}" Content="Forgot you password?" HorizontalAlignment="Left" Margin="58,342,0,0" VerticalAlignment="Top" FontSize="13
+        <Button x:Name="BtnForgotPassWord" Style="{StaticResource FadeOutButton}" Content="Forgot you password?" HorizontalAlignment="Left" Margin="58,358,0,0" VerticalAlignment="Top" FontSize="13
 		" Foreground="Violet" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="484" Height="20" Background="White" BorderThickness="0" Opacity="1" Click="BtnForgotPassWord_Click" FontFamily="Leelawadee UI Semilight"/>
         <Label x:Name="LblInvalidError" Content="Username or password invalid" HorizontalAlignment="Left" Margin="58,358,0,0" VerticalAlignment="Top" Width="484" Foreground="#FFC926FF" HorizontalContentAlignment="Center" Visibility="Hidden"/>
         <CheckBox x:Name="chBRememberMe" Content="CheckBox" HorizontalAlignment="Left" Height="19" Margin="59,330,0,0" VerticalAlignment="Top" Width="20" Checked="chBRememberMe_Checked" Unchecked="chBRememberMe_Unchecked"/>
-        <Label x:Name="lblRememberMe" Content="Se rappeller de moi" HorizontalAlignment="Left" Margin="79,324,0,0" VerticalAlignment="Top" FontFamily="Leelawadee UI Semilight" FontSize="12"/>
+        <Label x:Name="lblRememberMe" Content="J'en ai marre de m'enregistrer a chaque fois" HorizontalAlignment="Left" Margin="79,324,0,0" VerticalAlignment="Top" FontFamily="Leelawadee UI Semilight" FontSize="12"/>
         <TextBlock x:Name="txtVousNetesPas" HorizontalAlignment="Left" Margin="382,328,0,0" TextWrapping="Wrap" Text="Je ne suis pas ..." VerticalAlignment="Top" Width="160" TextAlignment="Right" FontFamily="Leelawadee UI" FontSize="12" FontStyle="Italic" MouseUp="txtVousNetesPas_MouseUp" Cursor="Hand" TextDecorations="Underline"/>
 
     </Grid>
