@@ -16,9 +16,26 @@ namespace Epyks.Presentation
         private CoordonnateurLogin coordinator;
         public WinLogin()
         {
-                InitializeComponent();
-                coordinator = CoordonnateurLogin.GetInstance();
-            TxtUsername.Focus();
+            InitializeComponent();
+            coordinator = CoordonnateurLogin.GetInstance();
+            initialiserFenetre();
+        }
+
+        private void initialiserFenetre()
+        {
+            TxtUsername.Text = Properties.Settings.Default.Username.ToString();
+            txtVousNetesPas.Text = "Vous n'etes pas " + Properties.Settings.Default.Username.ToString() + "?";
+
+            if (!(Properties.Settings.Default.Username.ToString().Equals("")))
+            {
+                chBRememberMe.IsChecked = true;
+                TxtPassword.Focus();
+            }
+            else if (Properties.Settings.Default.Username.ToString().Equals(""))
+            {
+                chBRememberMe.IsChecked = false;
+                TxtUsername.Focus();
+            }
         }
 
         /// <summary>
@@ -122,6 +139,39 @@ namespace Epyks.Presentation
             {
                 seConnecter();
             }
+
+        }
+
+        /// <summary>
+        /// Enregistre le nom d'utilisateur dans le champ approprie lorsque precedemment la case
+        /// "Se souvenir de moi" a ete "checke"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chBRememberMe_Checked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.Username = TxtUsername.Text.ToString();
+            Properties.Settings.Default.Save();
+        }
+
+        /// <summary>
+        /// Retire le username de son textbox lorsque l'utilisateur ne souhaite pas le garder en memoire
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chBRememberMe_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.Username = "";
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void txtVousNetesPas_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            TxtUsername.Focus();
+            TxtUsername.Text = "";
+            TxtPassword.Password = "";
+            txtVousNetesPas.Visibility = Visibility.Hidden;
             
         }
     }

@@ -6,7 +6,7 @@ xmlns:ec="http://schemas.microsoft.com/expression/2010/controls"
 xmlns:Properties="clr-namespace:Epyks.Properties"
 x:Class="Epyks.Presentation.WinProfil"
 x:Name="Window"
-Title="WinProfil" ResizeMode="NoResize" Width="1000" Height="624.804" Closing="Window_Closing">
+Title="Fenetre de discussion" ResizeMode="NoResize" Width="1000" Height="624.804" Closing="Window_Closing">
 
     <Grid>
         <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
@@ -129,7 +129,7 @@ Title="WinProfil" ResizeMode="NoResize" Width="1000" Height="624.804" Closing="W
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="TxtMessage" Grid.Column="0" Background="White" IsReadOnly="False" Padding="6" Margin="10,34,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="65" Text="Tapez votre message ici ..." GotFocus="TxtMessage_GotFocus" FontSize="14.667" FontFamily="Leelawadee UI Semilight" Foreground="#FF515255" Grid.ColumnSpan="2" BorderBrush="#FFC926FF" KeyDown="envoyer_message_enter"/>
-                    <Button x:Name="BtnSendMsg" Style="{StaticResource FadeOutButton}" Content="Envoyer" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="114" Height="65" Background="#FFC926FF" BorderThickness="0" Opacity="1" Click="BtnSendMsg_Click" Grid.Column="1" />
+                    <Button x:Name="BtnSendMsg" Style="{StaticResource FadeOutButton}" Content="Envoyer" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="114" Height="65" Background="#FFC926FF" BorderThickness="0" Opacity="1" Click="BtnSendMsg_Click" Grid.Column="1" FontWeight="Bold" />
 
                 </Grid>
             </Grid>
