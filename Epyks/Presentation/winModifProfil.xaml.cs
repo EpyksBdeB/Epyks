@@ -27,7 +27,7 @@ namespace Epyks
         private MembreDTO mdto;
         private WinProfil profil;
 
-        public WsinModifProfil(WinProfil winProfil)
+        public WinModifProfil(WinProfil winProfil)
         {
             profil = winProfil;
             InitializeComponent();

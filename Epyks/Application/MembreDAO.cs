@@ -1,5 +1,4 @@
-﻿ The following untracked working tree files would be overwritten by merge:z
-using System;
+﻿using System;
 using System.Collections.Generic;
 using MySql;
 using System.Linq;
