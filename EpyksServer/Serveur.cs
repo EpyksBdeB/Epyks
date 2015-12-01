@@ -42,6 +42,13 @@ namespace EpyksServer
                 StreamReader reader = new StreamReader(chatClient.GetStream());
                 int id = Convert.ToInt32(reader.ReadLine());
                 Console.WriteLine("Id obtained: " + id);
+
+                if (ClientList.ContainsKey(id))
+                {
+                    ClientList[id].Close();
+                    ClientList.Remove(id);
+                }
+
                 ClientList.Add(id, chatClient);
                 ClientManager manager = new ClientManager(this, chatClient, id);
             }

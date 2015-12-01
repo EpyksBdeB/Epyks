@@ -35,10 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NMemory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6a46696d54971e6d, processorArchitecture=MSIL">
-      <HintPath>..\Epyks\packages\NMemory.1.1.2\lib\net45\NMemory.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="nunit.core">
       <HintPath>..\Epyks\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
       <Private>False</Private>
@@ -81,9 +77,6 @@
     <Compile Include="Coordonnateur\TestCoordonnateurLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Coordonnateur\TestCoordonnateurMembreCourant.cs" />
-    <Compile Include="TestDB\TestDatabase.cs" />
-    <Compile Include="TestDB\Tables\Amis.cs" />
-    <Compile Include="TestDB\Tables\Utilisateur.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
