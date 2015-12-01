@@ -23,6 +23,8 @@ namespace Epyks.Application
         private string passwordCrypte = null;
         private String passwordDecrypte = null;
 
+        public static bool TestMode { get; set; }
+
         internal static MembreDAO GetInstance()
         {
             return instance;
@@ -51,7 +53,7 @@ namespace Epyks.Application
             //Olivier: ma connectionString pour chez moi!
             //myConnectionstring = "server = localhost; user id = FakeUser; password = FakePass; database = epyks; persistsecurityinfo = True";
 
-           myConnectionstring = "server=aegaur.ddns.net;uid=epyks;pwd=gr007,,;database=epyks;port=8080;";
+            myConnectionstring = "server=aegaur.ddns.net;uid=epyks;pwd=gr007,,;database=" + (TestMode ? "epyks_test" : "epyks") + ";port=8080;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
@@ -408,6 +410,13 @@ namespace Epyks.Application
         public void updateMember()
         {
             throw new NotImplementedException();
+        }
+
+        public void TruncateAll()
+        {
+            string query = "trucate table contact;trucate table utilisateur;";
+            command = new MySqlCommand(query, this.connection);
+            command.ExecuteNonQuery();
         }
     } 
 }
