@@ -7,10 +7,10 @@
 	Width="526" Height="245" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
 
 	<Grid x:Name="LayoutRoot" Margin="0,0,-8,-4">
-		<Label x:Name="LblRecoverPassWord" Content="Enter your email to recover your password" HorizontalAlignment="Left" Margin="54,16,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="21.333" Height="50" Width="410" Foreground="#FFC926FF"/>
-		<Button x:Name="BtnSendPassWord" Style="{StaticResource FadeOutButton}" Content="Send" HorizontalAlignment="Left" Margin="0,164,0,0" VerticalAlignment="Top" FontSize="18.48" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="518" Height="42" Background="#FFC926FF" BorderThickness="0" Opacity="1" Click="BtnSendPassWord_Click"/>
+		<Label x:Name="LblRecoverPassWord" Content="Entrez votre courriel " HorizontalAlignment="Left" Margin="54,16,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="21.333" Height="50" Width="410" Foreground="#FFC926FF" FontFamily="Leelawadee UI Semilight"/>
+		<Button x:Name="BtnSendPassWord" Style="{StaticResource FadeOutButton}" Content="Envoyer" HorizontalAlignment="Left" Margin="0,164,0,0" VerticalAlignment="Top" FontSize="18.667" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" Padding="0" Width="518" Height="42" Background="#FFC926FF" BorderThickness="0" Opacity="1" Click="BtnSendPassWord_Click" FontFamily="Leelawadee UI Semilight"/>
 		<Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="38" Margin="112,75,0,0" VerticalAlignment="Top" Width="293"/>
-		<TextBox x:Name="TxtEmail" HorizontalAlignment="Left" Margin="112,75,0,0" VerticalAlignment="Top" Width="293" FontSize="16" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" CaretBrush="#FF969696" Foreground="#FF969696">
+		<TextBox x:Name="TxtEmail" HorizontalAlignment="Left" Margin="112,75,0,0" VerticalAlignment="Top" Width="293" FontSize="18.667" Height="38" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" Padding="12,1,1,1" CaretBrush="#FF969696" Foreground="#FF969696" FontFamily="Leelawadee UI Semilight">
 			<TextBox.Style>
 				<Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
 					<Style.Resources>

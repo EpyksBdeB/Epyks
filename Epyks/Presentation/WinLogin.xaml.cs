@@ -16,9 +16,28 @@ namespace Epyks.Presentation
         private CoordonnateurLogin coordinator;
         public WinLogin()
         {
-                InitializeComponent();
-                coordinator = CoordonnateurLogin.GetInstance();
-            TxtUsername.Focus();
+            InitializeComponent();
+            coordinator = CoordonnateurLogin.GetInstance();
+            initialiserFenetre();
+        }
+
+        private void initialiserFenetre()
+        {
+            TxtUsername.Text = Properties.Settings.Default.Username.ToString();
+            txtVousNetesPas.Text = "Vous n'etes pas " + Properties.Settings.Default.Username.ToString() + "?";
+
+            if (!(Properties.Settings.Default.Username.ToString().Equals("")))
+            {
+                chBRememberMe.IsChecked = true;
+                TxtPassword.Focus();
+                
+            }
+            else if (Properties.Settings.Default.Username.ToString().Equals(""))
+            {
+                chBRememberMe.IsChecked = false;
+                TxtUsername.Focus();
+                txtVousNetesPas.Visibility = Visibility.Hidden;
+            }
         }
 
         /// <summary>
@@ -66,13 +85,19 @@ namespace Epyks.Presentation
         /// <param name="e"></param>
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            seConnecter();
+            
+        }
+
+        private void seConnecter()
+        {
             WinProfil winProfil;
 
             if (coordinator.Login(TxtUsername.Text, TxtPassword.Password))
             {
                 winProfil = new WinProfil(this);
                 LblInvalidError.Visibility = Visibility.Hidden;
-                
+
                 Hide();
                 ResetFields();
                 winProfil.Show();
@@ -108,6 +133,48 @@ namespace Epyks.Presentation
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             coordinator.EndThreads();
+        }
+
+        private void seConnecter_enter_click(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                seConnecter();
+            }
+
+        }
+
+        /// <summary>
+        /// Enregistre le nom d'utilisateur dans le champ approprie lorsque precedemment la case
+        /// "Se souvenir de moi" a ete "checke"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chBRememberMe_Checked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.Username = TxtUsername.Text.ToString();
+            Properties.Settings.Default.Save();
+        }
+
+        /// <summary>
+        /// Retire le username de son textbox lorsque l'utilisateur ne souhaite pas le garder en memoire
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chBRememberMe_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.Username = "";
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void txtVousNetesPas_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            TxtUsername.Focus();
+            TxtUsername.Text = "";
+            TxtPassword.Password = "";
+            txtVousNetesPas.Visibility = Visibility.Hidden;
+            
         }
     }
 }

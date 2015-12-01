@@ -135,13 +135,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings1.Designer.cs">
+    <Compile Include="Presentation\winModifProfil.xaml.cs">
+      <DependentUpon>winModifProfil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\winModifProfil.xaml.cs">
-      <DependentUpon>winModifProfil.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -213,7 +213,7 @@
   <ItemGroup>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\epyks_logo.png" />
   </ItemGroup>
@@ -285,6 +285,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Lock-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Online-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Offline-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dont-disturb.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

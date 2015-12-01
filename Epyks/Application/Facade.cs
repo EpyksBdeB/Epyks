@@ -47,11 +47,11 @@ namespace Epyks.Application
             Random rand = new Random();
             int id = rand.Next(100);
             membreCourant = dao.GetMember(username, password);
-           // membreCourant = new Membre(id, "m", "m", "m" + id, "m", "m", Genre.MALE, "m", new byte[1], 1);
+            // membreCourant = new Membre(id, "m", "m", "m" + id, "m", "m", Genre.MALE, "m", new byte[1], 1);
             if (membreCourant != null)
             {
-               gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
-               gestionnaireCommunication.StartReading();
+                //gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
+                //gestionnaireCommunication.StartReading();
             }
 
             return membreCourant != null;
