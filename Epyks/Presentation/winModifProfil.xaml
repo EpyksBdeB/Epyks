@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Modification du profil" ResizeMode="NoResize" Height="525">
     <Grid>
-        <Button x:Name="btnChangeImage" Content="Modifier image" HorizontalAlignment="Left" Height="25" Margin="10,132,0,0" VerticalAlignment="Top" Width="120" FontSize="13.333" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White" Click="BtnChangeImage_Click"/>
+        <Button x:Name="btnChangeImage" Style="{StaticResource FadeOutButton}" Content="Modifier image" HorizontalAlignment="Left" Height="25" Margin="10,132,0,0" VerticalAlignment="Top" Width="120" FontSize="13.333" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White" Click="BtnChangeImage_Click"/>
         <Image x:Name="imgProfil" Margin="10,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Source="default_profile.jpg" Stretch="Fill" Width="120" Height="120">
             <Image.OpacityMask>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/profil_default.png"/>
@@ -32,7 +32,7 @@
                 </TransformGroup>
             </Separator.RenderTransform>
         </Separator>
-        <Button x:Name="btnEnregistrerInfos" Content="Enregistrer" HorizontalAlignment="Right" Height="46" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="189" FontSize="14.667" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White" Click="BtnEnregistrerInfos_Click_1">
+        <Button x:Name="btnEnregistrerInfos" Style="{StaticResource FadeOutButton}" Content="Enregistrer" HorizontalAlignment="Right" Height="46" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="189" FontSize="14.667" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White" Click="BtnEnregistrerInfos_Click_1">
         </Button>
         <Label x:Name="lblContenuUsername" Content="Melissa07"  HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,219,18,0" VerticalAlignment="Top" RenderTransformOrigin="-2.261,0.538" Width="181" FontFamily="Leelawadee UI Semilight" FontSize="14.667" Background="White" Foreground="#FFB900FF"/>
         <Label x:Name="lblDateDeNaissance" Content="Date de naissance" HorizontalAlignment="Left" Margin="400,260,0,0" VerticalAlignment="Top" Width="158" RenderTransformOrigin="0.317,0.538" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
@@ -46,7 +46,7 @@
 
         <Label x:Name="lblContenuUsername_Copy1" Content="**********"  HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,349,18,0" VerticalAlignment="Top" RenderTransformOrigin="-2.261,0.538" Width="133" FontFamily="Leelawadee UI Semilight" FontSize="14.667" Background="White" Foreground="#FFB900FF" Visibility="Hidden"/>
 
-        <Button x:Name="btnRetour" Content="Quitter" HorizontalAlignment="Left" Height="46" Margin="11,0,0,10" VerticalAlignment="Bottom" Width="189" FontSize="14.667" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White" Click="BtnRetour_Click"/>
+        <Button x:Name="btnRetour" Style="{StaticResource FadeOutButton}" Content="Quitter" HorizontalAlignment="Left" Height="46" Margin="11,0,0,10" VerticalAlignment="Bottom" Width="189" FontSize="14.667" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White" Click="BtnRetour_Click"/>
         <StackPanel HorizontalAlignment="Left" Height="37" Margin="372,360,0,0" VerticalAlignment="Top" Width="380" Orientation="Horizontal">
             <Image x:Name="image1_Copy3" HorizontalAlignment="Left" Width="29" Source="/Epyks;component/Resources/Lock 2-64.png" Height="32" VerticalAlignment="Top"/>
             <Label x:Name="lblPassword" Content="Mot de passe" HorizontalAlignment="Center" Width="167" RenderTransformOrigin="0.317,0.538" FontSize="16" FontFamily="Leelawadee UI Semilight" FontStyle="Italic"/>
@@ -64,7 +64,7 @@
         <RadioButton x:Name="rdBMasculin" GroupName="Sexe" Content="Masculin" HorizontalAlignment="Left" Margin="242,360,0,0" VerticalAlignment="Top" Width="85" FontSize="14.667" FontFamily="Leelawadee UI Semilight" Foreground="#FFB900FF"/>
         <RadioButton x:Name="rdB_Feminin" GroupName="Sexe" Content="Feminin" HorizontalAlignment="Left" Margin="116,360,0,0" VerticalAlignment="Top" IsChecked="True" Height="28" Width="84" FontSize="14.667" FontFamily="Leelawadee UI Semilight" Background="White" Foreground="#FFB900FF"/>
         <TextBox x:Name="txtBoxMessagePrive" HorizontalAlignment="Left" Height="50" Margin="150,75,0,0" TextWrapping="Wrap" Text="Mon message prive" VerticalAlignment="Top" Width="602" FontSize="14.667" FontFamily="Leelawadee UI" FontStyle="Italic" TextDecorations="{x:Null}"/>
-        <Button x:Name="button" Content="Modifier mon message" Click="modifierMessagePerso_Click" HorizontalAlignment="Right" Margin="0,88,18,0" VerticalAlignment="Top" Width="124" Height="24" FontSize="10.667" Background="#FFB900FF" BorderBrush="White" Foreground="White" BorderThickness="0"/>
+        <Button x:Name="button" Style="{StaticResource FadeOutButton}" Content="Modifier mon message" Click="modifierMessagePerso_Click" HorizontalAlignment="Right" Margin="0,88,18,0" VerticalAlignment="Top" Width="124" Height="24" FontSize="10.667" Background="#FFB900FF" BorderBrush="White" Foreground="White" BorderThickness="0"/>
         <Label x:Name="lblSupprimerCompte" Content="Supprimer mon compte" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" Width="144" Foreground="#FFB900FF" FontStyle="Italic" MouseUp="supprimer_compte_click"/>
 
     </Grid>

@@ -259,7 +259,8 @@ namespace Epyks.Application
         /// <returns>Retourne True si suppression réussi, False si non</returns>
         public bool DeleteFriend(int userId, int idAmis)
         {
-            string query = "DELETE FROM contact WHERE id_amis='" + idAmis + "'";
+            string query = "DELETE FROM contact where (id_utilisateur='" + userId + "' AND id_amis='" + idAmis + "')"
+           + " OR (id_utilisateur='" + idAmis + "' AND id_amis='" + userId + "')";
             command = new MySqlCommand(query, this.connection);
             command.ExecuteNonQuery();
 
@@ -384,7 +385,8 @@ namespace Epyks.Application
         {
             bool DejaAmis = false;
 
-            string query = "SELECT id_utilisateur FROM contact where id_amis='" + idAmis + "'";
+            string query = "SELECT * FROM contact where (id_utilisateur='" + idUtilisateur + "' AND id_amis='" + idAmis + "')"
+            + " OR (id_utilisateur='" + idAmis + "' AND id_amis='" + idUtilisateur + "')";
             command = new MySqlCommand(query, this.connection);
             MySqlDataReader reader = command.ExecuteReader();
             if (reader.HasRows)
