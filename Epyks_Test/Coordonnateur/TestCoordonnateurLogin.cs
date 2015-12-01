@@ -12,18 +12,20 @@ namespace Epyks.Coordonnateur.Test
     public class TestCoordonnateurLogin
     {
         CoordonnateurLogin coord;
+
         [TestFixtureSetUp]
         public void Init()
         {
-
-            coord.Register("Olivier", "Castro", "casof@gmail.com", "castropeo", "monPassword", Genre.MALE, null, null, 0);
+            MembreDAO.TestMode = true;
             coord = CoordonnateurLogin.GetInstance();
+            coord.Register("Olivier", "Castro", "casof@gmail.com", "castropeo", "monPassword", Genre.MALE, null, null, 0);
         }
 
         [TestFixtureTearDown]
         public void Cleanup()
         {
-             /* ... */
+            MembreDAO.TestMode = false;
+            MembreDAO.GetInstance().TruncateAll();
         }
         
         [Test]
