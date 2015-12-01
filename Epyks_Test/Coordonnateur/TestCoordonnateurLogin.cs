@@ -18,7 +18,8 @@ namespace Epyks.Coordonnateur.Test
         {
             MembreDAO.TestMode = true;
             coord = CoordonnateurLogin.GetInstance();
-            coord.Register("Olivier", "Castro", "casof@gmail.com", "castropeo", "monPassword", Genre.MALE, null, null, 0);
+            coord.Register("Mel", "Balvin", "casof@gmail.com", "mel007", "mel007", Genre.FEMALE, null, null, 0);
+            //coord.Register("Olivier", "Castro", "casof@gmail.com", "castropeo", "monPassword", Genre.MALE, null, null, 0);
         }
 
         [TestFixtureTearDown]
@@ -31,7 +32,7 @@ namespace Epyks.Coordonnateur.Test
         [Test]
         public void testLogin()
         {
-            Assert.IsTrue(coord.Login("castropeo", "monPassword"));          
+            Assert.IsTrue(coord.Login("mel007", "mel007"));          
         }
 
         [Test]
