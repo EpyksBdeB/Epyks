@@ -59,10 +59,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.9.7\Assemblies\v2.0\MySql.Web.v20.dll</HintPath>
     </Reference>
-    <Reference Include="NMemory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6a46696d54971e6d, processorArchitecture=MSIL">
-      <HintPath>packages\NMemory.1.1.2\lib\net45\NMemory.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="nunit.core">
       <HintPath>packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
       <Private>False</Private>
