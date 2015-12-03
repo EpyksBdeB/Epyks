@@ -19,7 +19,7 @@ namespace Epyks.Application
         private MySqlCommand command;
         private string myConnectionstring = null;
         private string adresseConnection = Properties.Settings.Default.Server_address;
-        private static MembreDAO instance = new MembreDAO();
+        private static MembreDAO instance = null;
         private string passwordCrypte = null;
         private String passwordDecrypte = null;
 
@@ -27,6 +27,10 @@ namespace Epyks.Application
 
         internal static MembreDAO GetInstance()
         {
+            if (instance == null)
+            {
+                instance = new MembreDAO();
+            }
             return instance;
         }
 
@@ -52,7 +56,7 @@ namespace Epyks.Application
 
             //Olivier: ma connectionString pour chez moi!
             //myConnectionstring = "server = localhost; user id = FakeUser; password = FakePass; database = epyks; persistsecurityinfo = True";
-
+            MessageBox.Show(TestMode+"");
             myConnectionstring = "server=aegaur.ddns.net;uid=epyks;pwd=gr007,,;database=" + (TestMode ? "epyks_test" : "epyks") + ";port=8080;";
             try
             {
@@ -352,7 +356,7 @@ namespace Epyks.Application
         /// </summary>
         /// <param name="passwordNonCrypte">password sans encryption</param>
         /// <returns>Retourne le password crypté</returns>
-        private String CryptPassword(String passwordNonCrypte)
+        public String CryptPassword(String passwordNonCrypte)
         {
             string EncryptionKey = "MAKV2SPBNI99212";
             byte[] clearBytes = Encoding.Unicode.GetBytes(passwordNonCrypte);
@@ -416,7 +420,8 @@ namespace Epyks.Application
 
         public void TruncateAll()
         {
-            string query = "trucate table contact;trucate table utilisateur;";
+
+            string query = "SET FOREIGN_KEY_CHECKS=0;truncate table contact;truncate table utilisateur;SET FOREIGN_KEY_CHECKS=1;";
             command = new MySqlCommand(query, this.connection);
             command.ExecuteNonQuery();
         }

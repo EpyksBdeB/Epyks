@@ -13,20 +13,25 @@ namespace Epyks.Coordonnateur.Test
     {
         CoordonnateurLogin coord;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void Init()
         {
             MembreDAO.TestMode = true;
             coord = CoordonnateurLogin.GetInstance();
-            coord.Register("Mel", "Balvin", "casof@gmail.com", "mel007", "mel007", Genre.FEMALE, null, null, 0);
+            Console.WriteLine(MembreDAO.TestMode);
+            //coord.Register("Mel", "Balvin", "casof@gmail.com", "mel007", "mel007", Genre.FEMALE, null, null, 0);
             //coord.Register("Olivier", "Castro", "casof@gmail.com", "castropeo", "monPassword", Genre.MALE, null, null, 0);
+            //coord.Register("Mel", "Balvin", "casof@gmail.com", "mel0007", "mel007", Genre.FEMALE, null, null, 0);
+            //coord.Register("Mel", "Balvin", "casof@gmail.com", "mel00007", "mel007", Genre.FEMALE, null, null, 0);
+            coord.Register("Mel", "Balvin", "casof@gmail.com", "mel007", "mel007", Genre.FEMALE, null, null, 0);
         }
 
-        [TestFixtureTearDown]
+        [TearDown]
         public void Cleanup()
         {
             MembreDAO.TestMode = false;
             MembreDAO.GetInstance().TruncateAll();
+            
         }
         
         [Test]
@@ -38,14 +43,7 @@ namespace Epyks.Coordonnateur.Test
         [Test]
         public void testRegister()
         {
-            Assert.IsTrue(coord.VerifierNomUtilisateurBD("castropeo"));
-        }
-
-        [Test]
-        public void testUsernameValide()
-        {
-            bool exist = coord.VerifierNomUtilisateurBD("castropeo");
-            Assert.IsTrue(exist);
+            Assert.IsTrue(coord.VerifierNomUtilisateurBD("mel007"));
         }
 
         //[Test]
@@ -77,13 +75,16 @@ namespace Epyks.Coordonnateur.Test
          [Test]
          public void testGetUserPassword()
          {
-             Assert.AreEqual("monPassword", coord.RecoverPassword("casof@gmail.com"));
+            String passwordCrypte;
+            passwordCrypte = MembreDAO.GetInstance().CryptPassword("mel007");
+           
+             Assert.AreEqual(passwordCrypte, coord.RecoverPassword("casof@gmail.com"));
          }
         
         [Test]
          public void testerEnvoieDunEmail()
          {
-             Assert.IsTrue(coord.EnvoyerPassword("monPassword", "casof@gmail.com"));
+             Assert.IsTrue(coord.EnvoyerPassword("mel007", "casof@gmail.com"));
          }
     }
 }

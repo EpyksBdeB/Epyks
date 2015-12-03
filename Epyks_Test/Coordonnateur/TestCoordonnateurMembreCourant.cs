@@ -15,28 +15,27 @@ namespace Epyks.Coordonnateur.Test
     [TestFixture]
     public class TestCoordonnateurMembreCourant
     {
-        [TestFixtureSetUp]
+
+        [SetUp]
         public void Init()
         {
+            MembreDAO.TestMode = true;
             coordMembre = CoordonateurMembreCourant.GetInstance();
             coord = CoordonnateurLogin.GetInstance();
-            if (!coord.VerifierNomUtilisateurBD("FakeUser"))
-            {
+            
                 coord.Register("FakeFirst", "FakeLast", "fake@gmail.com", "FakeUser", "FakePass", Genre.MALE, null, null, 0);
-
-            }
-            if (!coord.VerifierNomUtilisateurBD("Amis1") && !coord.VerifierNomUtilisateurBD("Amis2"))
-            {
                 coord.Register("FakeFirst", "FakeLast", "Amis1@gmail.com", "Amis1", "FakePass", Genre.MALE, null, null, 0);
                 coord.Register("FakeFirst", "FakeLast", "Amis2@gmail.com", "Amis2", "FakePass", Genre.MALE, null, null, 0);
-            }
+
             coord.Login("FakeUser", "FakePass");
             mdtoCourant = coordMembre.GetMembreCourant();
         }
 
-        [TestFixtureTearDown]
+        [TearDown]
         public void Cleanup()
         {
+            MembreDAO.TestMode = false;
+            MembreDAO.GetInstance().TruncateAll();
             /* ... */
         }
 
@@ -44,28 +43,6 @@ namespace Epyks.Coordonnateur.Test
         private MembreDTO mdtoCourant;
         CoordonnateurLogin coord;
         CoordonateurMembreCourant coordMembre;
-
-        #region Attributs de tests supplémentaires
-        //
-        // Vous pouvez utiliser les attributs supplémentaires suivants lorsque vous écrivez vos tests :
-        //
-        // Utilisez ClassInitialize pour exécuter du code avant d'exécuter le premier test de la classe
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Utilisez ClassCleanup pour exécuter du code une fois que tous les tests d'une classe ont été exécutés
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Utilisez TestInitialize pour exécuter du code avant d'exécuter chaque test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Utilisez TestCleanup pour exécuter du code après que chaque test a été exécuté
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
 
         [Test]
         public void testerMembreCourantNotNull()
@@ -78,12 +55,8 @@ namespace Epyks.Coordonnateur.Test
         {
             int idAmis1 = coordMembre.GetIdAmis("Amis1");
             int idAmis2 = coordMembre.GetIdAmis("Amis2");
-            if(!coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1)
-                && !coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis2))
-            {
-                coordMembre.AjouterAmis(mdtoCourant.id, idAmis1);
-                coordMembre.AjouterAmis(mdtoCourant.id, idAmis2);
-            }
+            coordMembre.AjouterAmis(mdtoCourant.id, idAmis1);
+            coordMembre.AjouterAmis(mdtoCourant.id, idAmis2);      
             Assert.IsTrue(coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1));
             Assert.IsTrue(coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis2));
         }
