@@ -63,8 +63,6 @@
         </StackPanel>
         <RadioButton x:Name="rdBMasculin" GroupName="Sexe" Content="Masculin" HorizontalAlignment="Left" Margin="242,360,0,0" VerticalAlignment="Top" Width="85" FontSize="14.667" FontFamily="Leelawadee UI Semilight" Foreground="#FFB900FF"/>
         <RadioButton x:Name="rdB_Feminin" GroupName="Sexe" Content="Feminin" HorizontalAlignment="Left" Margin="116,360,0,0" VerticalAlignment="Top" IsChecked="True" Height="28" Width="84" FontSize="14.667" FontFamily="Leelawadee UI Semilight" Background="White" Foreground="#FFB900FF"/>
-        <TextBox x:Name="txtBoxMessagePrive" HorizontalAlignment="Left" Height="50" Margin="150,75,0,0" TextWrapping="Wrap" Text="Mon message prive" VerticalAlignment="Top" Width="602" FontSize="14.667" FontFamily="Leelawadee UI" FontStyle="Italic" TextDecorations="{x:Null}"/>
-        <Button x:Name="button" Style="{StaticResource FadeOutButton}" Content="Modifier mon message" Click="modifierMessagePerso_Click" HorizontalAlignment="Right" Margin="0,88,18,0" VerticalAlignment="Top" Width="124" Height="24" FontSize="10.667" Background="#FFB900FF" BorderBrush="White" Foreground="White" BorderThickness="0"/>
         <Label x:Name="lblSupprimerCompte" Content="Supprimer mon compte" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" Width="144" Foreground="#FFB900FF" FontStyle="Italic" MouseUp="supprimer_compte_click"/>
 
     </Grid>

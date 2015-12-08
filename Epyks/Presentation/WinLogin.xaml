@@ -6,7 +6,7 @@
         <Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="50" Margin="58,213,0,0" VerticalAlignment="Top" Width="319"/>
         <Rectangle Fill="#FFEEEEEE" HorizontalAlignment="Left" Height="50" Margin="58,269,0,0" VerticalAlignment="Top" Width="319"/>
 
-        <TextBox x:Name="TxtUsername"  HorizontalAlignment="Left" Margin="58,213,0,0" VerticalAlignment="Top" Width="319" FontSize="16" Height="50" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" SelectionBrush="#FFDB6FFF" Foreground="#FF969696" Padding="12,0,0,0" CaretBrush="#FF969696">
+        <TextBox x:Name="TxtUsername"  HorizontalAlignment="Left" Margin="58,213,0,0" VerticalAlignment="Top" Width="319" FontSize="16" Height="50" VerticalContentAlignment="Center" BorderBrush="{x:Null}" BorderThickness="0" SelectionBrush="#FFDB6FFF" Foreground="#FF969696" Padding="12,0,0,0" CaretBrush="#FF969696" TextChanged="TxtUsername_TextChanged">
             <TextBox.Style>
                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                     <Style.Resources>

@@ -105,19 +105,6 @@ namespace Epyks
 
         }
 
-        private void modifierMessagePerso_Click(object sender, RoutedEventArgs e)
-        {
-           string messagePrive =  txtBoxMessagePrive.Text.ToString();
-            bool correct = membreCourant.verifierInput(messagePrive);
-            if (correct)
-            {
-                MembreDAO mdao = MembreDAO.GetInstance();
-                mdao.modifierMessagePersonnel(mdto.id, messagePrive);
-            }
-            
-            
-        }
-
         private void supprimer_compte_click(object sender, MouseButtonEventArgs e)
         {
             if (MessageBox.Show("Voulez-vous vraiment supprimer votre compte?", "Supprimer mon compte", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
