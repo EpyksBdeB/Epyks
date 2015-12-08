@@ -176,5 +176,10 @@ namespace Epyks.Presentation
             txtVousNetesPas.Visibility = Visibility.Hidden;
             
         }
+
+        private void TxtUsername_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            chBRememberMe.IsChecked = false;
+        }
     }
 }
