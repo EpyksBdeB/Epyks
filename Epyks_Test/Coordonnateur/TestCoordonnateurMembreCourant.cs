@@ -82,5 +82,18 @@ namespace Epyks.Coordonnateur.Test
             Assert.IsFalse(coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis1));
             Assert.IsFalse(coordMembre.VerifierSiAmis(mdtoCourant.id, idAmis2));
         }
+
+        [Test]
+        public void testGetIdAmis()
+        {
+            int idAmis1 = coordMembre.GetIdAmis("Amis1");
+            int idAmis2 = coordMembre.GetIdAmis("Amis2");
+            coordMembre.AjouterAmis(mdtoCourant.id, idAmis1);
+            coordMembre.AjouterAmis(mdtoCourant.id, idAmis2);
+            int idAmi = coordMembre.GetListAmis(mdtoCourant.id).IndexOf(0);
+            Assert.AreEqual(idAmi, 0);
+
+        }
+
     }
 }
