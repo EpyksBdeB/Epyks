@@ -206,5 +206,10 @@ namespace Epyks.Application
         public void DeleteMember(int id){
             dao.DeleteMember(id);
         }
+
+        internal void UpdatePassword(int id, string password)
+        {
+            dao.UpdatePassword(id, password);
+        }
     }
 }

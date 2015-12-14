@@ -87,5 +87,10 @@ namespace Epyks.Coordonnateur
         public void DeleteMember(int id){
             api.DeleteMember(id);
         }
+
+        public void UpdatePassword(int id, string password)
+        {
+            api.UpdatePassword(id, password);
+        }
     }
 }
