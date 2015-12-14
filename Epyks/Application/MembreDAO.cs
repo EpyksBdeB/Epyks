@@ -468,7 +468,7 @@ namespace Epyks.Application
          , IntPtr.Zero, System.Windows.Int32Rect.Empty
          , BitmapSizeOptions.FromWidthAndHeight(bmp.Width, bmp.Height));
             }
-            return bmpSource
+            return bmpSource;
         }
     } 
 }
