@@ -78,5 +78,14 @@ namespace Epyks.Coordonnateur
         {
             return (messagePrive.Length < 5 || messagePrive.Length > 140);
         }
+
+        public void ModifierInfosAPartirProfil(string nom, string prenom, string email, string notel, int id)
+        {
+            api.ModifierInfosAPartirProfil(nom, prenom, email, notel, id);
+        }
+
+        public void DeleteMember(int id){
+            api.DeleteMember(id);
+        }
     }
 }

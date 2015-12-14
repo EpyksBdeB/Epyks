@@ -198,5 +198,13 @@ namespace Epyks.Application
             return emailManager.EnvoyerEmail(password, emailDest);
         }
 
+        public void ModifierInfosAPartirProfil(string nom, string prenom, string email, string notel, int id)
+        {
+            dao.ModifierInfosAPartirProfil(nom, prenom, email, notel, id);
+        }
+
+        public void DeleteMember(int id){
+            dao.DeleteMember(id);
+        }
     }
 }
