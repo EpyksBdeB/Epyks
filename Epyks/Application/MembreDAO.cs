@@ -431,6 +431,12 @@ namespace Epyks.Application
             command.ExecuteNonQuery();
         }
 
+        /// <summary>
+        /// Recupère l'image de l'utilisateur et la tansforme en
+        /// ImageSource.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ImageSource retreiveImageProfile(int id){
             Bitmap bmp = null;
             string query = "SELECT image FROM utilisateur WHERE id_utilisateur ='" + id + "'";
@@ -455,15 +461,14 @@ namespace Epyks.Application
             }
             reader.Close();
 
-            BitmapSource b = null;
+            BitmapSource bmpSource = null;
             if (bmp != null)
             {
-                b = Imaging.CreateBitmapSourceFromHBitmap(bmp.GetHbitmap()
+                bmpSource = Imaging.CreateBitmapSourceFromHBitmap(bmp.GetHbitmap()
          , IntPtr.Zero, System.Windows.Int32Rect.Empty
          , BitmapSizeOptions.FromWidthAndHeight(bmp.Width, bmp.Height));
             }
-
-            return b;
+            return bmpSource
         }
     } 
 }

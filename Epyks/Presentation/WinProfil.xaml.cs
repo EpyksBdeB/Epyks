@@ -302,5 +302,5 @@ namespace Epyks.Presentation
         {
             // TODO: Envoyer message when enter is pressed
         }
-    }
+       }
     }
