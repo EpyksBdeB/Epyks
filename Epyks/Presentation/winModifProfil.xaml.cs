@@ -49,7 +49,11 @@ namespace Epyks
             this.txtBContenuPrenom.Text = mdto.firstName;
             this.lblContenuUsername.Content = mdto.username;
             this.txtBContenuEmail.Text = mdto.email;
-            this.imgProfil.Source = membreCourant.retreiveImageProfile(mdto.id);
+            ImageSource source = membreCourant.retreiveImageProfile(mdto.id);
+            if (source != null)
+            {
+                this.imgProfil.Source = source;
+            }
         }
 
         private void BtnChangeImage_Click(object sender, RoutedEventArgs e)

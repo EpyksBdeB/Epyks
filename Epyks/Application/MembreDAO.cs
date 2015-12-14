@@ -455,7 +455,7 @@ namespace Epyks.Application
                     }
                     catch(ArgumentException e)
                     {
-                        MessageBox.Show("L'image n'a pas pu être chargée");
+                     
                     }
                 }
             }
