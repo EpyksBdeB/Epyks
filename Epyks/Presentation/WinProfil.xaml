@@ -54,7 +54,7 @@ Title="Fenetre de discussion" ResizeMode="NoResize" Width="1000" Height="624.804
                             <ColumnDefinition Width="4*"/>
                             <ColumnDefinition Width="6*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Name="ImageProfil" Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,15,138,0" Height="110" Width="109" Grid.ColumnSpan="2"/>
+                        <Image Name="ImageProfil" Grid.Column="0" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,15,138,0" Height="110" Width="109" Grid.ColumnSpan="2"/>
                         <Grid Grid.Column="1" Margin="20,0,10,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="4*"/>
