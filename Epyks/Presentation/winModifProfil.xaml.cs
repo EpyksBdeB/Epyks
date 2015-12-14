@@ -85,8 +85,6 @@ namespace Epyks
         {
             mdto = membreCourant.GetMembreCourant();
 
-            MembreDAO mdao = MembreDAO.GetInstance();
-
             string nom = this.txtBContenuNom.Text.ToString();
             string prenom = this.txtBContenuPrenom.Text.ToString();
             string email = this.txtBContenuEmail.Text.ToString();
