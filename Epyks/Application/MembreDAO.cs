@@ -10,6 +10,11 @@ using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Media;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Windows.Media.Imaging;
+using System.ComponentModel;
+using System.Windows.Interop;
 
 namespace Epyks.Application
 {
@@ -424,6 +429,46 @@ namespace Epyks.Application
             string query = "SET FOREIGN_KEY_CHECKS=0;truncate table contact;truncate table utilisateur;SET FOREIGN_KEY_CHECKS=1;";
             command = new MySqlCommand(query, this.connection);
             command.ExecuteNonQuery();
+        }
+
+        /// <summary>
+        /// Recupère l'image de l'utilisateur et la tansforme en
+        /// ImageSource.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ImageSource retreiveImageProfile(int id){
+            Bitmap bmp = null;
+            string query = "SELECT image FROM utilisateur WHERE id_utilisateur ='" + id + "'";
+            command = new MySqlCommand(query, this.connection);
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                byte[] image = reader["image"] as byte[] ?? null;
+                if (image != null)
+                {
+                    TypeConverter tc = TypeDescriptor.GetConverter(typeof(Bitmap));
+                    try
+                    {
+                        bmp = (Bitmap)tc.ConvertFrom(image);
+                    }
+                    catch(ArgumentException e)
+                    {
+                     
+                    }
+                }
+            }
+            reader.Close();
+
+            BitmapSource bmpSource = null;
+            if (bmp != null)
+            {
+                bmpSource = Imaging.CreateBitmapSourceFromHBitmap(bmp.GetHbitmap()
+         , IntPtr.Zero, System.Windows.Int32Rect.Empty
+         , BitmapSizeOptions.FromWidthAndHeight(bmp.Width, bmp.Height));
+            }
+            return bmpSource;
         }
     } 
 }

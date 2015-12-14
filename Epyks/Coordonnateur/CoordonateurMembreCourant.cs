@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Epyks.Application;
 using System.Collections;
+using System.Windows.Media;
 
 namespace Epyks.Coordonnateur
 {
@@ -77,6 +78,24 @@ namespace Epyks.Coordonnateur
         public bool verifierInput(string messagePrive)
         {
             return (messagePrive.Length < 5 || messagePrive.Length > 140);
+        }
+
+        public void ModifierInfosAPartirProfil(string nom, string prenom, string email, string notel, int id)
+        {
+            api.ModifierInfosAPartirProfil(nom, prenom, email, notel, id);
+        }
+
+        public void DeleteMember(int id){
+            api.DeleteMember(id);
+        }
+
+        public void UpdatePassword(int id, string password)
+        {
+            api.UpdatePassword(id, password);
+        }
+
+        public ImageSource retreiveImageProfile(int id){
+            return api.retreiveImageProfile(id);
         }
     }
 }
