@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Epyks.Application;
 using System.Collections;
+using System.Windows.Media;
 
 namespace Epyks.Coordonnateur
 {
@@ -91,6 +92,10 @@ namespace Epyks.Coordonnateur
         public void UpdatePassword(int id, string password)
         {
             api.UpdatePassword(id, password);
+        }
+
+        public ImageSource retreiveImageProfile(int id){
+            return api.retreiveImageProfile(id);
         }
     }
 }

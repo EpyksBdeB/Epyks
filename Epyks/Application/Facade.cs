@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Epyks.Application
 {
@@ -207,9 +208,14 @@ namespace Epyks.Application
             dao.DeleteMember(id);
         }
 
-        internal void UpdatePassword(int id, string password)
+        public void UpdatePassword(int id, string password)
         {
             dao.UpdatePassword(id, password);
+        }
+
+        public ImageSource retreiveImageProfile(int id)
+        {
+            return dao.retreiveImageProfile(id);
         }
     }
 }
