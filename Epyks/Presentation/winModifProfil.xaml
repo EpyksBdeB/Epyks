@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Modification du profil" ResizeMode="NoResize" Height="525">
     <Grid>
-        <Button x:Name="btnChangeImage" Style="{StaticResource FadeOutButton}" Content="Modifier image" HorizontalAlignment="Left" Height="25" Margin="10,132,0,0" VerticalAlignment="Top" Width="120" FontSize="13.333" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White" Click="BtnChangeImage_Click"/>
+        <Button x:Name="btnChangeImage" Style="{StaticResource FadeOutButton}" Content="Modifier image" HorizontalAlignment="Left" Height="25" Margin="10,132,0,0" VerticalAlignment="Top" Width="120" FontSize="13.333" FontFamily="Trebuchet MS" Background="#FFB900FF" BorderThickness="0" BorderBrush="{x:Null}" Foreground="White" Click="BtnChangeImage_Click" Visibility="Hidden"/>
         <Image x:Name="imgProfil" Margin="10,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Source="default_profile.jpg" Stretch="Fill" Width="120" Height="120">
             <Image.OpacityMask>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/profil_default.png"/>

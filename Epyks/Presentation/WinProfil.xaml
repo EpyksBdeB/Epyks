@@ -11,7 +11,7 @@ Title="Fenetre de discussion" ResizeMode="NoResize" Width="1000" Height="624.804
     <Grid>
         <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Fichier" Height="24.776" Width="51.79" FontSize="13.333">
-                <MenuItem Header="Status" Click="MenuStatusItem_Click">
+                <MenuItem Header="Status" Click="MenuStatusItem_Click" Visibility="Collapsed">
                     <MenuItem x:Name="menuConnecte" Header="En ligne" IsCheckable="True" IsChecked="True">
                         <MenuItem.Icon>
                             <Image Source="/Epyks;component/Resources/Online-50.png"/>
@@ -116,7 +116,7 @@ Title="Fenetre de discussion" ResizeMode="NoResize" Width="1000" Height="624.804
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="1" Source="pack://siteoforigin:,,,/Resources/profil_default.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="498,4,8,3" Width="133"/>
                     <TextBlock x:Name="txtEnDiscussionAvec" Foreground="#FFC926FF" Padding="0" Margin="10,10,146,74" TextAlignment="Right" Grid.ColumnSpan="2" Text="Vous etes en discussion avec Molly Ken" FontFamily="Leelawadee UI" FontSize="16" FontWeight="Bold"/>
-                    <Image x:Name="imgStatusConnection" HorizontalAlignment="Left" Height="24" Margin="-123,87,0,0" VerticalAlignment="Top" Width="22" Source="/Epyks;component/Resources/Online-50.png" RenderTransformOrigin="0.409,1.25"/>
+                    <Image x:Name="imgStatusConnection" HorizontalAlignment="Left" Height="24" Margin="-123,87,0,0" VerticalAlignment="Top" Width="22" Source="/Epyks;component/Resources/Online-50.png" RenderTransformOrigin="0.409,1.25" Visibility="Hidden"/>
                     <TextBlock x:Name="txtMessagePrive" HorizontalAlignment="Left" Height="52" Margin="10,59,0,0" TextWrapping="Wrap" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elit ex, congue sit amet tincidunt at, auctor a tortor. Sed porta orci ipsum, id tempus neque congue eget. Nulla facilisi." VerticalAlignment="Top" Width="588" Grid.ColumnSpan="2" FontFamily="Leelawadee UI" FontStyle="Italic" FontSize="13.333" TextAlignment="Center" Visibility="Hidden"/>
                     <TextBlock x:Name="txtUsernameAmi" Grid.Column="1" HorizontalAlignment="Left" Margin="377,39,0,0" TextWrapping="Wrap" Text="@MollyKen" VerticalAlignment="Top" Height="20" Width="116" FontFamily="Leelawadee UI" Foreground="#FFEA96FF" TextAlignment="Right"/>
                 </Grid>
