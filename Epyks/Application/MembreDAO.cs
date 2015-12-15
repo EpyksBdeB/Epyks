@@ -61,27 +61,16 @@ namespace Epyks.Application
 
             //Olivier: ma connectionString pour chez moi!
             //myConnectionstring = "server = localhost; user id = FakeUser; password = FakePass; database = epyks; persistsecurityinfo = True";
-            MessageBox.Show(TestMode+"");
             myConnectionstring = "server=aegaur.ddns.net;uid=epyks;pwd=gr007,,;database=" + (TestMode ? "epyks_test" : "epyks") + ";port=8080;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
                 connection.ConnectionString = myConnectionstring;
                 connection.Open();
-                MessageBox.Show("Connecté!");
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("Impossible de se connecter au serveur");
-                        break;
-                    case 1:
-                        MessageBox.Show("Identifiant ou mot de passe invalide");
-                        break;
-                }
             }
         }
 
