@@ -96,9 +96,9 @@ namespace Epyks.Application
             return MessageStacks[amisId].Subscribe(observer);
         }
 
-        internal void AddMessageInStack(Message message)
+        internal void AddMessageInStack(Message message, int id)
         {
-            MessageStacks[message.DestId].Add(message); 
+            MessageStacks[id].Add(message); 
         }
     }
 }

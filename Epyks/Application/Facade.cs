@@ -153,7 +153,7 @@ namespace Epyks.Application
         public void EnvoyerMessage(string messageText, int amisId)
         {
             Message message = new Message(amisId, membreCourant.id, membreCourant.username, messageText);
-            membreCourant.AddMessageInStack(message);
+            membreCourant.AddMessageInStack(message,amisId);
             gestionnaireCommunication.EcrireMessage(message);
         }
 
