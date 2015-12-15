@@ -6,6 +6,7 @@ using Epyks.Presentation;
 using NUnit.Core;
 using Assert = NUnit.Framework.Assert;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Epyks.Coordonnateur.Test
 {
@@ -68,8 +69,8 @@ namespace Epyks.Coordonnateur.Test
             int idAmis2 = coordMembre.GetIdAmis("Amis2");
             coordMembre.AjouterAmis(mdtoCourant.id, idAmis1);
             coordMembre.AjouterAmis(mdtoCourant.id, idAmis2);
-            ArrayList listAmis = coordMembre.GetListAmis(mdtoCourant.id);
-            Assert.IsTrue(listAmis.Count == 2 && listAmis[0].Equals("Amis1") && listAmis[1].Equals("Amis2"));
+            List<MembreDTO> listAmis = coordMembre.GetListAmis(mdtoCourant.id);
+            Assert.IsTrue(listAmis.Count == 2 && listAmis[0].username.Equals("Amis1") && listAmis[1].username.Equals("Amis2"));
         }
 
         [Test]
@@ -90,8 +91,8 @@ namespace Epyks.Coordonnateur.Test
             int idAmis2 = coordMembre.GetIdAmis("Amis2");
             coordMembre.AjouterAmis(mdtoCourant.id, idAmis1);
             coordMembre.AjouterAmis(mdtoCourant.id, idAmis2);
-            int idAmi = coordMembre.GetListAmis(mdtoCourant.id).IndexOf(0);
-            Assert.AreEqual(idAmi, 0);
+            int idAmi = coordMembre.GetListAmis(mdtoCourant.id)[0].id;
+            Assert.AreEqual(idAmi, idAmis1);
 
         }
 

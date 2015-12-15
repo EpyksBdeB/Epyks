@@ -35,7 +35,7 @@ namespace Epyks.Coordonnateur
             return mdtoCourant = api.GetMembreCourant();
         }
 
-        public ArrayList GetListAmis(int id)
+        public List<MembreDTO> GetListAmis(int id)
         {
             return api.GetMembreListAmis(id);
         }
@@ -55,14 +55,14 @@ namespace Epyks.Coordonnateur
             return api.GetNewAmisId(username);
         }
 
-        public IDisposable SubscribeToStack(IObserver<Message> observer)
+        public IDisposable SubscribeToStack(IObserver<Message> observer, int amisId)
         {
-            return api.SubscribeToStack(observer);
+            return api.SubscribeToStack(observer, amisId);
         }
 
-        public void EnvoyerMessage(string messageText)
+        public void EnvoyerMessage(string messageText, int amisId)
         {
-            api.EnvoyerMessage(messageText);
+            api.EnvoyerMessage(messageText, amisId);
         }
 
         public bool VerifierSiAmis(int idUtilisateur, int idAmis)

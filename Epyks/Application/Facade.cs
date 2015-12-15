@@ -45,12 +45,13 @@ namespace Epyks.Application
         /// <returns>vrai si le login a réussi faux sinon</returns>
         public bool Login(string username, string password)
         {
-            Random rand = new Random();
-            int id = rand.Next(100);
             membreCourant = dao.GetMember(username, password);
             // membreCourant = new Membre(id, "m", "m", "m" + id, "m", "m", Genre.MALE, "m", new byte[1], 1);
             if (membreCourant != null)
             {
+                List<MembreDTO> amis = dao.GetListAmis(membreCourant.id);
+                membreCourant.InitMessageStacks(amis);
+
                 gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
                 gestionnaireCommunication.StartReading();
             }
@@ -110,7 +111,7 @@ namespace Epyks.Application
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Retourne la list d'amis de l'utilisateur en cours</returns>
-        public ArrayList GetMembreListAmis(int id)
+        public List<MembreDTO> GetMembreListAmis(int id)
         {
             return dao.GetListAmis(id);
         }
@@ -145,14 +146,14 @@ namespace Epyks.Application
             return dao.GetMemberIdByUsername(username);
         }
 
-        public IDisposable SubscribeToStack(IObserver<Message> observer)
+        public IDisposable SubscribeToStack(IObserver<Message> observer,int amisId)
         {
-            return membreCourant.SubscribeToStack(observer);
+            return membreCourant.SubscribeToStack(observer,amisId);
         }
 
-        public void EnvoyerMessage(string messageText)
+        public void EnvoyerMessage(string messageText, int amisId)
         {
-            Message message = new Message(membreCourant.id, membreCourant.username, messageText);
+            Message message = new Message(amisId, membreCourant.id, membreCourant.username, messageText);
             membreCourant.AddMessageInStack(message);
             gestionnaireCommunication.EcrireMessage(message);
         }

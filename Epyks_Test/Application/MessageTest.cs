@@ -28,15 +28,16 @@ namespace Epyks_Test.Application
         [Test]
         public void testerGetXml()
         {
+            int destId = 2;
             string resultXml = "<?xml version='1.0'?>" +
        "<message>" +
-       "<destid>TOUS</destid>" +
+       "<destid>" + destId +"</destid>" +
        "<authid>10</authid>" +
        "<authuser>Olivier</authuser>" +
        "<msgtext>Bonjour</msgtext>" +
        "</message>";
 
-            Message expected = new Message(10, "Olivier", "Bonjour");
+            Message expected = new Message(destId,10, "Olivier", "Bonjour");
 
             Assert.AreEqual(expected.getXml(), resultXml);
         }
@@ -44,15 +45,16 @@ namespace Epyks_Test.Application
         [Test]
         public void testerCreationMessageAPartirDunStringXml()
         {
+            int destId = 2;
             string xml = "<?xml version='1.0'?>" +
        "<message>" +
-       "<destid>TOUS</destid>" +
+       "<destid>" + destId + "</destid>" +
        "<authid>10</authid>" +
        "<authuser>Olivier</authuser>" +
        "<msgtext>Bonjour</msgtext>" +
        "</message>";
 
-            Message expected = new Message(10, "Olivier", "Bonjour");
+            Message expected = new Message(destId, 10, "Olivier", "Bonjour");
             Message result = new Message(xml);
 
             Assert.AreEqual(10, result.AuthorId);

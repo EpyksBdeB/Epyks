@@ -26,7 +26,7 @@ namespace Epyks.Application
         internal String imgFileName { get; set; }
         internal byte[] imageData { get; set; }
         internal int fileSize { get; set; }
-        internal MessageStack MessageStack { get; private set; }
+        internal Dictionary<int,MessageStack> MessageStacks { get; private set; }
 
         internal Membre(int id, string firstName, string lastName, string username, string password,
             string email, Genre gender, String imgFileName, byte[] imageData, int fileSize)
@@ -41,7 +41,7 @@ namespace Epyks.Application
             this.imgFileName = imgFileName;
             this.imageData = imageData;
             this.fileSize = fileSize;
-            this.MessageStack = new MessageStack();
+            this.MessageStacks = new Dictionary<int, MessageStack>();
         }
 
         internal Membre(MembreDTO membre)
@@ -55,12 +55,12 @@ namespace Epyks.Application
             this.fileSize = membre.fileSize;
             this.imgFileName = membre.imgfilename;
             this.imageData = membre.imageData;
-            this.MessageStack = new MessageStack();
+            this.MessageStacks = new Dictionary<int, MessageStack>();
         }
 
         internal Membre()
         {
-            this.MessageStack = new MessageStack();
+            this.MessageStacks = new Dictionary<int, MessageStack>();
         }
 
         internal MembreDTO GetDTO()
@@ -80,14 +80,22 @@ namespace Epyks.Application
             return mdto;
         }
 
-        internal IDisposable SubscribeToStack(IObserver<Message> observer)
+        internal void InitMessageStacks(List<MembreDTO> amis)
         {
-            return MessageStack.Subscribe(observer);
+            foreach (MembreDTO ami in amis)
+            {
+                MessageStacks.Add(ami.id, new MessageStack());
+            }
+        }
+
+        internal IDisposable SubscribeToStack(IObserver<Message> observer, int amisId)
+        {
+            return MessageStacks[amisId].Subscribe(observer);
         }
 
         internal void AddMessageInStack(Message message)
         {
-           MessageStack.Add(message); 
+            MessageStacks[message.DestId].Add(message); 
         }
     }
 }
