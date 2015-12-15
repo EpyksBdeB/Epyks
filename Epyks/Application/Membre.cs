@@ -80,11 +80,14 @@ namespace Epyks.Application
             return mdto;
         }
 
-        internal void InitMessageStacks(List<MembreDTO> amis)
+        internal void UpdateMessageStacks(List<MembreDTO> amis)
         {
             foreach (MembreDTO ami in amis)
             {
-                MessageStacks.Add(ami.id, new MessageStack());
+                if (!MessageStacks.ContainsKey(ami.id))
+                {
+                    MessageStacks.Add(ami.id, new MessageStack());
+                }
             }
         }
 

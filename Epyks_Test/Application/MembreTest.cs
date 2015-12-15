@@ -38,7 +38,7 @@ namespace Epyks.Application.Test
         {
             membre = new Membre(1,"bob","bob","bob","bob","bob@bob.com",Genre.MALE, null, null, 0);
             ami = new MembreDTO(2, "bob2", "bob2", "bob2", "bob2", "bob2@bob.com", Genre.MALE, null, null, 0);
-            membre.InitMessageStacks(new List<MembreDTO>{ami});
+            membre.UpdateMessageStacks(new List<MembreDTO>{ami});
         }
 
         [TestFixtureTearDown]

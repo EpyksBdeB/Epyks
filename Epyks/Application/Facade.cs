@@ -49,9 +49,6 @@ namespace Epyks.Application
             // membreCourant = new Membre(id, "m", "m", "m" + id, "m", "m", Genre.MALE, "m", new byte[1], 1);
             if (membreCourant != null)
             {
-                List<MembreDTO> amis = dao.GetListAmis(membreCourant.id);
-                membreCourant.InitMessageStacks(amis);
-
                 gestionnaireCommunication = new GestionnaireCommunication(membreCourant);
                 gestionnaireCommunication.StartReading();
             }
@@ -113,7 +110,9 @@ namespace Epyks.Application
         /// <returns>Retourne la list d'amis de l'utilisateur en cours</returns>
         public List<MembreDTO> GetMembreListAmis(int id)
         {
-            return dao.GetListAmis(id);
+            List<MembreDTO> amis = dao.GetListAmis(membreCourant.id);
+            membreCourant.UpdateMessageStacks(amis);
+            return amis;
         }
 
         /// <summary>
