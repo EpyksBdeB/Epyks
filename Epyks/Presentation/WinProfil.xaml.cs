@@ -253,8 +253,10 @@ namespace Epyks.Presentation
             currentAmis = listAmis[listViewContact.SelectedIndex];
 	        txtEnDiscussionAvec.Text = DISCUSSION_START + currentAmis.firstName + " " + currentAmis.lastName;
 	        txtUsernameAmi.Text = USERNAME_SYMBOL + currentAmis.username;
-
-            observable.Dispose();
+            if (observable != null)
+            {
+                observable.Dispose();
+            }
             observable = coordinateur.SubscribeToStack(this, currentAmis.id);
 
             PnlConversation.Visibility = Visibility.Visible;
