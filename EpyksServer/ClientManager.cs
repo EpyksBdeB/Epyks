@@ -65,6 +65,7 @@ namespace EpyksServer
                             if (destinationClient != null)
                             {
                                 writer = new StreamWriter(destinationClient.GetStream());
+                                writer.AutoFlush = true;
                                 writer.WriteLine(line);
                             }
                         }
