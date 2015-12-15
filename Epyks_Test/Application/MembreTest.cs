@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Epyks.Application;
 using NUnit.Framework;
 using Epyks.Coordonnateur;
@@ -12,6 +13,7 @@ namespace Epyks.Application.Test
     public class MembreTest
     {
         Membre membre;
+        private MembreDTO ami;
         static Message lastMessage;
 
         private class ObserverMock : IObserver<Message>
@@ -35,6 +37,8 @@ namespace Epyks.Application.Test
         public void Init()
         {
             membre = new Membre(1,"bob","bob","bob","bob","bob@bob.com",Genre.MALE, null, null, 0);
+            ami = new MembreDTO(2, "bob2", "bob2", "bob2", "bob2", "bob2@bob.com", Genre.MALE, null, null, 0);
+            membre.UpdateMessageStacks(new List<MembreDTO>{ami});
         }
 
         [TestFixtureTearDown]
@@ -47,7 +51,7 @@ namespace Epyks.Application.Test
         public void SubscribeToStackNotNull()
         {
             IObserver<Message> observer = new ObserverMock();
-            IDisposable disposableMessageStack = membre.SubscribeToStack(observer);
+            IDisposable disposableMessageStack = membre.SubscribeToStack(observer, ami.id);
             Assert.IsNotNull(disposableMessageStack);
         }
 
@@ -55,8 +59,8 @@ namespace Epyks.Application.Test
         public void AddMessageInStackTest()
         {
             IObserver<Message> observer = new ObserverMock();
-            Message message = new Message(1,"bob","Hello world");
-            membre.SubscribeToStack(observer);
+            Message message = new Message(ami.id, 1, "bob","Hello world");
+            membre.SubscribeToStack(observer, ami.id);
             membre.AddMessageInStack(message);
 
             Assert.AreEqual(message.AuthorId, lastMessage.AuthorId);

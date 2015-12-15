@@ -61,27 +61,16 @@ namespace Epyks.Application
 
             //Olivier: ma connectionString pour chez moi!
             //myConnectionstring = "server = localhost; user id = FakeUser; password = FakePass; database = epyks; persistsecurityinfo = True";
-            MessageBox.Show(TestMode+"");
             myConnectionstring = "server=aegaur.ddns.net;uid=epyks;pwd=gr007,,;database=" + (TestMode ? "epyks_test" : "epyks") + ";port=8080;";
             try
             {
                 connection = new MySql.Data.MySqlClient.MySqlConnection();
                 connection.ConnectionString = myConnectionstring;
                 connection.Open();
-                MessageBox.Show("Connecté!");
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("Impossible de se connecter au serveur");
-                        break;
-                    case 1:
-                        MessageBox.Show("Identifiant ou mot de passe invalide");
-                        break;
-                }
             }
         }
 
@@ -281,10 +270,10 @@ namespace Epyks.Application
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Retourne la liste d'amis d'un membre</returns>
-        public ArrayList GetListAmis(int id)
+        public List<MembreDTO> GetListAmis(int id)
         {
-            ArrayList listAmis = new ArrayList();
-            string query = "SELECT username FROM utilisateur where id_utilisateur IN (SELECT id_amis FROM "+
+            List<MembreDTO> listAmis = new List<MembreDTO>();
+            string query = "SELECT * FROM utilisateur where id_utilisateur IN (SELECT id_amis FROM "+
                 "contact WHERE id_utilisateur='" + id + "' UNION SELECT id_utilisateur FROM contact WHERE id_amis='" + id + "')";
             command = new MySqlCommand(query, this.connection);
             MySqlDataReader reader = command.ExecuteReader();
@@ -292,8 +281,19 @@ namespace Epyks.Application
             {
                  while (reader.Read())
                  {
-                     listAmis.Add(reader.GetString("username"));
-                 }           
+                    MembreDTO membre = new MembreDTO();
+
+
+                    membre.id = reader.GetInt32("id_utilisateur");
+                    membre.username = reader.GetString("username");
+                    membre.password = passwordCrypte;
+                    membre.firstName = reader.GetString("Prenom");
+                    membre.lastName = reader.GetString("Nom");
+                    membre.email = reader.GetString("email");
+                    membre.gender = (Genre)Enum.Parse(typeof(Genre), reader.GetString("sexe"));
+
+                    listAmis.Add(membre);
+                }           
             }
             reader.Close();
             return listAmis;

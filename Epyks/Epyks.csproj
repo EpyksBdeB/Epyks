@@ -108,6 +108,7 @@
     <Compile Include="Application\MembreDAO.cs" />
     <Compile Include="Application\MembreDAOInterface.cs" />
     <Compile Include="Application\MembreDTO.cs" />
+    <Compile Include="Application\MembreVerif.cs" />
     <Compile Include="Application\Message.cs" />
     <Compile Include="Application\MessageStack.cs" />
     <Compile Include="Application\Unsuscriber.cs" />

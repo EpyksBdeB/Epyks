@@ -11,12 +11,14 @@ namespace Epyks.Application
 {
     public class Message
     {
+        public int DestId { get; private set; }
         public int AuthorId { get; private set; }
         public string AuthorUsername { get; private set; }
         public string Content { get; private set; }
 
-        public Message(int authorId, string authorUsername, string content)
+        public Message(int destId, int authorId, string authorUsername, string content)
         {
+            DestId = destId;
             AuthorId = authorId;
             AuthorUsername = authorUsername;
             Content = content;
@@ -24,10 +26,10 @@ namespace Epyks.Application
 
         public Message(string xmlString)
         {
-            MessageBox.Show(xmlString);
             XmlReader reader = XmlReader.Create(new StringReader(xmlString));
 
-            reader.ReadToFollowing("authid");
+            reader.ReadToFollowing("destid");
+            DestId = reader.ReadElementContentAsInt();
             AuthorId = reader.ReadElementContentAsInt();
             AuthorUsername = reader.ReadElementContentAsString();
             Content = reader.ReadElementContentAsString();
@@ -37,7 +39,7 @@ namespace Epyks.Application
         {
             return "<?xml version='1.0'?>" +
                    "<message>" +
-                   "<destid>TOUS</destid>" +
+                   "<destid>" + DestId +"</destid>" +
                    "<authid>" + AuthorId + "</authid>" +
                    "<authuser>" + AuthorUsername + "</authuser>" +
                    "<msgtext>" + Content + "</msgtext>" +

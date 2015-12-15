@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing.Drawing2D;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Epyks.Application;
 using Epyks.Coordonnateur;
 using System.Collections;
@@ -27,7 +22,10 @@ namespace Epyks.Presentation
 	/// </summary>
 	public partial class WinProfil : Window, IObserver<Message>
 	{
-	    private CoordonateurMembreCourant coordinateur;
+
+        private string DISCUSSION_START = "Vous êtes en discussion avec ";
+        private string USERNAME_SYMBOL = "@";
+        private CoordonateurMembreCourant coordinateur;
 
         private bool enModeRecherche = false;
 
@@ -37,7 +35,11 @@ namespace Epyks.Presentation
 
 	    private WinLogin login;
 
-        public WinProfil(WinLogin winLogin)
+	    private List<MembreDTO> listAmis;
+
+	    private MembreDTO currentAmis;
+
+	    public WinProfil(WinLogin winLogin)
         {
             login = winLogin;
 			InitializeComponent();
@@ -45,7 +47,6 @@ namespace Epyks.Presentation
             coordinateur = CoordonateurMembreCourant.GetInstance();
 
             CreerProfil();
-            observable = coordinateur.SubscribeToStack(this);
             btnBack.IsEnabled = false;
 		}
 
@@ -127,10 +128,10 @@ namespace Epyks.Presentation
         {
             listViewContact.Items.Clear();
             textRechercher.Clear();
-            ArrayList listAmis = coordinateur.GetListAmis(mDtoCourant.id);
-            foreach (string nomAmis in listAmis)
+            listAmis = coordinateur.GetListAmis(mDtoCourant.id);
+            foreach (MembreDTO amis in listAmis)
             {
-                listViewContact.Items.Add(nomAmis);
+                listViewContact.Items.Add(amis.username);
             }
         }
 
@@ -203,7 +204,7 @@ namespace Epyks.Presentation
 
         private void BtnSendMsg_Click(object sender, RoutedEventArgs e)
         {
-            coordinateur.EnvoyerMessage(TxtMessage.Text);
+            coordinateur.EnvoyerMessage(TxtMessage.Text, currentAmis.id);
             TxtMessage.Text = null;
         }
 
@@ -238,12 +239,28 @@ namespace Epyks.Presentation
                 }
                 else
                 {
-                    MessageBox.Show("Conversation à faire!");
-                    listViewContact.UnselectAll();
-                    //Selection d'un amis pour conversation
+                    ChangerAmis();
                 }
             }
              
+        }
+
+	    private void ChangerAmis()
+	    {
+            LblBlockConversation.Text = null;
+            TxtMessage.Clear();
+
+            currentAmis = listAmis[listViewContact.SelectedIndex];
+	        txtEnDiscussionAvec.Text = DISCUSSION_START + currentAmis.firstName + " " + currentAmis.lastName;
+	        txtUsernameAmi.Text = USERNAME_SYMBOL + currentAmis.username;
+            if (observable != null)
+            {
+                observable.Dispose();
+            }
+            observable = coordinateur.SubscribeToStack(this, currentAmis.id);
+
+            PnlConversation.Visibility = Visibility.Visible;
+            listViewContact.UnselectAll();
         }
 
         private void ListViewContact_ContextMenuOpening(object sender, ContextMenuEventArgs e)
