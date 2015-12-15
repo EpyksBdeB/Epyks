@@ -48,9 +48,7 @@ namespace Epyks.Presentation
             {
                 if (this.passBNewMDP.Password.ToString().Equals(this.passBConfirmNewMDP.Password.ToString()))
                 {
-
-                    MembreDAO mdao = MembreDAO.GetInstance();
-                    mdao.UpdatePassword(mdto.id, this.passBNewMDP.Password.ToString());
+                    coordinateur.UpdatePassword(mdto.id, this.passBNewMDP.Password.ToString());
                     MessageBox.Show("Mot de passe modifie avec succes!");
                 }
                 else { MessageBox.Show("Les nouveaux mots de passe ne concordent pas"); }

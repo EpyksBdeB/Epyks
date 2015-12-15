@@ -54,6 +54,12 @@ namespace Epyks.Presentation
 	        mDtoCourant = coordinateur.GetMembreCourant();
 	        this.TxtNomUtilisateur.Text = mDtoCourant.firstName+ " " + mDtoCourant.lastName;
             this.txtUsername.Text = "@"+mDtoCourant.username;
+
+            ImageSource source = coordinateur.retreiveImageProfile(mDtoCourant.id);
+            if (source != null)
+            {
+                this.ImageProfil.Source = source;
+            }
             RafraichirListDamis();
 	    }
 
@@ -296,5 +302,5 @@ namespace Epyks.Presentation
         {
             // TODO: Envoyer message when enter is pressed
         }
-    }
+       }
     }

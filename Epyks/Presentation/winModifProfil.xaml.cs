@@ -24,6 +24,7 @@ namespace Epyks
     public partial class WinModifProfil : Window
     {
         private CoordonateurMembreCourant membreCourant;
+        private Facade facade;
         private MembreDTO mdto;
         private WinProfil profil;
 
@@ -32,6 +33,7 @@ namespace Epyks
             profil = winProfil;
             InitializeComponent();
             membreCourant = CoordonateurMembreCourant.GetInstance();
+            facade = Facade.GetInstance();
             mdto = membreCourant.GetMembreCourant();
 
             InitialiserInfos();
@@ -47,6 +49,11 @@ namespace Epyks
             this.txtBContenuPrenom.Text = mdto.firstName;
             this.lblContenuUsername.Content = mdto.username;
             this.txtBContenuEmail.Text = mdto.email;
+            ImageSource source = membreCourant.retreiveImageProfile(mdto.id);
+            if (source != null)
+            {
+                this.imgProfil.Source = source;
+            }
         }
 
         private void BtnChangeImage_Click(object sender, RoutedEventArgs e)
@@ -83,8 +90,6 @@ namespace Epyks
         {
             mdto = membreCourant.GetMembreCourant();
 
-            MembreDAO mdao = MembreDAO.GetInstance();
-
             string nom = this.txtBContenuNom.Text.ToString();
             string prenom = this.txtBContenuPrenom.Text.ToString();
             string email = this.txtBContenuEmail.Text.ToString();
@@ -99,7 +104,7 @@ namespace Epyks
             }
 
 
-            mdao.ModifierInfosAPartirProfil(nom, prenom, email, notel, mdto.id);
+            membreCourant.ModifierInfosAPartirProfil(nom, prenom, email, notel, mdto.id);
             MessageBox.Show("Vos informations ont ete modifiees avec succes!");
 
 
@@ -110,8 +115,7 @@ namespace Epyks
             if (MessageBox.Show("Voulez-vous vraiment supprimer votre compte?", "Supprimer mon compte", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 // TODO: Supprimer compte de la BD 
-                MembreDAO mdao = MembreDAO.GetInstance();
-                mdao.DeleteMember(mdto.id);
+                membreCourant.DeleteMember(mdto.id);
                 MessageBox.Show("Votre compte a ete supprime avec succes! Vous serez ridirige vers la fenetre de connection");
                 this.Close();
                 WinLogin login = new WinLogin();
