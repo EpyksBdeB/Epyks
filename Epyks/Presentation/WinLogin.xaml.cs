@@ -35,7 +35,7 @@ namespace Epyks.Presentation
             else if (Properties.Settings.Default.Username.ToString().Equals(""))
             {
                 chBRememberMe.IsChecked = false;
-                TxtUsername.Focus();
+                //TxtUsername.Focus();
                 txtVousNetesPas.Visibility = Visibility.Hidden;
             }
         }
