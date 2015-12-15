@@ -301,8 +301,6 @@ namespace Epyks.Presentation
         private void seDeconnecter_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            WinLogin login = new WinLogin();
-            login.Show();
         }
 
         private void fermerProgramme_Click(object sender, RoutedEventArgs e)
