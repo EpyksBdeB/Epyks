@@ -56,7 +56,7 @@ namespace Epyks.Application
                     if (!String.IsNullOrEmpty(line) && line.StartsWith("<?xml version='1.0'?>"))
                     {
                         message = new Message(line);
-                        membreCourant.AddMessageInStack(message);
+                        membreCourant.AddMessageInStack(message, message.AuthorId);
                     }
                 }
             }

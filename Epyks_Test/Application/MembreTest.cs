@@ -61,7 +61,7 @@ namespace Epyks.Application.Test
             IObserver<Message> observer = new ObserverMock();
             Message message = new Message(ami.id, 1, "bob","Hello world");
             membre.SubscribeToStack(observer, ami.id);
-            membre.AddMessageInStack(message);
+            membre.AddMessageInStack(message, ami.id);
 
             Assert.AreEqual(message.AuthorId, lastMessage.AuthorId);
             Assert.AreEqual(message.AuthorUsername, lastMessage.AuthorUsername);
